@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.Form", "jarwin.Form\jarwin.Form.csproj", "{6DF4CE2E-1880-479F-9108-E9918D7B174B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.Utility", "jarwin.Utility\jarwin.Utility.csproj", "{2545EB17-E0B5-49F2-9627-F6FB4706A050}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionArtefacts", "SolutionArtefacts", "{0C1F17EE-92F1-44DF-8A17-72D96E77DC27}"
+	ProjectSection(SolutionItems) = preProject
+		SolutionArtefacts\jc_blog_rss.xml = SolutionArtefacts\jc_blog_rss.xml
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6DF4CE2E-1880-479F-9108-E9918D7B174B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6DF4CE2E-1880-479F-9108-E9918D7B174B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6DF4CE2E-1880-479F-9108-E9918D7B174B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6DF4CE2E-1880-479F-9108-E9918D7B174B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2545EB17-E0B5-49F2-9627-F6FB4706A050}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2545EB17-E0B5-49F2-9627-F6FB4706A050}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2545EB17-E0B5-49F2-9627-F6FB4706A050}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2545EB17-E0B5-49F2-9627-F6FB4706A050}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

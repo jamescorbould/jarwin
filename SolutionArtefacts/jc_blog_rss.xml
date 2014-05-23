@@ -1,0 +1,736 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	xmlns:georss="http://www.georss.org/georss" xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#" xmlns:media="http://search.yahoo.com/mrss/"
+	>
+
+<channel>
+	<title>James Corbould&#039;s Blog</title>
+	<atom:link href="http://jamescorbould.wordpress.com/feed/" rel="self" type="application/rss+xml" />
+	<link>http://jamescorbould.wordpress.com</link>
+	<description>Thoughts on Systems Integration using Microsoft Technologies</description>
+	<lastBuildDate>Mon, 19 May 2014 09:31:42 +0000</lastBuildDate>
+	<language>en</language>
+		<sy:updatePeriod>hourly</sy:updatePeriod>
+		<sy:updateFrequency>1</sy:updateFrequency>
+	<generator>http://wordpress.com/</generator>
+<cloud domain='jamescorbould.wordpress.com' port='80' path='/?rsscloud=notify' registerProcedure='' protocol='http-post' />
+<image>
+		<url>http://s2.wp.com/i/buttonw-com.png</url>
+		<title>James Corbould&#039;s Blog</title>
+		<link>http://jamescorbould.wordpress.com</link>
+	</image>
+	<atom:link rel="search" type="application/opensearchdescription+xml" href="http://jamescorbould.wordpress.com/osd.xml" title="James Corbould&#039;s Blog" />
+	<atom:link rel='hub' href='http://jamescorbould.wordpress.com/?pushpress=hub'/>
+	<item>
+		<title>WCF Error from Visual Studio Debugger: &#8220;An exception of type &#8216;System.ServiceModel.FaultException`1&#8242; occurred but was not handled in user code&#8221;</title>
+		<link>http://jamescorbould.wordpress.com/2014/05/19/wcf-error-from-visual-studio-debugger-an-exception-of-type-system-servicemodel-faultexception1-occurred-but-was-not-handled-in-user-code/</link>
+		<comments>http://jamescorbould.wordpress.com/2014/05/19/wcf-error-from-visual-studio-debugger-an-exception-of-type-system-servicemodel-faultexception1-occurred-but-was-not-handled-in-user-code/#comments</comments>
+		<pubDate>Mon, 19 May 2014 09:31:33 +0000</pubDate>
+		<dc:creator><![CDATA[James Corbould]]></dc:creator>
+				<category><![CDATA[WCF General]]></category>
+		<category><![CDATA[SOAP fault exception]]></category>
+		<category><![CDATA[WCF]]></category>
+
+		<guid isPermaLink="false">http://jamescorbould.wordpress.com/?p=837</guid>
+		<description><![CDATA[This error got me stumped for a bit&#8230;  The solution was quite simple but caused a few further grey hairs so I will share here how I resolved this annoyance! I was hosting a WCF solution in Visual Studio (for testing and debugging purposes) and calling it from a forms application.  Things were going well [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=837&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+				<content:encoded><![CDATA[<p>This error got me stumped for a bit&#8230;  The solution was quite simple but caused a few further grey hairs so I will share here how I resolved this annoyance!</p>
+<p>I was hosting a WCF solution in Visual Studio (for testing and debugging purposes) and calling it from a forms application.  Things were going well until I introduced typed SOAP faults: I wanted to throw a typed fault from my WCF solution and for my forms application to catch and handle the error.</p>
+<p>When I threw the error from my WCF solution, the Visual Studio debugger complained, saying that the error was unhandled:</p>
+<div id="attachment_854" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/05/unhandledfaultex1.png"><img class="size-medium wp-image-854" src="http://jamescorbould.files.wordpress.com/2014/05/unhandledfaultex1.png?w=300&#038;h=118" alt="Visual Studio 2013 SOAP Fault Unhandled Error" width="300" height="118" /></a><p class="wp-caption-text">Fig. 1  Visual Studio 2013 SOAP Fault Unhandled Error</p></div>
+<p>However, my forms application had been built to handle the exception as follows:</p>
+<div id="attachment_848" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/05/handledinformsappthough.png"><img class="size-medium wp-image-848" src="http://jamescorbould.files.wordpress.com/2014/05/handledinformsappthough.png?w=300&#038;h=159" alt="But SOAP Fault Handled in my Forms App" width="300" height="159" /></a><p class="wp-caption-text">Fig. 2  But SOAP Fault Handled in my Forms App</p></div>
+<p>I couldn&#8217;t work out for sometime how to suppress the error but then noticed a check box in the VS exception message box: &#8220;Break when this exception type is user-unhandled&#8221; (highlighted in Fig. 1 above).</p>
+<p>The wording is a bit of misnomer since I am actually handling the error in my forms app but I guess the VS debugger can&#8217;t work this out.  I unchecked the box and VS behaved as I wanted it to: my WCF solution was able to throw the exception for handling by my forms app.</p>
+<p>I later learnt that it also possible to configure how the VS debugger behaves in regards to exceptions by selecting &#8220;DEBUG &#8211;&gt; Exceptions&#8230;&#8221;.  This opens an exceptions windows where it is possible to configure if the debugger should break or not for certain exception types e.g.:</p>
+<div id="attachment_851" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/05/specifyfaultexhandledinvs.png"><img class="size-medium wp-image-851" src="http://jamescorbould.files.wordpress.com/2014/05/specifyfaultexhandledinvs.png?w=300&#038;h=148" alt="Specify if Debugger should Break" width="300" height="148" /></a><p class="wp-caption-text">Fig. 3  Specified that the Debugger should not Break for Exceptions of Type &#8216;System.ServiceModel.FaultException`1&#8242;</p></div>
+<p>&nbsp;</p><br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/jamescorbould.wordpress.com/837/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/jamescorbould.wordpress.com/837/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=837&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://jamescorbould.wordpress.com/2014/05/19/wcf-error-from-visual-studio-debugger-an-exception-of-type-system-servicemodel-faultexception1-occurred-but-was-not-handled-in-user-code/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	
+		<media:content url="http://2.gravatar.com/avatar/e042519a77f391e81c60385ee40e4889?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jamescorb</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/05/unhandledfaultex1.png?w=300" medium="image">
+			<media:title type="html">Visual Studio 2013 SOAP Fault Unhandled Error</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/05/handledinformsappthough.png?w=300" medium="image">
+			<media:title type="html">But SOAP Fault Handled in my Forms App</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/05/specifyfaultexhandledinvs.png?w=300" medium="image">
+			<media:title type="html">Specify if Debugger should Break</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Few Thoughts on the ESB Toolkit and an Error &#8211; &#8220;The &#8216;ServiceType&#8217; property value should not be empty or null&#8221;</title>
+		<link>http://jamescorbould.wordpress.com/2014/03/27/few-thoughts-on-the-esb-tookit-and-an-error-the-servicetype-property-value-should-not-be-empty-or-null/</link>
+		<comments>http://jamescorbould.wordpress.com/2014/03/27/few-thoughts-on-the-esb-tookit-and-an-error-the-servicetype-property-value-should-not-be-empty-or-null/#comments</comments>
+		<pubDate>Wed, 26 Mar 2014 18:30:17 +0000</pubDate>
+		<dc:creator><![CDATA[James Corbould]]></dc:creator>
+				<category><![CDATA[BizTalk]]></category>
+		<category><![CDATA[ESB Toolkit]]></category>
+
+		<guid isPermaLink="false">http://jamescorbould.wordpress.com/?p=806</guid>
+		<description><![CDATA[I have recently been experimenting with the ESB Toolkit (version 2.2 that ships with BizTalk 2013) and I think it is a good way to expedite loosely coupled BizTalk solutions, dynamically configurable at runtime using the Business Rules Engine (BRE). At a high level, the ESB Toolkit itinerary model is an implementation of the routing [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=806&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+				<content:encoded><![CDATA[<p>I have recently been experimenting with the ESB Toolkit (version 2.2 that ships with BizTalk 2013) and I think it is a good way to expedite loosely coupled BizTalk solutions, dynamically configurable at runtime using the Business Rules Engine (BRE).</p>
+<p>At a high level, the ESB Toolkit itinerary model is an implementation of the <a href="http://www.enterpriseintegrationpatterns.com/RoutingTable.html" target="_blank">routing slip pattern</a>.</p>
+<p>My immediate impression is that development using the Itinerary Designer is tightly coupled to the runtime environment, more so than &#8220;standard&#8221; BizTalk development.  By &#8220;runtime environment&#8221;, I mean artefacts/configuration viewable via the BizTalk admin console (e.g. applications, send port filters etc.) and also policies created via the BRE Composer.  Basically the target application needs to be setup <em>before</em> starting work building the solution using Visual Studio.  Any changes to the solution setup (changing a send port name, for example) would likely require firing up Visual Studio and propagating these changes to the itinerary, then importing into the itinerary database.</p>
+<p>It&#8217;s also occurred to me that the itinerary pattern is in my mind an easier way to implement a message type agnostic solution, compared to using the standard BizTalk toolset.  I have recently been wrestling with a series of orchestrations processing messages in a non typed fashion, routing to/from the MessageBox purely using context properties: this is a powerful enabler of achieving a &#8220;service first&#8221; approach (instead of a &#8220;message first&#8221; approach) permitting heavy reuse of processing logic without caring about the underlying message type.  Yes, I&#8217;m thinking about SOA principles here.  However it&#8217;s been quite a mission to implement this routing using non typed messages in orchestration.</p>
+<p>To illustrate this tight coupling of the development and runtime environments mentioned previously (and to demonstrate my noob status regarding the ESB Tookit :-)), whilst trying to export a model via Visual Studio, I was stumped with these errors:</p>
+<div id="attachment_816" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/03/esbpropertyvalueerrors.png" target="_blank"><img class="size-medium wp-image-816" src="http://jamescorbould.files.wordpress.com/2014/03/esbpropertyvalueerrors.png?w=300&#038;h=89" alt="Itinerary Property Value Errors" width="300" height="89" /></a><p class="wp-caption-text">Itinerary Designer Property Value Errors</p></div>
+<p>It was obvious clicking on my off ramp that these three properties were not configured but they looked to be read only &#8211; so how could I add values?!:</p>
+<div id="attachment_815" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/03/vsmissingproperties.png" target="_blank"><img class="size-medium wp-image-815" src="http://jamescorbould.files.wordpress.com/2014/03/vsmissingproperties.png?w=300&#038;h=134" alt="Missing Properties in the Itinerary Design" width="300" height="134" /></a><p class="wp-caption-text">Missing Properties in the Itinerary Designer &#8211; Not Possible to Configure Here</p></div>
+<p>After a bit of head scratching and a web search it soon became clear that these properties referred to filter properties on my send port &#8211; it would have been useful if the property name made it obvious what these properties referred to.</p>
+<p>So in my BizTalk application, I created the following filters on my dynamic send port:</p>
+<div id="attachment_817" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/03/setupspfilters.png" target="_blank"><img class="size-medium wp-image-817" src="http://jamescorbould.files.wordpress.com/2014/03/setupspfilters.png?w=300&#038;h=242" alt="ESB Tookit Send Port Filters Required" width="300" height="242" /></a><p class="wp-caption-text">ESB Toolkit Send Port Filters Required</p></div>
+<p>I then re-selected the send port in the off ramp and the required properties were then populated from the BizTalk databases:</p>
+<div id="attachment_821" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/03/addedspfilters.png" target="_blank"><img class="size-medium wp-image-821" src="http://jamescorbould.files.wordpress.com/2014/03/addedspfilters.png?w=300&#038;h=130" alt="Properties Visible in Itinerary Designer" width="300" height="130" /></a><p class="wp-caption-text">Properties Visible in Itinerary Designer After Adding Filters to Send Port</p></div>
+<p>I hope this post helps out other ESB Toolkit &#8220;greenhorns&#8221;.</p><br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/jamescorbould.wordpress.com/806/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/jamescorbould.wordpress.com/806/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=806&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://jamescorbould.wordpress.com/2014/03/27/few-thoughts-on-the-esb-tookit-and-an-error-the-servicetype-property-value-should-not-be-empty-or-null/feed/</wfw:commentRss>
+		<slash:comments>2</slash:comments>
+	
+		<media:content url="http://2.gravatar.com/avatar/e042519a77f391e81c60385ee40e4889?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jamescorb</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/03/esbpropertyvalueerrors.png?w=300" medium="image">
+			<media:title type="html">Itinerary Property Value Errors</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/03/vsmissingproperties.png?w=300" medium="image">
+			<media:title type="html">Missing Properties in the Itinerary Design</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/03/setupspfilters.png?w=300" medium="image">
+			<media:title type="html">ESB Tookit Send Port Filters Required</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/03/addedspfilters.png?w=300" medium="image">
+			<media:title type="html">Properties Visible in Itinerary Designer</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>Using Inline XSLT to Populate an &lt;Any&gt; Element</title>
+		<link>http://jamescorbould.wordpress.com/2014/03/20/using-inline-xslt-to-populate-an-any-element/</link>
+		<comments>http://jamescorbould.wordpress.com/2014/03/20/using-inline-xslt-to-populate-an-any-element/#comments</comments>
+		<pubDate>Wed, 19 Mar 2014 18:56:30 +0000</pubDate>
+		<dc:creator><![CDATA[James Corbould]]></dc:creator>
+				<category><![CDATA[BizTalk]]></category>
+		<category><![CDATA[Mapping]]></category>
+		<category><![CDATA[inline xslt]]></category>
+
+		<guid isPermaLink="false">http://jamescorbould.wordpress.com/?p=776</guid>
+		<description><![CDATA[I have been working recently with schemas containing &#60;Any&#62; elements.  Luckily I don&#8217;t need to manipulate the &#60;Any&#62; contents much: to do so, the standard BizTalk functoids available in the mapper can&#8217;t be used and instead, given the range of the XML that can be expected in the &#60;Any&#62;, some extensive custom XSLT would be [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=776&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+				<content:encoded><![CDATA[<p>I have been working recently with schemas containing &lt;Any&gt; elements.  Luckily I don&#8217;t need to manipulate the &lt;Any&gt; contents much: to do so, the standard BizTalk functoids available in the mapper can&#8217;t be used and instead, given the range of the XML that can be expected in the &lt;Any&gt;, some extensive custom XSLT would be required.</p>
+<p>I have two scenarios:</p>
+<ol>
+<li>The contents of an &lt;Any&gt; element need to be copied to a known schema &#8220;as is&#8221;.</li>
+<li>The contents of a known schema need to mapped &#8220;as is&#8221; to an &lt;Any&gt;.</li>
+</ol>
+<p>I struggled with the <a href="http://msdn.microsoft.com/en-us/library/ee267842(v=bts.10).aspx" target="_blank">mass copy functoid</a> for both scenarios &#8211; it didn&#8217;t behave quite how I expected/wanted.</p>
+<p>After a bit of head scratching and a read of <a href="http://blog.rodger-brown.com/2004/12/mass-copy-or-not.html" target="_blank">this</a> blog post, I realised that the mass copy doesn&#8217;t copy across root elements.  I suppose, for example, the assumption is that both source and target schemas will contain a common element that can be used as the &#8220;target&#8221; of the mass copy functoid.  This wouldn&#8217;t work in my case, since the schemas being mapped are quite different and also the &lt;Any&gt; would contain a range of different XML, so I couldn&#8217;t specify an appropriate containing &#8220;root&#8221; element.</p>
+<p>To get around this behaviour of the mass copy functoid, in my map I created a scripting functoid and added some inline XSLT like this:</p>
+<div>
+<p><em>&lt;xsl:copy-of select=&#8221;.&#8221; /&gt;</em></p>
+</div>
+<p>My map then looked like this:</p>
+<div>
+<div id="attachment_802" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/03/mass_copy_inlinexslt1.png" target="_blank"><img class="size-medium wp-image-802 " title="Map With &quot;Mass Copy&quot; in Inline XSLT" alt="Map With &quot;Mass Copy&quot; in Inline XSLT" src="http://jamescorbould.files.wordpress.com/2014/03/mass_copy_inlinexslt1.png?w=300&#038;h=145" width="300" height="145" /></a><p class="wp-caption-text">Map With &#8220;Mass Copy&#8221; in Inline XSLT</p></div>
+</div>
+<p>Here is an example instance of the source message:</p>
+<div>
+<div id="attachment_799" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/03/extpurchaseordermsg.png" target="_blank"><img class="size-medium wp-image-799 " title="Source Message" alt="Source Message" src="http://jamescorbould.files.wordpress.com/2014/03/extpurchaseordermsg.png?w=300&#038;h=163" width="300" height="163" /></a><p class="wp-caption-text">Source Message</p></div>
+</div>
+<p>And this is the result after passing the message above through the map:</p>
+<div>
+<div id="attachment_801" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/03/extenvelopeoutputmsg.png" target="_blank"><img class="size-medium wp-image-801 " title="Output Message" alt="Output Message" src="http://jamescorbould.files.wordpress.com/2014/03/extenvelopeoutputmsg.png?w=300&#038;h=196" width="300" height="196" /></a><p class="wp-caption-text">Output Message</p></div>
+</div>
+<p>Also here is the output message if the mass copy functoid is used (note that the root &lt;Order&gt; element is missing, under &lt;Entities&gt;):</p>
+<div>
+<div id="attachment_800" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/03/pooutputmsgusingmasscopy.png" target="_blank"><img class="size-medium wp-image-800 " title="Output Message Using Mass Copy Functoid" alt="Output Message Using Mass Copy Functoid" src="http://jamescorbould.files.wordpress.com/2014/03/pooutputmsgusingmasscopy.png?w=300&#038;h=197" width="300" height="197" /></a><p class="wp-caption-text">Output Message Using Mass Copy Functoid</p></div>
+</div>
+<p>It seems strange and limiting that the mass copy functoid doesn&#8217;t copy the root element.</p><br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/jamescorbould.wordpress.com/776/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/jamescorbould.wordpress.com/776/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=776&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://jamescorbould.wordpress.com/2014/03/20/using-inline-xslt-to-populate-an-any-element/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	
+		<media:content url="http://2.gravatar.com/avatar/e042519a77f391e81c60385ee40e4889?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jamescorb</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/03/mass_copy_inlinexslt1.png?w=300" medium="image">
+			<media:title type="html">Map With &#34;Mass Copy&#34; in Inline XSLT</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/03/extpurchaseordermsg.png?w=300" medium="image">
+			<media:title type="html">Source Message</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/03/extenvelopeoutputmsg.png?w=300" medium="image">
+			<media:title type="html">Output Message</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/03/pooutputmsgusingmasscopy.png?w=300" medium="image">
+			<media:title type="html">Output Message Using Mass Copy Functoid</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>BizTalk 2009 &#8211; Error Enlisting Send Port &#8211; &#8220;Exception from HRESULT: 0xC00CE557&#8243;</title>
+		<link>http://jamescorbould.wordpress.com/2014/02/28/biztalk-2009-error-enlisting-send-port-exception-from-hresult-0xc00ce557/</link>
+		<comments>http://jamescorbould.wordpress.com/2014/02/28/biztalk-2009-error-enlisting-send-port-exception-from-hresult-0xc00ce557/#comments</comments>
+		<pubDate>Fri, 28 Feb 2014 04:29:48 +0000</pubDate>
+		<dc:creator><![CDATA[James Corbould]]></dc:creator>
+				<category><![CDATA[BizTalk]]></category>
+		<category><![CDATA[General]]></category>
+
+		<guid isPermaLink="false">http://jamescorbould.wordpress.com/?p=759</guid>
+		<description><![CDATA[It&#8217;s the second time that I have encountered this obscure error in BizTalk 2009, when attempting to enlist a send port after importing bindings originally exported via the admin console: Both times (for different customers) the issue was that an extra carriage return and line feed had been inputted before and after the &#60;Filter&#62; element [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=759&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+				<content:encoded><![CDATA[<p>It&#8217;s the second time that I have encountered this obscure error in BizTalk 2009, when attempting to enlist a send port after importing bindings originally exported via the admin console:</p>
+<div id="attachment_760" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/enlistsperror.png" target="_blank"><img class="size-medium wp-image-760 " title="BizTalk 2009 - Error Enlisting Send Port" alt="BizTalk 2009 - Error Enlisting Send Port" src="http://jamescorbould.files.wordpress.com/2014/02/enlistsperror.png?w=300&#038;h=60" width="300" height="60" /></a><p class="wp-caption-text">BizTalk 2009 &#8211; Error Enlisting Send Port</p></div>
+<p>Both times (for different customers) the issue was that an extra carriage return and line feed had been inputted before and after the &lt;Filter&gt; element in the offending bindings file that was being imported, like this:</p>
+<div id="attachment_763" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/filterelementbroken.png" target="_blank"><img class="size-medium wp-image-763 " title="Bindings File - &lt;Filter&gt; Element Contains Carriage Return and Line Feed" alt="Bindings File - &lt;Filter&gt; Element Contains Carriage Return and Line Feed" src="http://jamescorbould.files.wordpress.com/2014/02/filterelementbroken.png?w=300&#038;h=40" width="300" height="40" /></a><p class="wp-caption-text">Bindings File &#8211; Element Contains Carriage Return and Line Feed</p></div>
+<p>This had a two fold effect &#8211; filter expressions were missing from the send port and also the error above enlisting the send port.</p>
+<p>I carefully checked the bindings file and discovered other &lt;Filter&gt; elements with extra carriage returns and line feeds: I removed them, like so:</p>
+<div id="attachment_764" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/filterelementfixed.png" target="_blank"><img class="size-medium wp-image-764 " title="Bindings File - Extra Carriage Return and Line Feed Removed From &lt;Filter&gt; Element" alt="Bindings File - Extra Carriage Return and Line Feed Removed From &lt;Filter&gt; Element" src="http://jamescorbould.files.wordpress.com/2014/02/filterelementfixed.png?w=300&#038;h=31" width="300" height="31" /></a><p class="wp-caption-text">Bindings File &#8211; Extra Carriage Return and Line Feed Removed From Element</p></div>
+<p><span style="line-height:1.5em;">On import of the bindings file again, I could then see my filter expressions and also could enlist the send port&#8230;</span></p>
+<p><strong><span style="line-height:1.5em;">I have only ever come across this error in BizTalk 2009.</span></strong></p>
+<p>Also, although I am doing so for the send port in the bindings file snippet, I don&#8217;t filter on receive port names in Production ready solutions&#8230;  Only sometimes during initial development do I do so!  It is better to filter on context properties such as BTS.MessageType, WCF.Action and BTS.Operation.</p><br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/jamescorbould.wordpress.com/759/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/jamescorbould.wordpress.com/759/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=759&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://jamescorbould.wordpress.com/2014/02/28/biztalk-2009-error-enlisting-send-port-exception-from-hresult-0xc00ce557/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	
+		<media:content url="http://2.gravatar.com/avatar/e042519a77f391e81c60385ee40e4889?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jamescorb</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/enlistsperror.png?w=300" medium="image">
+			<media:title type="html">BizTalk 2009 - Error Enlisting Send Port</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/filterelementbroken.png?w=300" medium="image">
+			<media:title type="html">Bindings File - &#60;Filter&#62; Element Contains Carriage Return and Line Feed</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/filterelementfixed.png?w=300" medium="image">
+			<media:title type="html">Bindings File - Extra Carriage Return and Line Feed Removed From &#60;Filter&#62; Element</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>BizTalk WCF Service Consuming Wizard &#8211; HTTP 407 Proxy Authentication Required</title>
+		<link>http://jamescorbould.wordpress.com/2014/02/25/biztalk-wcf-service-consuming-wizard-http-407-proxy-authentication-required/</link>
+		<comments>http://jamescorbould.wordpress.com/2014/02/25/biztalk-wcf-service-consuming-wizard-http-407-proxy-authentication-required/#comments</comments>
+		<pubDate>Tue, 25 Feb 2014 08:14:29 +0000</pubDate>
+		<dc:creator><![CDATA[James Corbould]]></dc:creator>
+				<category><![CDATA[BizTalk]]></category>
+		<category><![CDATA[Tooling]]></category>
+		<category><![CDATA[WCF]]></category>
+		<category><![CDATA[biztalk wcf service consuming wizard]]></category>
+		<category><![CDATA[http 407]]></category>
+		<category><![CDATA[proxy authentication]]></category>
+		<category><![CDATA[svcutil.exe]]></category>
+
+		<guid isPermaLink="false">http://jamescorbould.wordpress.com/?p=738</guid>
+		<description><![CDATA[I got this error recently running the BizTalk WCF Consuming Wizard whilst working at a customers office when I didn&#8217;t previously (sensitive parts of the error message have been removed): I think it was due to installation of internet security software on my development VM by the company&#8217;s infrastructure team and/or a new set of [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=738&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+				<content:encoded><![CDATA[<p>I got this error recently running the BizTalk WCF Consuming Wizard whilst working at a customers office when I didn&#8217;t previously (sensitive parts of the error message have been removed):</p>
+<div id="attachment_744" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/bt_wcf_consuming_wizard_407_error1.png" target="_blank"><img class="size-medium wp-image-744 " alt="BizTalk WCF Service Consuming Wizard HTTP 407 Error" src="http://jamescorbould.files.wordpress.com/2014/02/bt_wcf_consuming_wizard_407_error1.png?w=300&#038;h=269" width="300" height="269" /></a><p class="wp-caption-text">BizTalk WCF Service Consuming Wizard HTTP 407 Error</p></div>
+<p>I think it was due to installation of internet security software on my development VM by the company&#8217;s infrastructure team and/or a new set of group policies being applied to the domain in which my VM is connected too&#8230;</p>
+<p>Anyhow, it was obvious that all traffic from my VM was now going through a web proxy for the purposes of filtering traffic and I needed to install proxy client software.  This would entail some internal processes being enacted.</p>
+<p>Being impatient to progress (and seeing this as an opportunity to try something out that I had read about a few weeks previously) I decided to see if a I could use SvcUtil.exe, providing my proxy credentials so enabling the SvcUtil.exe to authenticate against the web proxy for me.</p>
+<p>It would be great if the BizTalk WCF Service Consuming Wizard had proxy authentication support!  Maybe I&#8217;m missing a trick here??</p>
+<p>Based on this article <a href="http://stackoverflow.com/questions/186800/is-it-possible-to-specify-proxy-credentials-in-your-web-config/20656912#20656912" target="_blank">here</a> on Stack Overflow, I created a small proxy class, created a strong name key file for it and then installed it in the GAC on my dev VM:</p>
+<div id="attachment_749" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/proxy_cs.png" target="_blank"><img class="size-medium wp-image-749 " alt="Proxy.cs snippet" src="http://jamescorbould.files.wordpress.com/2014/02/proxy_cs.png?w=300&#038;h=219" width="300" height="219" /></a><p class="wp-caption-text">Proxy.cs snippet</p></div>
+<p>I then edited my SvcUtil config file as follows, adding a reference to the proxy class assembly:</p>
+<div id="attachment_750" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/svcutil-exe-config.png" target="_blank"><img class="size-medium wp-image-750" title="SvcUtil.exe.config file" alt="SvcUtil.exe.config file" src="http://jamescorbould.files.wordpress.com/2014/02/svcutil-exe-config.png?w=300&#038;h=56" width="300" height="56" /></a><p class="wp-caption-text">SvcUtil.exe.config file</p></div>
+<p>Then using the simple batch script below, I could run SvcUtil with proxy authentication included and hey presto, I could download the WSDL and associated XSD import files!</p>
+<div id="attachment_753" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/getservicedefinition-bat.png" target="_blank"><img class="size-medium wp-image-753 " alt="GetServiceDefinition.bat file" src="http://jamescorbould.files.wordpress.com/2014/02/getservicedefinition-bat.png?w=300&#038;h=68" width="300" height="68" /></a><p class="wp-caption-text">GetServiceDefinition.bat file</p></div>
+<p>This saved me the annoyance of having to download each imported XSD file individually and then modifying the path in the parent WSDL.</p>
+<p>I have a GitHub repo <a href="https://github.com/jamescorbould/SvcUtil.Extension.InjectProxy" target="_blank">here</a> containing the source code for the solution (as usual, provided under the terms of the MIT licence).</p><br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/jamescorbould.wordpress.com/738/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/jamescorbould.wordpress.com/738/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=738&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://jamescorbould.wordpress.com/2014/02/25/biztalk-wcf-service-consuming-wizard-http-407-proxy-authentication-required/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+	
+		<media:content url="http://2.gravatar.com/avatar/e042519a77f391e81c60385ee40e4889?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jamescorb</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/bt_wcf_consuming_wizard_407_error1.png?w=300" medium="image">
+			<media:title type="html">BizTalk WCF Service Consuming Wizard HTTP 407 Error</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/proxy_cs.png?w=300" medium="image">
+			<media:title type="html">Proxy.cs snippet</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/svcutil-exe-config.png?w=300" medium="image">
+			<media:title type="html">SvcUtil.exe.config file</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/getservicedefinition-bat.png?w=300" medium="image">
+			<media:title type="html">GetServiceDefinition.bat file</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>BizTalk Instrumentation &#8211; An Initial Foray into the CAT Framework</title>
+		<link>http://jamescorbould.wordpress.com/2014/02/07/biztalk-instrumentation-an-initial-foray-into-the-cat-framework/</link>
+		<comments>http://jamescorbould.wordpress.com/2014/02/07/biztalk-instrumentation-an-initial-foray-into-the-cat-framework/#comments</comments>
+		<pubDate>Fri, 07 Feb 2014 10:12:49 +0000</pubDate>
+		<dc:creator><![CDATA[James Corbould]]></dc:creator>
+				<category><![CDATA[BizTalk]]></category>
+		<category><![CDATA[Orchestration]]></category>
+		<category><![CDATA[Unit Testing]]></category>
+		<category><![CDATA[CAT Framework]]></category>
+		<category><![CDATA[instrumentation]]></category>
+		<category><![CDATA[orchestration]]></category>
+		<category><![CDATA[unit testing]]></category>
+
+		<guid isPermaLink="false">http://jamescorbould.wordpress.com/?p=660</guid>
+		<description><![CDATA[I have spent some time recently looking into the Windows Server AppFabric Customer Advisory Teams (herein &#8220;CAT&#8221;) BizTalk instrumentation framework and I will report here on some of my findings&#8230;  In short, I have become quite excited about the potential if offers not only to instrument BizTalk solutions (in development and production environments) but also [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=660&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+				<content:encoded><![CDATA[<p>I have spent some time recently looking into the Windows Server AppFabric Customer Advisory Teams (herein &#8220;CAT&#8221;) BizTalk instrumentation framework and I will report here on some of my findings&#8230;  In short, I have become quite excited about the potential if offers not only to instrument BizTalk solutions (in development <strong>and</strong> production environments) but also as the basis of a unit testing framework.  In this brief initial look into the framework, I will focus on tracing in orchestrations but it&#8217;s possible to introduce tracing into all BizTalk artefacts (and also non BizTalk/custom components).</p>
+<p>The framework itself has been around for sometime now (since May 2010?) &#8211; <a href="http://blogs.msdn.com/b/appfabriccat/archive/2010/05/11/best-practices-for-instrumenting-high-performance-biztalk-solutions.aspx" target="_blank">this blog entry</a> from the CAT is a well written article introducing the tracing facilities it provides (at the end of the article is a link to the framework source code).  <a href="http://www.microsoft.com/en-us/download/details.aspx?id=11412&amp;utm_content=bufferb3977&amp;utm_medium=social&amp;utm_source=twitter.com&amp;utm_campaign=buffer&amp;goback=%2Egde_4192731_member_5832413152330948611" target="_blank">This white paper</a> looks to have been heavily based on the blog article (or vice-versa) and is similarly well written and easy to follow.</p>
+<p>I have to confess and admit that in the past, like a lot of developers, I have used the <a href="http://msdn.microsoft.com/en-us/library/system.diagnostics.trace.aspx" target="_blank">System.Diagnostics.Trace</a> .NET class in conjunction with <a href="http://technet.microsoft.com/en-us/sysinternals/bb896647.aspx" target="_blank">DebugView</a> to trace execution of orchestrations during development.  One thing I have observed is that CPU utilization increases dramatically whilst DebugView runs: it&#8217;s not a tool that should be run outside of a development environment.  The CAT observed this and came up with a framework leveraging the <a href="http://msdn.microsoft.com/en-us/library/aa363668(VS.85).aspx" target="_blank">Event Tracing for Windows (ETW)</a> facility.  The framework is a wrapper around the TraceProvider class from the <em>Microsoft.BizTalk.Diagnostics</em> namespace in <em>Microsoft.BizTalk.Tracing.dll.  </em>As CAT mention, this is a &#8220;hidden gem&#8221; and is utilised in all major components in the BizTalk runtime (you can observe this by running DebugView while the BizTalk engine is executing &#8211; heaps of trace events are outputted).</p>
+<p>Now the framework doesn&#8217;t mean you should run DebugView outside of a development environment: instead, it allows rapid and efficient tracing to a log file.  This means that it won&#8217;t crash your development VM and also it permits tracing in Production and Production like environments.</p>
+<p>I will briefly describe here how I setup the framework to trace  orchestration execution&#8230;</p>
+<p>After downloading the framework from the CAT blog, I opened the solution using Visual Studio 2012 and successfully ran the Conversion Wizard.</p>
+<p>There are 3 projects:</p>
+<div>
+<ol>
+<li><em><strong>Microsoft.BizTalk.CAT.BestPractices.Framework</strong></em></li>
+<li>Microsoft.BizTalk.CAT.BestPractices.Samples.TracingBenchmark</li>
+<li>Microsoft.BizTalk.CAT.BestPractices.Tests</li>
+</ol>
+</div>
+<p>The Microsoft.BizTalk.CAT.BestPractices.Framework project is the one I will need to reference in my solution.</p>
+<p>A few immediate/gut observations about the Microsoft.BizTalk.CAT.BestPractices.Framework project that piqued my interest:</p>
+<div>
+<ol>
+<li>Pre processor directives have been specified that output trace statements using System.Diagnostics.Trace .NET class for a debug build only.  So one could infer from this that this is designed for development, where a debug build of the framework could be used for outputting to DebugView.   A release build will not include the calls to System.Diagnostics.Trace, precluding the use of DebugView in Production for example.</li>
+<li>Lots of passing of object arrays &#8211; no generic collections evident: possibly a boxing/unboxing overhead here.</li>
+</ol>
+<p>In order to get the Microsoft.BizTalk.CAT.BestPractices.Framework project to build (under .NET 4.5), I had to specify the full namespace (Microsoft.BizTalk.CAT.BestPractices.Framework) for the Func&lt;string&gt; delegate in the ComponentTraceProvider class.</p>
+<p>Next I selected the option to sign the project assembly and created a strong name key then installed the assembly in the GAC.</p>
+</div>
+<p>It&#8217;s then a matter of adding a reference to Microsoft.BizTalk.CAT.BestPractices.Framework.dll in my orchestrations project in my BizTalk solution.</p>
+<p>The white paper indicated in the introduction to this post presents usage of the framework well but I will demonstrate here how I implemented tracing in my orchestration&#8230;</p>
+<p>Expression shapes containing tracing statements should be strategically added to the orchestration.</p>
+<div>
+<ul>
+<li>Tracing should kick off with a call to the TraceIn method immediately after orchestration activation.  The method returns a GUID that can be used to trace specific instances (the GUID can be prefixed to the trace output for example &#8211; thanks Johann for this tip!).</li>
+</ul>
+<div id="attachment_719" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/tracein.png" target="_blank"><img class="size-medium wp-image-719" title="TraceIn" alt="TraceIn" src="http://jamescorbould.files.wordpress.com/2014/02/tracein.png?w=300&#038;h=180" width="300" height="180" /></a><p class="wp-caption-text">TraceIn</p></div>
+<ul>
+<li>Message body content can be outputted using the TraceInfo method.  Note that the variable debugMessage is of type System.XML.XMLDocument.</li>
+</ul>
+<div id="attachment_720" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/traceinfo.png" target="_blank"><img class="size-medium wp-image-720 " alt="TraceInfo" src="http://jamescorbould.files.wordpress.com/2014/02/traceinfo.png?w=300&#038;h=183" width="300" height="183" /></a><p class="wp-caption-text">TraceInfo</p></div>
+<ul>
+<li>It&#8217;s possible to trace scope execution using the TraceStartScope and TraceEndScope methods.  The framework will output scope execution time.</li>
+</ul>
+<div id="attachment_723" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/tracestartscope.png" target="_blank"><img class="size-medium wp-image-723 " alt="TraceStartScope" src="http://jamescorbould.files.wordpress.com/2014/02/tracestartscope.png?w=300&#038;h=192" width="300" height="192" /></a><p class="wp-caption-text">TraceStartScope</p></div>
+<div id="attachment_724" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/traceendscope.png" target="_blank"><img class="size-medium wp-image-724 " alt="TraceEndScope" src="http://jamescorbould.files.wordpress.com/2014/02/traceendscope.png?w=300&#038;h=179" width="300" height="179" /></a><p class="wp-caption-text">TraceEndScope</p></div>
+</div>
+<div>
+<ul>
+<li>Tracing should be added into exception blocks like so, using the TraceError method (passing in the exception object):</li>
+</ul>
+</div>
+<div>
+<div id="attachment_725" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/traceerror.png" target="_blank"><img class="size-medium wp-image-725 " alt="TraceError" src="http://jamescorbould.files.wordpress.com/2014/02/traceerror.png?w=300&#038;h=180" width="300" height="180" /></a><p class="wp-caption-text">TraceError</p></div>
+<ul>
+<li>Finally the orchestration should end with a call to TraceOut, passing in the GUID (stored in the callToken variable below) returned from calling the TraceIn method.</li>
+</ul>
+</div>
+<div>
+<div id="attachment_726" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/traceout.png" target="_blank"><img class="size-medium wp-image-726  " alt="TraceOut" src="http://jamescorbould.files.wordpress.com/2014/02/traceout.png?w=300&#038;h=156" width="300" height="156" /></a><p class="wp-caption-text">TraceOut</p></div>
+<p>The <a href="http://btscatifcontroller.codeplex.com/" target="_blank">BizTalk CAT Instrumentation Framework Controller</a> available on CodePlex is an excellent GUI based tool for starting and stopping traces.  It has options to write tracing to DebugView and/or a log file (DebugView shouldn&#8217;t be used in Production though, just development environments).  It has a bit of a limitation in that the log file is not human readable until a trace is stopped.</p>
+<p>Here&#8217;s an example of a trace written to DebugView:</p>
+<div id="attachment_736" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2014/02/debugview1.png" target="_blank"><img class="size-medium wp-image-736 " alt="DebugView" src="http://jamescorbould.files.wordpress.com/2014/02/debugview1.png?w=300&#038;h=91" width="300" height="91" /></a><p class="wp-caption-text">DebugView</p></div>
+<p>I have an example BizTalk 2013 solution <a href="https://github.com/jamescorbould/Ajax.BT.Fulfilment" target="_blank">here</a> that is available for download under the terms of the MIT licence where tracing has been implemented.  The example screenshots above are taken from this solution.</p>
+<p><em><strong>Now 2 things have got me really excited about the BizTalk CAT instrumentation framework:</strong></em></p>
+<ol>
+<li>The opportunity to log real time tracing events from Production environments in an efficient way &#8211; this has implications for monitoring solutions in Production, parsing tracing events to trigger other events e.g. error alerting, reporting.  Tracing could be written to Azure providing a central repository of data that could be analysed and reported on.</li>
+<li>The facility to track flow through an orchestration would be the excellent basis for a unit testing framework.  Tests could be run by writing trace events to a queue (Windows service bus?) to preserve the order in which events have been triggered.  The BizUnit testing framework could then be extended to monitor the events on the queue and compare against expected execution flow configured in the business rules engine (BRE).  Events associated with each test run could also be persisted to a database and provide the basis for analysis of test coverage (i.e. have all paths of execution been tested in a given orchestration?).</li>
+</ol>
+<p>In regards to point 1, this facility looks similar to recent functionality added to the <a href="http://blogs.biztalk360.com/biztalk360-for-managed-services/" target="_blank">BizTalk360</a> monitoring solution.</p>
+</div>
+<p>The <a href="http://btsloggingeventsinbi.codeplex.com/" target="_blank">Testing inside BizTalk by using ETW Tracing</a> project on CodePlex looks almost a perfect fit for point 2 and something I intend to explore soon!</p>
+<p>In summary, I hope this post provides a good introduction to the CAT tracing framework and how it could be used during development (as a unit testing tool) and subsequently in Production (real time tracing and monitoring).</p>
+<div></div><br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/jamescorbould.wordpress.com/660/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/jamescorbould.wordpress.com/660/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=660&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://jamescorbould.wordpress.com/2014/02/07/biztalk-instrumentation-an-initial-foray-into-the-cat-framework/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	
+		<media:content url="http://2.gravatar.com/avatar/e042519a77f391e81c60385ee40e4889?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jamescorb</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/tracein.png?w=300" medium="image">
+			<media:title type="html">TraceIn</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/traceinfo.png?w=300" medium="image">
+			<media:title type="html">TraceInfo</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/tracestartscope.png?w=300" medium="image">
+			<media:title type="html">TraceStartScope</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/traceendscope.png?w=300" medium="image">
+			<media:title type="html">TraceEndScope</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/traceerror.png?w=300" medium="image">
+			<media:title type="html">TraceError</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/traceout.png?w=300" medium="image">
+			<media:title type="html">TraceOut</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2014/02/debugview1.png?w=300" medium="image">
+			<media:title type="html">DebugView</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>BizTalk and WCF, Consuming a WCF Service, Part 4 – Exception Handling</title>
+		<link>http://jamescorbould.wordpress.com/2013/12/24/biztalk-and-wcf-consuming-a-wcf-service-part-4-exception-handling/</link>
+		<comments>http://jamescorbould.wordpress.com/2013/12/24/biztalk-and-wcf-consuming-a-wcf-service-part-4-exception-handling/#comments</comments>
+		<pubDate>Tue, 24 Dec 2013 09:37:38 +0000</pubDate>
+		<dc:creator><![CDATA[James Corbould]]></dc:creator>
+				<category><![CDATA[BizTalk]]></category>
+		<category><![CDATA[WCF]]></category>
+		<category><![CDATA[biztalk]]></category>
+		<category><![CDATA[ESB]]></category>
+		<category><![CDATA[Exception handling]]></category>
+		<category><![CDATA[Microsoft BizTalk Server]]></category>
+		<category><![CDATA[SOAP]]></category>
+
+		<guid isPermaLink="false">http://jamescorbould.wordpress.com/?p=577</guid>
+		<description><![CDATA[This is the last post in a four part series looking at BizTalk and WCF. Here are the previous three posts: Part 1 - A Look at the Service to be Consumed Part 2 – The BizTalk WCF Service Consuming Wizard and a Look at the Artefacts Created Part 3 – Building the BizTalk Solution In this final post, [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=577&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+				<content:encoded><![CDATA[<p>This is the last post in a four part series looking at BizTalk and WCF.</p>
+<p>Here are the previous three posts:</p>
+<p><a title="BizTalk and WCF: Consuming a WCF Service, Part 1 – A Look at the Service to be Consumed" href="http://jamescorbould.wordpress.com/2013/09/23/biztalk-and-wcf-consuming-a-wcf-service-part-1-a-look-at-the-service-to-be-consumed/" target="_blank">Part 1 - A Look at the Service to be Consumed</a></p>
+<p><a title="BizTalk and WCF, Consuming a WCF Service, Part 2 – The BizTalk WCF Service Consuming Wizard and a Look at the Artefacts Created" href="http://jamescorbould.wordpress.com/2013/09/27/biztalk-and-wcf-consuming-a-wcf-service-part-2-the-biztalk-wcf-service-consuming-wizard-and-a-look-at-the-artefacts-created/" target="_blank">Part 2 – The BizTalk WCF Service Consuming Wizard and a Look at the Artefacts Created</a></p>
+<p><a title="BizTalk and WCF, Consuming a WCF Service, Part 3 – Building the BizTalk Solution" href="http://jamescorbould.wordpress.com/2013/10/31/biztalk-and-wcf-consuming-a-wcf-service-part-3-building-the-biztalk-solution/" target="_blank">Part 3 – Building the BizTalk Solution</a></p>
+<p>In this final post, I will show how exception handling has been added to the RandomPresentService orchestration controlling our business process.</p>
+<p><strong>Some BizTalk Exception Considerations: 101 Course</strong></p>
+<p>Firstly, here is a quick brain dump of items that should be considered when thinking about handling exceptions in an orchestration:</p>
+<ol>
+<li>What are the customers requirements in regards to messages that fail inside BizTalk?  Should alerting and/or logging be implemented so remedial action can be carried out and if so who should be the recipients of any such alerting?  What steps should be carried out to recover from the error condition (what is the process)?  Often the customer has only a vague idea here and some teasing out of requirements may be required.</li>
+<li> What is the impact if a particular process/action fails in your orchestration?  Does this is invalidate subsequent previously successful actions?  Should previously committed actions be rolled back therefore in a compensation block?</li>
+<li>What about business process type errors?  Can these be handled without the need to jump to an exception condition?  Preferably, business type errors that happen routinely (and are therefore not exceptional) should not be handled by throwing an exception but handled in the &#8220;body&#8221; of the orchestration.</li>
+<li>Do you need to handle any custom exceptions?  Hopefully this is well documented in any service that needs to be consumed, for example.</li>
+</ol>
+<p>Often error handling is forgotten until the very end of the development phase and is not instead considered at the start of a project &#8211; this is a mistake!  Or alternatively, the customers requirements are not taken into consideration when building exception handling.</p>
+<p>By thinking about exception handling at the start of a project, it can be &#8220;built in&#8221; to the solution.  Also it allows time for discussions with the customer around how exceptions should be handled (in the analysis and design phase).  It&#8217;s costly to implement exception handling logic retrospectively.</p>
+<p>One of the big selling points in regards to BizTalk and another tenant of the platform is that it is &#8220;robust&#8221; and ensures &#8220;guaranteed message delivery&#8221;.  In order to live up to these expectations it&#8217;s important that error conditions are handled in such a way that resubmission of failed messages is secured, with possibly multiple options for error recovery.  These processes also need to be tested and well documented.</p>
+<p><strong>What Exceptions Need to Handled?</strong></p>
+<p>A concept that can be hard to determine is: <strong><em>what</em></strong> exceptions should my solution handle?  By their very nature, exceptions are exceptional/rare so are a challenge to define and pin down.</p>
+<p>It is a decision guided by some of the following factors:</p>
+<ol>
+<li>Experience &#8211; harnessed to try and make troubleshooting of &#8220;exceptional&#8221; type errors easier to investigate when the solution is running in Production.</li>
+<li>The needs of the customer.</li>
+<li>The type of exceptions that any called services could return.</li>
+</ol>
+<p>This analysis will generate a list of exceptions that need to be handled.</p>
+<p>As with any solution, the most specific exceptions should be handled first with the most general exception caught last.</p>
+<p>And no doubt, not all exceptions will (or should) be catered for.  They will generate a nasty runtime error that will require investigation using a tool like the Orchestration Debugger<em>.  </em>This is where a good support team have a chance to shine <span class='wp-smiley emoji emoji-smile' title=':-)'>:-)</span>.</p>
+<p><strong>Exception 1: PersistenceException</strong></p>
+<p>This is the first exception that I&#8217;m going to explicitly handle.</p>
+<p>My friend and colleague Johann Cooper has written an excellent <a href="http://adventuresinsidethemessagebox.wordpress.com/2013/05/28/orchestration-port-direct-binding-and-routing-failurespersistenceexceptions/" target="_blank">blog article</a> about this exception.</p>
+<p>Specifying direct binding on send ports in your orchestration is a good idea &#8211; this decouples physical send ports from the logical send ports specified in your orchestration.  But this pattern can fail if the physical ports are ever unenlisted.</p>
+<p>If physical ports are unenlisted, this removes any associated subscription and an exception of type Microsoft.XLANGs.BaseTypes.PersistenceException will manifest in the orchestration.</p>
+<p>(You will also get a nonresumable &#8220;Routing Failure Report&#8221;, to help with troubleshooting the routing error).</p>
+<p>So first up, I have modified the RandomPresentService orchestration like so:</p>
+<ol>
+<li>Added a non transactional scope shape around the send and receive shapes for the RandomPresentService WCF service.</li>
+<li>Added an exception block to the scope to handle the PersistenceException.  This includes the creation of an ESB fault message (so the error will surface in the ESB exception management portal) and a suspend orchestration shape.</li>
+<li>Note the addition of looping: this ensures that the orchestration can be resumed in a valid state, since the RandomPresentService will be called again.</li>
+</ol>
+<div id="attachment_630" style="width: 151px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/12/persistenceexception.png" target="_blank"><img class="size-medium wp-image-630 " alt="Handling PersistenceException in Orchestration" src="http://jamescorbould.files.wordpress.com/2013/12/persistenceexception.png?w=141&#038;h=300"   /></a><p class="wp-caption-text">Handling PersistenceException in Orchestration</p></div>
+<p><strong>Exception 2: Handling SOAP Faults Returned from the RandomPresentService WCF Service</strong></p>
+<p>To handle any SOAP faults returned from the RandomPresentService service, I added a new fault type to the operation on the logical port in the orchestration designer (right click on the operation and select &#8220;New Fault Message&#8221;) and selected a message type of <em>BTS.soap_envelope_1__2.Fault</em>: this denotes that the fault should be wrapped in a SOAP version 1.2 fault:</p>
+<div id="attachment_640" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/12/soapfaultonoperation.png" target="_blank"><img class="size-medium wp-image-640 " alt="Adding a SOAP Fault on the Logical Port for the WCF Service" src="http://jamescorbould.files.wordpress.com/2013/12/soapfaultonoperation.png?w=300&#038;h=107" width="300" height="107" /></a><p class="wp-caption-text">Adding a SOAP Fault Handler on the Logical Port for the WCF Service</p></div>
+<p>The fault doesn&#8217;t need to be connected to a receive shape or anything like that &#8211; it can be left as is, and instead the fault can be handled by defining another exception block and selecting the SOAP fault as the &#8220;Exception Object Type&#8221;.  When the fault is defined, it will subsequently be viewable in the &#8220;Exception Object Type&#8221; drop down, like so:</p>
+<div id="attachment_641" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/12/soapfaulttype.png" target="_blank"><img class="size-medium wp-image-641 " alt="Specifying the SOAP Fault Type in the for the Exception Block" src="http://jamescorbould.files.wordpress.com/2013/12/soapfaulttype.png?w=300&#038;h=191" width="300" height="191" /></a><p class="wp-caption-text">Specifying the SOAP Fault Type in the Exception Block</p></div>
+<p>It&#8217;s important to handle SOAP faults: if not, this will cause an unhandled exception in your orchestration (due to an unexpected message type being returned) and it will not be possible to recover from this error by resuming the orchestration.</p>
+<p>Also note that in order to extract the SOAP fault message, the orchestration XPath function can be used like this:</p>
+<p><em>strFaultMsg = xpath(exSOAPFault, &#8220;string(/*[local-name()='Fault' and namespace-uri()='http://schemas.xmlsoap.org/soap/envelope/']/*[local-name()='faultstring' and namespace-uri()=''])&#8221;);</em></p>
+<p>(Where strFaultMsg is of type System.String and exSOAPFault is of type Microsoft.Practices.ESB.ExceptionHandling.Schemas.Faults.FaultMessage).</p>
+<p><strong>Exception 3: Handling System.Exception &#8211; &#8220;Catch-all&#8221; Exception Blocks</strong></p>
+<p>The final exception block (that will be evaluated last by the orchestration engine) is a &#8220;catch all&#8221; block since it will handle exceptions of type System.Exception.  Since all exceptions in .NET inherit from System.Exception, <strong><em>any</em></strong> errors, not previously handled explicitly by previous exception blocks, will be caught by this handler.</p>
+<p>Also I have wrapped the entire orchestration in a global scope and specified one exception block for System.Exception to ensure than my default exception handling mechanism will be exercised.</p>
+<p><strong>Series End</strong></p>
+<p>So this concludes this four part series looking at BizTalk and WCF.</p>
+<p>As is to be expected, WCF is interleaved tightly into the BizTalk framework and it is possible to leverage it heavily in your BizTalk solutions.</p>
+<p>It&#8217;s been a journey looking at the creation of a WCF service; using the &#8220;out-of-the-box&#8221; BizTalk tooling to consume the service; building upon the artefacts created by the WCF Service Consuming Wizard; finally ending with this brief (!) look at implementing exception handling in the orchestration controlling the business process.</p>
+<p>I hope it provides a good introduction to the subject!</p>
+<p><a href="https://github.com/jamescorbould/Ajax.WCF.RandomPresent" target="_blank"><em>The RandomPresentService WCF service is available here.</em></a></p>
+<p><a href="https://github.com/jamescorbould/Ajax.BT.Fulfilment" target="_blank"><em>The full BizTalk 2013 solution is available here.</em></a></p>
+<p><em>(Both solutions are available under the terms of the MIT licence, a copy of which is included with each).</em></p><br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/jamescorbould.wordpress.com/577/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/jamescorbould.wordpress.com/577/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=577&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://jamescorbould.wordpress.com/2013/12/24/biztalk-and-wcf-consuming-a-wcf-service-part-4-exception-handling/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	
+		<media:content url="http://2.gravatar.com/avatar/e042519a77f391e81c60385ee40e4889?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jamescorb</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/12/persistenceexception.png?w=142" medium="image">
+			<media:title type="html">Handling PersistenceException in Orchestration</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/12/soapfaultonoperation.png?w=300" medium="image">
+			<media:title type="html">Adding a SOAP Fault on the Logical Port for the WCF Service</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/12/soapfaulttype.png?w=300" medium="image">
+			<media:title type="html">Specifying the SOAP Fault Type in the for the Exception Block</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>BizTalk and WCF, Consuming a WCF Service, Part 3 – Building the BizTalk Solution</title>
+		<link>http://jamescorbould.wordpress.com/2013/10/31/biztalk-and-wcf-consuming-a-wcf-service-part-3-building-the-biztalk-solution/</link>
+		<comments>http://jamescorbould.wordpress.com/2013/10/31/biztalk-and-wcf-consuming-a-wcf-service-part-3-building-the-biztalk-solution/#comments</comments>
+		<pubDate>Wed, 30 Oct 2013 18:57:49 +0000</pubDate>
+		<dc:creator><![CDATA[James Corbould]]></dc:creator>
+				<category><![CDATA[BizTalk]]></category>
+		<category><![CDATA[WCF]]></category>
+		<category><![CDATA[biztalk]]></category>
+
+		<guid isPermaLink="false">http://jamescorbould.wordpress.com/?p=552</guid>
+		<description><![CDATA[This post builds on part 1 and part 2 of this series looking at BizTalk and WCF. The first post looked at the RandomPresent WCF service and looked at design considerations, hosting and testing. The second post touched on how to consume the WCF service from BizTalk, using the BizTalk WCF Service Consuming Wizard. Process Flow The [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=552&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+				<content:encoded><![CDATA[<p>This post builds on <a title="BizTalk and WCF: Consuming a WCF Service, Part 1 – A Look at the Service to be Consumed" href="http://jamescorbould.wordpress.com/2013/09/23/biztalk-and-wcf-consuming-a-wcf-service-part-1-a-look-at-the-service-to-be-consumed/" target="_blank">part 1</a> and <a title="BizTalk and WCF, Consuming a WCF Service, Part 2 – The BizTalk WCF Service Consuming Wizard and a Look at the Artefacts Created" href="http://jamescorbould.wordpress.com/2013/09/27/biztalk-and-wcf-consuming-a-wcf-service-part-2-the-biztalk-wcf-service-consuming-wizard-and-a-look-at-the-artefacts-created/" target="_blank">part 2</a> of this series looking at BizTalk and WCF.</p>
+<p>The first post looked at the <em>RandomPresent </em>WCF service and looked at design considerations, hosting and testing.</p>
+<p>The second post touched on how to consume the WCF service from BizTalk, using the <em>BizTalk WCF Service Consuming Wizard.</em></p>
+<p><strong>Process Flow</strong></p>
+<p>The business want to send to each customer, a random Christmas present with their order.  To achieve this, the <em>RandomPresent </em>WCF service will be called by BizTalk and it will return a random present XML, wrapped in a SOAP envelope.  The present response needs to be appended to the order, so the guys in the warehouse can add the present to the shipment.</p>
+<p>It&#8217;s a matter of combining the original order and the response from the web service.</p>
+<p><strong>Orchestration</strong></p>
+<p>I&#8217;ll start with an overview of the single orchestration driving this process, since all other artefacts hang off this.</p>
+<p>In the end, I created a new orchestration from scratch and didn&#8217;t use the one generated for me by the <em>BizTalk WCF Service Consuming Wizard:</em></p>
+<div id="attachment_569" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/10/randompresentserviceorchestration.png" target="_blank"><img class="size-medium wp-image-569 " alt="RandomPresentService Orchestration" src="http://jamescorbould.files.wordpress.com/2013/10/randompresentserviceorchestration.png?w=300&#038;h=243" width="300" height="243" /></a><p class="wp-caption-text">RandomPresentService Orchestration</p></div>
+<p>I will summarise the flow here and call out some interesting bits!:</p>
+<ol>
+<li>A map on my receive port converts the external format PO to the canonical version (check out my blog post <a href="http://jamescorbould.wordpress.com/2013/08/25/thoughts-on-the-canonical-messaging-pattern/" target="_blank">here</a> on the canonical messaging pattern).  The canonical message has an element called &#8220;Status&#8221; that is assigned the value &#8220;NEW&#8221; in the map.  This element is mapped to a property called &#8220;POStatus&#8221; of type MessageContextPropertyBase.   So, as you can guess, I had to create a property schema which I added to my internal schemas project (it contains just this one property).  The type MessageContextPropertyBase identifies &#8220;POStatus&#8221; as a context property that can be written to the context of a message and, as will be discussed, this is what I want to achieve for the purposes of routing and to prevent my orchestration from being caught in an endless activation loop.</li>
+<li>The canonical PO is written to the MessageBox and an instance of the orchestration fires up ; the orchestration subscribes to messages of type canonical PO and also on the &#8220;POStatus&#8221; promoted property: it is activated when the status is &#8220;NEW&#8221; only.  The reason for this additional subscription on &#8220;Status&#8221; is because on completion, the orchestration will write the modified canonical PO to the MessageBox and an infinite activation loop will occur if orchestrations are activated only on publishing of a canonical PO message type (not good!).  Of course, there are other ways of working around this: I think this is why, in some solutions I have seen, solutions have more than one canonical schema with a different namespace to differentiate them &#8211; this seems a mad way of getting around the &#8220;activation infinite loop&#8221; issue though, since this introduces the overhead of maintaining two canonical schemas and also the design principle of a canonical messaging pattern is that there is only &#8220;source of truth&#8221;.</li>
+<li>Note that I have designed my orchestration such that it only works with internal solution type messages only (not on the original, external, versions received).  This protects the orchestration from changes to the format of the external PO which might require changes and redeployment of the orchestration.</li>
+<li>Next I create a request message for the <em>RandomPresent</em> WCF service&#8230;  I have created a C# classes project that contains a C# class representation of the request schema: I created the class using Xsd.exe, by pointing Xsd.exe at my schema.  I instantiate an instance of the request message in a Construct Message shape using the New keyword.  Another way of creating a message in an orchestration is to create a map for this purpose.  There is a serious caveat to instantiating a message using the New keyword however: it is vital that changes to the schema are reflected in the class representation (maybe this could be achieved in a Visual Studio &#8220;post build event&#8221; on the schemas project).  As has happened to me in the past, if you assign a message created from your schema (via a map) to an (outdated) message created from a class (e.g. in a Construct Message shape), any missing elements will be silently lost in the output message&#8230;  For some reason, creating a new message in an orchestration is a torturous process, it seems to me!</li>
+<li>A multipart message map combines the canonical and RandomPresent XML into a new instance of a canonical PO.  This map will be discussed further in the &#8220;Maps&#8221; section below.</li>
+<li>Finally I set the &#8220;POStatus&#8221; context property to &#8220;PROCESSED&#8221; in a Message Assignment shape and write the new canonical message to the MessageBox.  The final Send Shape initializes a correlation set but not for the purposes of supporting an asynchronous process, but for routing purposes: the correlation set contains just the &#8220;POStatus&#8221; context property and initializing this in the Send Shape causes the property to become promoted, enabling it to be used for routing.  Setting this context property to different statuses on completion of processing is my way of preventing an endless activation loop, as discussed in point 1.</li>
+</ol>
+<p>(Note the lack of error handling &#8211; this will be the subject of my next post).</p>
+<p><strong>Schemas</strong></p>
+<p>The <em>BizTalk WCF Service Consuming Wizard</em> created the necessary schemas for me to communicate with the RandomPresent service however I deleted the <em>RandomPresentService_schemas_microsoft_com_2003_10_Serialization.xsd</em>  schema (as discussed in part 2, I haven&#8217;t found a use for this schema yet).  I also typically rename the service schema filename to something shorter and more descriptive.</p>
+<p>If my solution modifies messages and/or involves an orchestration, I create 2 schema projects: an internal schemas project and an external schemas project, as is the case here.</p>
+<p><strong>Maps</strong></p>
+<p>Finally, a quick look at the map used to combine the canonical PO and the RandomPresent XML into a new instance of a canonical PO:</p>
+<div id="attachment_571" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/10/wcfsolutionmap.png" target="_blank"><img class="size-medium wp-image-571 " alt="Canonical PO 1 and RandomPresent Response to Canonical PO 2 Map" src="http://jamescorbould.files.wordpress.com/2013/10/wcfsolutionmap.png?w=300&#038;h=224" width="300" height="224" /></a><p class="wp-caption-text">Canonical PO 1 and RandomPresent Response to Canonical PO 2 Map</p></div>
+<p>Typically, I use an inline XSLT template in my map for tasks such as these &#8211; I find it too frustrating and time consuming using functoids.</p>
+<p>As mentioned in <a href="http://jamescorbould.wordpress.com/2013/06/07/using-xslt-templates-in-maps-and-general-thoughts-on-the-biztalk-server-mapper/" target="_blank">this</a> previous blog post, I write my XSLT in a separate file and import it&#8217;s contents into my map.</p>
+<p>This is the XSLT used:</p>
+<div id="attachment_570" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/10/wcfsolutioninlinexslt.png" target="_blank"><img class="size-medium wp-image-570 " alt="Inline XSLT Template in Map" src="http://jamescorbould.files.wordpress.com/2013/10/wcfsolutioninlinexslt.png?w=300&#038;h=143" width="300" height="143" /></a><p class="wp-caption-text">Inline XSLT Template in Map</p></div>
+<p><strong>Conclusion</strong></p>
+<p>So I hope you enjoyed this tour.  In part 4 of this series, I will show how error handling has been implemented in the solution.</p>
+<p>When the solution has been completed, I will make it available for download.</p><br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/jamescorbould.wordpress.com/552/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/jamescorbould.wordpress.com/552/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=552&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://jamescorbould.wordpress.com/2013/10/31/biztalk-and-wcf-consuming-a-wcf-service-part-3-building-the-biztalk-solution/feed/</wfw:commentRss>
+		<slash:comments>4</slash:comments>
+	
+		<media:content url="http://2.gravatar.com/avatar/e042519a77f391e81c60385ee40e4889?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jamescorb</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/10/randompresentserviceorchestration.png?w=300" medium="image">
+			<media:title type="html">RandomPresentService Orchestration</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/10/wcfsolutionmap.png?w=300" medium="image">
+			<media:title type="html">Canonical PO 1 and RandomPresent Response to Canonical PO 2 Map</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/10/wcfsolutioninlinexslt.png?w=300" medium="image">
+			<media:title type="html">Inline XSLT Template in Map</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>BizTalk and WCF, Consuming a WCF Service, Part 2 &#8211; The BizTalk WCF Service Consuming Wizard and a Look at the Artefacts Created</title>
+		<link>http://jamescorbould.wordpress.com/2013/09/27/biztalk-and-wcf-consuming-a-wcf-service-part-2-the-biztalk-wcf-service-consuming-wizard-and-a-look-at-the-artefacts-created/</link>
+		<comments>http://jamescorbould.wordpress.com/2013/09/27/biztalk-and-wcf-consuming-a-wcf-service-part-2-the-biztalk-wcf-service-consuming-wizard-and-a-look-at-the-artefacts-created/#comments</comments>
+		<pubDate>Fri, 27 Sep 2013 05:55:29 +0000</pubDate>
+		<dc:creator><![CDATA[James Corbould]]></dc:creator>
+				<category><![CDATA[BizTalk]]></category>
+		<category><![CDATA[WCF]]></category>
+		<category><![CDATA[biztalk]]></category>
+		<category><![CDATA[Microsoft BizTalk Server]]></category>
+		<category><![CDATA[Web service]]></category>
+		<category><![CDATA[Web Services Description Language]]></category>
+		<category><![CDATA[WSDL]]></category>
+
+		<guid isPermaLink="false">http://jamescorbould.wordpress.com/?p=460</guid>
+		<description><![CDATA[This post builds on part 1 of this series looking at BizTalk and WCF. The previous post gave an overview of the RandomPresent WCF service, discussing design considerations, hosting and testing using SOAPUI. In this post, we will examine how to consume the web service using the BizTalk WCF Service Consuming Wizard.  The next post will [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=460&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+				<content:encoded><![CDATA[<p>This post builds on part 1 of this series looking at BizTalk and WCF.</p>
+<p>The previous post gave an overview of the <em>RandomPresent</em> WCF service, discussing design considerations, hosting and testing using SOAPUI.</p>
+<p>In this post, we will examine how to consume the web service using the <em>BizTalk WCF Service Consuming Wizard</em>.  The next post will delve into the detail of actually building our BizTalk solution, using (some) of the artefacts generated by the wizard.</p>
+<p><strong>The Scenario</strong></p>
+<p>Our mythical company is feeling generous and management have decided that each customer will receive a gift with their order.  The gift will be assigned by calling our newly created web service and then adding an extra order line item for the present.</p>
+<p><strong>The BizTalk WCF Service Consuming Wizard</strong></p>
+<p>To consume the <em>RandomPresent</em> web service, the <em>BizTalk WCF Service Consuming Wizard</em> could be used.  This will generate all the artefacts we need to invoke the service, into our BizTalk solution.  However, some of the artefacts generated we will discard in favour of our own (better) implementation (to be discussed in part 3).</p>
+<p>Here are the steps below:</p>
+<ol>
+<li>Right click on your solution (typically an external schemas project) and select <em>Add</em> &#8211;&gt; <em>Add Generated Items</em>&#8230;</li>
+<li>Select <em>Consume WCF Service </em>in the <em>Add Generated Items</em> dialogue box.  This will fire up the <em>BizTalk WCF Service Consuming Wizard </em>welcome page &#8211; click on the <em>Next</em> button</li>
+<li>On the next screen of the wizard we have two choices:
+<div style="width: 312px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizard1.png" target="_blank"><img class=" wp-image  " id="i-505" title="Choose MEX endpoint" alt="Image" src="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizard1.png?w=302&#038;h=236" width="302" height="236" /></a><p class="wp-caption-text">Choose MEX endpoint</p></div>
+<ul>
+<li><em>Metadata Exchange (MEX) endpoint</em> &#8211; this option enables a service description to be downloaded (WSDL file) by pointing the wizard directly to the running RandomPresent web service.  Note from part 1 of this post, that we exposed a MEX endpoint by configuring the services web.config file to allow metadata to be downloaded via a HTTP GET</li>
+<li><em>Metadata Files (WSDL and XSD)</em> &#8211; I always think of this as a second best option, since instead of downloading service data directly from source, this option will allow artefacts to consume the service to be created from a WSDL or XSD on the file system.  There is a risk that the WSDL and/or XSD that has been obtained is out of date, so I try and avoid using this function if possible (it&#8217;s a last resort :-))</li>
+</ul>
+</li>
+<li>Ensure that the <em>Metadata Exchange (MEX) endpoint</em> option is selected and click <em>Next</em> &#8211; this will take you to a screen where the service WSDL can be obtained and loaded into the wizard:
+<div id="attachment_512" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizard2.png" target="_blank"><img class="size-medium wp-image-512     " alt="Load WSDL for service endpoint" src="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizard2.png?w=300&#038;h=233" width="300" height="233" /></a><p class="wp-caption-text">Load WSDL for service endpoint &#8211; enter WSDL URL and click &#8220;Get&#8221; (for HTTP GET)</p></div>
+<ul>
+<li>(Note that it is common practice for a service endpoint to expose it&#8217;s service definition using the convention <em>servicename?wsdl)</em></li>
+</ul>
+</li>
+<li>Click <em>Next</em> and then <em>Import</em>.  The wizard will then process the WSDL and generate artefacts into our BizTalk solution.  Click <em>Finish</em>.</li>
+</ol>
+<p><strong>The Ajax.BT.Fulfilment BizTalk Solution</strong></p>
+<p>So the wizard has consumed our WSDL and generated various BizTalk solution artefacts into our BizTalk purchase order fulfilment solution.  Lets take a quick look at what has been created:</p>
+<div id="attachment_526" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizardsolutionartefacts.png" target="_blank"><img class="size-medium wp-image-526  " alt="BizTalk solution artefacts created by the BizTalk WCF Service Consuming Wizard" src="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizardsolutionartefacts.png?w=300&#038;h=195" width="300" height="195" /></a><p class="wp-caption-text">BizTalk solution artefacts created by the BizTalk WCF Service Consuming Wizard</p></div>
+<ol>
+<li>2 x bindings files for importing into our BizTalk application:  one of these files can be imported into our eventual BizTalk application to create a send port to communicate with the RandomPresent service:
+<ul>
+<li><em>RandomPresentService.BindingInfo.xml</em> &#8211; from the WSDL, the wizard has detected that the WCF service implements wsHttpBinding and therefore this file will create a send port using the WCF-WSHttp adapter</li>
+<li><em>RandomPresentService_Custom.BindingInfo.xml</em> &#8211; this is another option for creating a send port in our BizTalk application.  This will create a send port which will use the WCF-Custom adapter.  Utilising this adapter offers greater WCF extensibility compared to the WCF-WSHttp adapter</li>
+<li><strong>An interesting conundrum is: what bindings should I use in my solution, that utilising WCF-WSHttp or WCF-Custom?  I would contend that WCF-Custom is the better option over WCF-WSHttp, to support future/evolving requirements</strong></li>
+</ul>
+</li>
+<li><em>RandomPresentService.odx</em> &#8211; this is a &#8220;starter&#8221; orchestration to call the service and contains just the types required.  I always move this orchestration into my specific orchestrations project (or just create an orchestration from scratch)</li>
+<li><em>RandomPresentService_schemas_ajax_randompresentservice.xsd</em> &#8211; this schema defines the WCF message types required to construct a request to the service and what we can expect the response to look like</li>
+<li><em>RandomPresentService_schemas_microsoft_com_2003_10_Serialization.xsd</em> &#8211; this contains type details.  I suppose if you wish to serialize to a class representation, this XSD would be useful but otherwise I haven&#8217;t found a use for this</li>
+</ol>
+<p>That&#8217;s it for now&#8230;  In part 3 of this post I will walk you through my BizTalk solution utilising the service.  This will build on artefacts created by the <em>BizTalk WCF Service Consuming Wizard</em>, which was the main topic of this post.</p><br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/jamescorbould.wordpress.com/460/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/jamescorbould.wordpress.com/460/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=460&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://jamescorbould.wordpress.com/2013/09/27/biztalk-and-wcf-consuming-a-wcf-service-part-2-the-biztalk-wcf-service-consuming-wizard-and-a-look-at-the-artefacts-created/feed/</wfw:commentRss>
+		<slash:comments>0</slash:comments>
+	
+		<media:thumbnail url="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizard2.png?w=150" />
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizard2.png?w=150" medium="image">
+			<media:title type="html">BizTalk WCF Service Consuming Wizard - load WSDL for service endpoint</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/e042519a77f391e81c60385ee40e4889?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jamescorb</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizard1.png?w=503" medium="image">
+			<media:title type="html">Choose MEX endpoint</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizard2.png?w=300" medium="image">
+			<media:title type="html">Load WSDL for service endpoint</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/biztalkwcfconsumingwizardsolutionartefacts.png?w=300" medium="image">
+			<media:title type="html">BizTalk solution artefacts created by the BizTalk WCF Service Consuming Wizard</media:title>
+		</media:content>
+	</item>
+		<item>
+		<title>BizTalk and WCF: Consuming a WCF Service, Part 1 &#8211; A Look at the Service to be Consumed</title>
+		<link>http://jamescorbould.wordpress.com/2013/09/23/biztalk-and-wcf-consuming-a-wcf-service-part-1-a-look-at-the-service-to-be-consumed/</link>
+		<comments>http://jamescorbould.wordpress.com/2013/09/23/biztalk-and-wcf-consuming-a-wcf-service-part-1-a-look-at-the-service-to-be-consumed/#comments</comments>
+		<pubDate>Mon, 23 Sep 2013 09:31:42 +0000</pubDate>
+		<dc:creator><![CDATA[James Corbould]]></dc:creator>
+				<category><![CDATA[BizTalk]]></category>
+		<category><![CDATA[WCF]]></category>
+		<category><![CDATA[biztalk]]></category>
+		<category><![CDATA[WS-* specifications]]></category>
+
+		<guid isPermaLink="false">http://jamescorbould.wordpress.com/?p=267</guid>
+		<description><![CDATA[I thought I would do a series of posts on BizTalk and Windows Communication Foundation (WCF). The main aim of this post is to cement my experiences so far exposing and consuming WCF services using BizTalk. First up (and the focus of this post) is a look at a (very simple) WCF service that will [&#8230;]<img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=267&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></description>
+				<content:encoded><![CDATA[<p>I thought I would do a series of posts on BizTalk and Windows Communication Foundation (WCF).</p>
+<p>The main aim of this post is to cement my experiences so far exposing and consuming WCF services using BizTalk.</p>
+<p>First up (and the focus of this post) is a look at a (very simple) WCF service that will be hosted in IIS.  Further posts will detail how the service can be consumed using BizTalk and the tools available, error handling and recovery and monitoring.</p>
+<p>What&#8217;s WCF you may ask?  Further information/background is available <a href="http://msdn.microsoft.com/en-us/library/ms731082.aspx" target="_blank">here</a>.  In a nutshell, it is Microsoft&#8217;s implementation of remote communication specifications maintained by groups such as the <a href="http://www.w3.org" target="_blank"><em>World Wide Web Consortium</em></a> (W3C) and the <a href="http://www.ws-i.org" target="_blank"><em>Web Services Interoperability Organization</em></a> (WS-I).</p>
+<p><strong>The RandomPresent WCF Service</strong></p>
+<p>Yes, you read correctly&#8230;!  The purpose of my WCF service is to return a random present (gift) to the client application.</p>
+<p>As per Microsoft recommended best practice, the service contract is exposed to the outside world via an interface:</p>
+<div id="attachment_413" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/09/irandompresentservice.png" target="_blank"><img class="size-medium wp-image-413 aligncenter" alt="IRandomPresentService" src="http://jamescorbould.files.wordpress.com/2013/09/irandompresentservice.png?w=300&#038;h=144" width="300" height="144" /></a><p class="wp-caption-text">IRandomPresentService</p></div>
+<p>It&#8217;s possible to expose a class by applying attributes directly to the class (the attributes define the service&#8217;s runtime behaviour).  However by exposing the interface to the outside world (i.e. the WSDL will map to the interface) it is possible to change how the service is implemented without necessitating modifications to the WSDL.  Changing the WSDL (a file that describes the functionality of a web service) would necessitate clients downloading the WSDL and updating their proxy code accordingly.  So using an interface provides a level of abstraction between the specification of the service and how the service is actually implemented, thus protecting clients from any changes to the implementation of the service.</p>
+<p>This is the class implementation:</p>
+<div id="attachment_415" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/09/randompresentservice.png" target="_blank"><img class="size-medium wp-image-415" alt="RandomPresentService" src="http://jamescorbould.files.wordpress.com/2013/09/randompresentservice.png?w=300&#038;h=208" width="300" height="208" /></a><p class="wp-caption-text">RandomPresentService</p></div>
+<p>Here are a few notes/pointers on the most interesting aspects of this interface and it&#8217;s implementation:</p>
+<ol>
+<li>Note the inclusion of the System.ServiceModel namespace &#8211; this contains all the WCF types</li>
+<li>Note that I have specified a namespace for some attributes &#8211; this is crucial for a professional looking WCF service!  If a namespace is not explicitly specified like this, the WSDL exposed by WCF to the outside world will contain the default namespace <em><a href="http://tempuri.org" rel="nofollow">http://tempuri.org</a></em></li>
+</ol>
+<p>WCF services can be hosted in numerous ways &#8211; for the purposes of this demo, I will host my service in IIS 8.  I did this by creating a new application via IIS manager and pointing it directly to my .cs files &#8211; this is OK for a development environment but in a Production environment, you would point to an assembly.</p>
+<p>In the root of my IIS application I created a Service.svc file, which represents my WCF endpoint and a Web.config file.</p>
+<p>My Service.svc file looks like this:</p>
+<div id="attachment_417" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/09/service.png" target="_blank"><img class="size-medium wp-image-417" alt="Service.svc" src="http://jamescorbould.files.wordpress.com/2013/09/service.png?w=300&#038;h=23" width="300" height="23" /></a><p class="wp-caption-text">Service.svc</p></div>
+<p>Note that the service attribute points to the implementation of the service using the full namespace and class name.  If you attempt to specify the interface in your .svc file, you will receive the following error when you attempt to view your service: <i>ServiceHost only supports class service types.</i></p>
+<p>Here is the contents of my web.config file:</p>
+<div id="attachment_419" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/09/webconfig.png" target="_blank"><img class="size-medium wp-image-419" alt="web.config" src="http://jamescorbould.files.wordpress.com/2013/09/webconfig.png?w=300&#038;h=144" width="300" height="144" /></a><p class="wp-caption-text">web.config</p></div>
+<p>A few items of interest here that I will summarise:</p>
+<ol>
+<li>Two endpoints have been specified for my service: a wsHttpBinding endpoint and a MEX endpoint.  The wsHttpBinding endpoint supports the WS-* specifications which defines a common standard for remote client communication.  MEX stands for &#8220;metadata interchange&#8221; so it describes how a client can communicate with the service using a WSDL file exposed to the outside world by the service (meta in this context means &#8220;about&#8221; so metadata means &#8220;data about data&#8221;).</li>
+<li>Note that a behaviour has been specified in the &lt;behaviors&gt; section that enables service metadata to be downloaded via a HTTP GET.  So this enables a WSDL file to be downloaded for my service (using a web browser, for example)</li>
+<li>And lastly, to enable me to call my service using <a href="http://www.soapui.org" target="_blank">SOAPUI</a>, I had to add specific details about security for my endpoint, in a &lt;wsHttpBinding&gt; section.  So this is WS-Security configuration for my service.</li>
+</ol>
+<p>Now if <em> </em>browse to my service using a web browser, the following web page is displayed with details about the service:</p>
+<div id="attachment_423" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/09/randompresentserviceie.png" target="_blank"><img class="size-medium wp-image-423" alt="RandomPresentServiceIE" src="http://jamescorbould.files.wordpress.com/2013/09/randompresentserviceie.png?w=300&#038;h=179" width="300" height="179" /></a><p class="wp-caption-text">RandomPresentServiceIE</p></div>
+<p>This page nicely describes how to create a proxy class for this service with help from the svcutil.exe tool, a link to a WSDL that describes the functionality of the service and then example code showing how to invoke the proxy class.  However, we will be calling the service from BizTalk so won&#8217;t be requiring this information (except the handy link to the WSDL).</p>
+<p>Finally, SOAPUI is a great tool (although sometimes a bit of a fiddle to work with WCF) for testing a service.</p>
+<p>Invoke your web service by pointing SOAPUI to the service WSDL:</p>
+<ol>
+<li>Right click on the &#8220;Projects&#8221; node and select &#8220;New soapUI project&#8221;</li>
+<li>In the &#8220;New soapUI Project&#8221; dialogue box, add the location of the service WSDL and ensure that the &#8220;Create Requests&#8221; check box is ticked (this will create a sample request that can be used to invoke and test the service):
+<p><div id="attachment_430" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/09/newsoapuiproject.png" target="_blank"><img class="size-medium wp-image-430" alt="New SoapUI Project" src="http://jamescorbould.files.wordpress.com/2013/09/newsoapuiproject.png?w=300&#038;h=171" width="300" height="171" /></a><p class="wp-caption-text">New SoapUI Project</p></div></li>
+<li>Invoke the service by double clicking on the request and click on the green arrow to submit the request to the service.  On the &#8220;WS-Addressing&#8221; tab you will need to ensure that &#8220;WS-Addressing&#8221; is enabled and that the &#8220;Add default wsa:To&#8221; is ticked.  This is because the service implements wsHttpBinding, as described previously, which implements WS-Addressing (part of the WS-* specifications):
+<p><div id="attachment_442" style="width: 310px" class="wp-caption aligncenter"><a href="http://jamescorbould.files.wordpress.com/2013/09/soapuiinvokes1.png" target="_blank"><img class="size-medium wp-image-442 " alt="Hooray, a Cabbage for Christmas!" src="http://jamescorbould.files.wordpress.com/2013/09/soapuiinvokes1.png?w=300&#038;h=159" width="300" height="159" /></a><p class="wp-caption-text">Hooray, a Cabbage for Christmas!</p></div></li>
+</ol>
+<p>So this introduces a test WCF service that needs to be consumed by BizTalk, which will be the topic of my next post&#8230;</p>
+<p>(<a href="https://github.com/jamescorbould/Ajax.WCF.RandomPresent" target="_blank">The Visual Studio 2012 project is available here</a>).</p><br />  <a rel="nofollow" href="http://feeds.wordpress.com/1.0/gocomments/jamescorbould.wordpress.com/267/"><img alt="" border="0" src="http://feeds.wordpress.com/1.0/comments/jamescorbould.wordpress.com/267/" /></a> <img alt="" border="0" src="http://stats.wordpress.com/b.gif?host=jamescorbould.wordpress.com&#038;blog=48779276&#038;post=267&#038;subd=jamescorbould&#038;ref=&#038;feed=1" width="1" height="1" />]]></content:encoded>
+			<wfw:commentRss>http://jamescorbould.wordpress.com/2013/09/23/biztalk-and-wcf-consuming-a-wcf-service-part-1-a-look-at-the-service-to-be-consumed/feed/</wfw:commentRss>
+		<slash:comments>1</slash:comments>
+	
+		<media:thumbnail url="http://jamescorbould.files.wordpress.com/2013/09/randompresentserviceie.png?w=150" />
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/randompresentserviceie.png?w=150" medium="image">
+			<media:title type="html">RandomPresentServiceIE</media:title>
+		</media:content>
+
+		<media:content url="http://2.gravatar.com/avatar/e042519a77f391e81c60385ee40e4889?s=96&#38;d=identicon&#38;r=G" medium="image">
+			<media:title type="html">jamescorb</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/irandompresentservice.png?w=300" medium="image">
+			<media:title type="html">IRandomPresentService</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/randompresentservice.png?w=300" medium="image">
+			<media:title type="html">RandomPresentService</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/service.png?w=300" medium="image">
+			<media:title type="html">Service.svc</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/webconfig.png?w=300" medium="image">
+			<media:title type="html">web.config</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/randompresentserviceie.png?w=300" medium="image">
+			<media:title type="html">RandomPresentServiceIE</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/newsoapuiproject.png?w=300" medium="image">
+			<media:title type="html">New SoapUI Project</media:title>
+		</media:content>
+
+		<media:content url="http://jamescorbould.files.wordpress.com/2013/09/soapuiinvokes1.png?w=300" medium="image">
+			<media:title type="html">Hooray, a Cabbage for Christmas!</media:title>
+		</media:content>
+	</item>
+	</channel>
+</rss>
