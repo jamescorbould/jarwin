@@ -1,6 +1,6 @@
 ﻿namespace jarwin.Utility
 {
-    partial class Form1
+    partial class jarwin
     {
         /// <summary>
         /// Required designer variable.
@@ -72,7 +72,7 @@
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
-            // Form1
+            // jarwin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -80,7 +80,7 @@
             this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.TreePanel);
-            this.Name = "Form1";
+            this.Name = "jarwin";
             this.Text = "jarwin";
             this.TreePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();

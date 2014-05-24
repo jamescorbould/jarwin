@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace jarwin.Utility
 {
-    public partial class Form1 : Form
+    public partial class jarwin : Form
     {
-        public Form1()
+        public jarwin()
         {
             InitializeComponent();
         }
