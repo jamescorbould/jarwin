@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace jarwin.Properties
+namespace jarwin.Utility.Properties
 {
 
 
