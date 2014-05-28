@@ -82,6 +82,7 @@
             this.Controls.Add(this.TreePanel);
             this.Name = "jarwin";
             this.Text = "jarwin";
+            this.Load += new System.EventHandler(this.jarwin_Load);
             this.TreePanel.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

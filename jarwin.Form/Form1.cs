@@ -21,5 +21,10 @@ namespace jarwin.Utility
         {
 
         }
+
+        private void jarwin_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
