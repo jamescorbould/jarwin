@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace jarwin.Utility
+namespace jarwin.Form
 {
-    public partial class jarwin : Form
+    public partial class jarwin : System.Windows.Forms.Form
     {
         public jarwin()
         {

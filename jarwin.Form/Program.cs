@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace jarwin.Utility
+namespace jarwin.Form
 {
     static class Program
     {

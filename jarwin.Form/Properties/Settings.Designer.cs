@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace jarwin.Utility.Properties
+namespace jarwin.Form.Properties
 {
 
 

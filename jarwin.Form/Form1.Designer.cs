@@ -1,4 +1,4 @@
-﻿namespace jarwin.Utility
+﻿namespace jarwin.Form
 {
     partial class jarwin
     {
