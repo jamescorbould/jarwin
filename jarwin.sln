@@ -13,6 +13,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.Utility", "jarwin.Utility\jarwin.Utility.csproj", "{74CA8CCF-42A1-48E8-AC31-D68F58995848}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLScripts", "SQLScripts", "{0B0C19BD-C394-4EB3-BF97-C4D6CEA025C4}"
+	ProjectSection(SolutionItems) = preProject
+		SQLScripts\create_db_jarwin.sql = SQLScripts\create_db_jarwin.sql
+		SQLScripts\create_table_feed.sql = SQLScripts\create_table_feed.sql
+		SQLScripts\create_table_feed_category.sql = SQLScripts\create_table_feed_category.sql
+		SQLScripts\create_table_feed_item.sql = SQLScripts\create_table_feed_item.sql
+		SQLScripts\create_table_feed_media.sql = SQLScripts\create_table_feed_media.sql
+		SQLScripts\create_table_folder.sql = SQLScripts\create_table_folder.sql
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
