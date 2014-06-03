@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -24,7 +25,15 @@ namespace jarwin.Form
 
         private void jarwin_Load(object sender, EventArgs e)
         {
+            TreeNode treeNode = new TreeNode("My Feeds");
+            treeView1.Nodes.Add(treeNode);
 
+            TreeNode node2 = new TreeNode("C#");
+            TreeNode node3 = new TreeNode("VB.NET");
+            TreeNode[] array = new TreeNode[] { node2, node3 };
+            
+            treeNode = new TreeNode("Dot Net Perls", array);
+            treeView1.Nodes.Add(treeNode);
         }
     }
 }
