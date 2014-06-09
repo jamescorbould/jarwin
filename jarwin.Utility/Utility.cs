@@ -15,7 +15,7 @@ namespace jarwin.Utility
             {
                 return ConfigurationManager.AppSettings[key];
             }
-            catch (ConfigurationErrorsException ex)
+            catch
             {
                 return String.Empty;
             }
