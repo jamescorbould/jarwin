@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 namespace jarwin.DAL
 {
     [Table]
-    private class FeedItem
+    public class FeedItem
     {
-        [Column(Name="feed_id")] private int feedID { get; set; }
-        [Column(Name="feed_item_id")] private int feedItemID { get; set; }
-        [Column(Name="title")] private string title { get; set; }
-        [Column(Name="item_uri")] private string itemURI { get; set; }
-        [Column(Name="comments")] private string comments { get; set; }
-        [Column(Name="published_datetime")] private DateTime publishedDateTime { get; set; }
-        [Column(Name="creator")] private string creator { get; set; }
-        [Column(Name="description")] private string description { get; set; }
-        [Column(Name="content")] private string content { get; set; }
+        [Column(Name="feed_id")] public int feedID { get; set; }
+        [Column(Name="feed_item_id")] public int feedItemID { get; set; }
+        [Column(Name="title")] public string title { get; set; }
+        [Column(Name="item_uri")] public string itemURI { get; set; }
+        [Column(Name="comments")] public string comments { get; set; }
+        [Column(Name="published_datetime")] public DateTime publishedDateTime { get; set; }
+        [Column(Name="creator")] public string creator { get; set; }
+        [Column(Name="description")] public string description { get; set; }
+        [Column(Name="content")] public string content { get; set; }
     }
 }

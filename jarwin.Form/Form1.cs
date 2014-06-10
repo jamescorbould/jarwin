@@ -52,8 +52,8 @@ namespace jarwin.Form
             treeView1.Nodes.Add(treeNode);
 
             var feedQuery =
-                from feed in nw.Customers
-                where cust.City == "London"
+                from feed in dataContext.Feed
+                where feed
                 select cust.CompanyName;
 
             foreach (var customer in companyNameQuery)
