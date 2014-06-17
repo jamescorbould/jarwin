@@ -25,7 +25,7 @@ namespace jarwin.Form
         {
             InitializeComponent();
             Utility.Utility utility = new Utility.Utility();
-            dataContext = new JarwinDataContext(utility.GetAppSetting("connectionString"));
+            dataContext = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
@@ -51,14 +51,15 @@ namespace jarwin.Form
             treeNode = new TreeNode("Dot Net Perls", array);
             treeView1.Nodes.Add(treeNode);
 
-            var feedQuery =
+            var feedData =
                 from feed in dataContext.Feed
-                where feed
-                select cust.CompanyName;
+                where feed.status.ToUpper() != "INACTIVE"
+                select feed.title;
 
-            foreach (var customer in companyNameQuery)
+            foreach (var feedTitle in feedData)
             {
-                Console.WriteLine(customer);
+                TreeNode node = new TreeNode(feedTitle);
+                treeView1.Nodes.Add(node);
             }
         }
 
