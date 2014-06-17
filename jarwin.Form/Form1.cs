@@ -41,15 +41,7 @@ namespace jarwin.Form
 
         private void initTreeView()
         {
-            TreeNode treeNode = new TreeNode("My Feeds");
-            treeView1.Nodes.Add(treeNode);
-
-            TreeNode node2 = new TreeNode("C#");
-            TreeNode node3 = new TreeNode("VB.NET");
-            TreeNode[] array = new TreeNode[] { node2, node3 };
-
-            treeNode = new TreeNode("Dot Net Perls", array);
-            treeView1.Nodes.Add(treeNode);
+            List<TreeNode> nodes = new List<TreeNode>();
 
             var feedData =
                 from feed in dataContext.Feed
@@ -59,8 +51,11 @@ namespace jarwin.Form
             foreach (var feedTitle in feedData)
             {
                 TreeNode node = new TreeNode(feedTitle);
-                treeView1.Nodes.Add(node);
+                nodes.Add(node);
             }
+
+            TreeNode treeNode = new TreeNode("My Feeds", nodes.ToArray<TreeNode>());
+            treeView1.Nodes.Add(treeNode);
         }
 
     }
