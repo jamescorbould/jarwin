@@ -28,11 +28,6 @@ namespace jarwin.Form
             dataContext = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
         }
 
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
-        }
-
         private void jarwin_Load(object sender, EventArgs e)
         {
             // Form load event.
@@ -46,16 +41,51 @@ namespace jarwin.Form
             var feedData =
                 from feed in dataContext.Feed
                 where feed.status.ToUpper() != "INACTIVE"
-                select feed.title;
+                select feed;
 
-            foreach (var feedTitle in feedData)
+            foreach (var feed in feedData)
             {
-                TreeNode node = new TreeNode(feedTitle);
+                TreeNode node = new TreeNode(feed.title);
+                node.Tag = feed.feedID;
                 nodes.Add(node);
             }
 
             TreeNode treeNode = new TreeNode("My Feeds", nodes.ToArray<TreeNode>());
             treeView1.Nodes.Add(treeNode);
+        }
+
+        private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
+        {
+            treeView1.SelectedNode = e.Node;
+
+            var feedItems =
+                from feedItem in dataContext.FeedItem
+                where feedItem.feedID == (int)e.Node.Tag
+                select feedItem;
+
+            int index = 0;
+
+            try
+            {
+                if (feedItems.Count() > 0)
+                {
+                    foreach (var item in feedItems)
+                    {
+                        dataGridView1.Rows.Add();
+                        dataGridView1.Rows[index].Cells[0].Value = item.publishedDateTime;
+                        dataGridView1.Rows[index].Cells[1].Value = item.title;
+
+                        ++index;
+                    }
+                }
+            }
+            catch (NullReferenceException)
+            { }
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
 
     }

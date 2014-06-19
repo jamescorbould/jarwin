@@ -32,6 +32,8 @@
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.PublishedDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TreePanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
@@ -51,6 +53,7 @@
             this.treeView1.Size = new System.Drawing.Size(193, 478);
             this.treeView1.TabIndex = 0;
             this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            this.treeView1.NodeMouseClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseClick);
             // 
             // dataGridView1
             // 
@@ -58,11 +61,15 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.AllowUserToOrderColumns = true;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.PublishedDate,
+            this.Title});
             this.dataGridView1.Location = new System.Drawing.Point(220, 17);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.Size = new System.Drawing.Size(552, 178);
             this.dataGridView1.TabIndex = 1;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // richTextBox1
             // 
@@ -71,6 +78,24 @@
             this.richTextBox1.Size = new System.Drawing.Size(552, 264);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
+            // 
+            // PublishedDate
+            // 
+            this.PublishedDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.PublishedDate.Frozen = true;
+            this.PublishedDate.HeaderText = "Published Date";
+            this.PublishedDate.Name = "PublishedDate";
+            this.PublishedDate.ReadOnly = true;
+            this.PublishedDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.PublishedDate.Width = 150;
+            // 
+            // Title
+            // 
+            this.Title.Frozen = true;
+            this.Title.HeaderText = "Title";
+            this.Title.Name = "Title";
+            this.Title.ReadOnly = true;
+            this.Title.Width = 370;
             // 
             // jarwin
             // 
@@ -95,6 +120,8 @@
         private System.Windows.Forms.TreeView treeView1;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.RichTextBox richTextBox1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn PublishedDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
     }
 }
 

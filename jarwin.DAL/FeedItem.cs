@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace jarwin.DAL
 {
-    [Table]
+    [Table(Name="feed_item")]
     public class FeedItem
     {
         [Column(Name="feed_id")] public int feedID { get; set; }
