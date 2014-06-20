@@ -75,6 +75,8 @@ namespace jarwin.Form
                         dataGridView1.Rows[index].Cells[0].Value = item.publishedDateTime;
                         dataGridView1.Rows[index].Cells[1].Value = item.title;
 
+                        dataGridView1.Rows[index].Tag = item;
+
                         ++index;
                     }
                 }
