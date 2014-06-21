@@ -87,6 +87,12 @@ namespace jarwin.Form
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            FeedItem item = (FeedItem)dataGridView1.Rows[e.RowIndex].Tag;
+            richTextBox1.Text = item.content;
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
 
         }
 
