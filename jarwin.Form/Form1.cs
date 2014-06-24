@@ -93,7 +93,15 @@ namespace jarwin.Form
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // File -> Exit.
             Application.Exit();
+        }
+
+        private void addToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Feed -> Add.
+            AddFeedDialog addFeedDialog = new AddFeedDialog();
+            addFeedDialog.Show();
         }
 
     }
