@@ -1,4 +1,5 @@
-﻿using System;
+﻿using jarwin.DAL;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Linq;
@@ -23,9 +24,12 @@ namespace jarwin.Utility
             }
         }
 
-        public static IEnumerable<XElement> GetXMLElementAtUri(string inputUri, string elementName)
+        public static bool ProcessRssFeed(string inputUri)
         {
-            // Based on: http://stackoverflow.com/questions/2441673/reading-xml-with-xmlreader-in-c-sharp
+            Feed feed = new Feed();
+            List<FeedItem> feedItems = new List<FeedItem>();
+            string objType = String.Empty;
+            FeedItem feedItem = null;
 
             using (XmlReader reader = XmlReader.Create(inputUri))
             {
@@ -35,17 +39,39 @@ namespace jarwin.Utility
                 {
                     if (reader.NodeType == XmlNodeType.Element)
                     {
-                        if (reader.Name == elementName)
+                        switch (reader.Name)
                         {
-                            XElement el = XNode.ReadFrom(reader) as XElement;
-                            if (el != null)
-                            {
-                                yield return el;
-                            }
+                            case "channel":  // This corresponds to Feed object - should only be one per Rss XML.
+                                objType = "FEED";
+                                break;
+                            case "item":
+                                objType = "FEEDITEM";
+                                feedItem = new FeedItem();
+                                feedItems.Add(feedItem);
+                                break;
+                            case "title":
+                                if (objType == "FEED")
+                                {
+                                    feed.title = reader.ReadContentAsString();
+                                }
+                                else if (objType == "FEEDITEM")
+                                {
+                                    feedItem.title = reader.ReadContentAsString();
+                                }
+                                else
+                                {
+                                    reader.Skip();
+                                }
+                                break;
+                            default:
+                                reader.Skip();
+                                break;
                         }
                     }
                 }
             }
+
+            return true;
         }
     }
 }

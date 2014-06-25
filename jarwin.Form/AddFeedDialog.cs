@@ -51,7 +51,7 @@ namespace jarwin
             textBox1.Text = fileDialog.FileName;
         }
 
-        private Feed CreateFeedFromRss(string inputUri)
+        private void CreateFeedFromRss(string inputUri)
         {
             // Using the Rss feed xml, create a Feed object.
 
