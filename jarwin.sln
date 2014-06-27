@@ -25,6 +25,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLScripts", "SQLScripts", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.DAL", "jarwin.DAL\jarwin.DAL.csproj", "{D2452C73-6CC4-492F-BBF1-498821F774BB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.ObjectFactory", "jarwin.ObjectFactory\jarwin.ObjectFactory.csproj", "{6AB67FE7-CD4F-402A-922E-D3F6DDDE1B77}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{D2452C73-6CC4-492F-BBF1-498821F774BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D2452C73-6CC4-492F-BBF1-498821F774BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D2452C73-6CC4-492F-BBF1-498821F774BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AB67FE7-CD4F-402A-922E-D3F6DDDE1B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AB67FE7-CD4F-402A-922E-D3F6DDDE1B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AB67FE7-CD4F-402A-922E-D3F6DDDE1B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AB67FE7-CD4F-402A-922E-D3F6DDDE1B77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

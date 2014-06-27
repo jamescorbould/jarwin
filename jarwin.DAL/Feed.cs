@@ -17,10 +17,11 @@ namespace jarwin.DAL
         [Column(Name="last_build_datetime")] public DateTime lastBuildDateTime { get; set; }
         [Column(Name="last_download_datetime")] public DateTime lastDownloadDateTime { get; set; } 
         [Column(Name="language")] public string language { get; set; }
-        [Column(Name="frequency_id")] public int? frequencyID { get; set; }
+        [Column(Name="update_frequency")] public int? updateFrequency { get; set; }
+        [Column(Name="update_period")] public string updatePeriod { get; set; }
         [Column(Name="site_uri")] public string siteURI { get; set; }
         [Column(Name="status")] public string status { get; set; }
         [Column(Name="type")] public string type { get; set; }
-        [Column(Name = "folder_id")] public int? folderID { get; set; }
+        [Column(Name="folder_id")] public int? folderID { get; set; }
     }
 }

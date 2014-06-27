@@ -49,12 +49,14 @@ namespace jarwin
             OpenFileDialog fileDialog = new OpenFileDialog();
             var filepath = fileDialog.ShowDialog();
             textBox1.Text = fileDialog.FileName;
+
+            CreateFeedFromRss(textBox1.Text);
         }
 
         private void CreateFeedFromRss(string inputUri)
         {
             // Using the Rss feed xml, create a Feed object.
-
+            Utility.Utility.GenerateRssObject(inputUri);
         }
     }
 }
