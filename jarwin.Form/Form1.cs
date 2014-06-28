@@ -100,7 +100,7 @@ namespace jarwin.Form
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Feed -> Add.
-            AddFeedDialog addFeedDialog = new AddFeedDialog();
+            AddFeedDialog addFeedDialog = new AddFeedDialog(dataContext);
             addFeedDialog.Show();
         }
 

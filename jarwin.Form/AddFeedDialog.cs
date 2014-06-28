@@ -1,4 +1,5 @@
 ﻿using jarwin.DAL;
+using jarwin.ObjectFactory;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,16 @@ namespace jarwin
 {
     public partial class AddFeedDialog : System.Windows.Forms.Form
     {
-        public AddFeedDialog()
+        public JarwinDataContext dataContext
+        {
+            get;
+            private set;
+        }
+
+        public AddFeedDialog(JarwinDataContext dataContextMain)
         {
             InitializeComponent();
+            dataContext = dataContextMain;
         }
 
         private void AddFeedDialog_Load(object sender, EventArgs e)
@@ -55,8 +63,10 @@ namespace jarwin
 
         private void CreateFeedFromRss(string inputUri)
         {
-            // Using the Rss feed xml, create a Feed object.
-            Utility.Utility.GenerateRssObject(inputUri);
+            // Using the Rss feed xml, create an Rss object.
+            Rss rss = new Rss(inputUri);
+            dataContext.Feed.InsertOnSubmit(rss.feed);
+            dataContext.SubmitChanges();
         }
     }
 }
