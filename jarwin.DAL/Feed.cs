@@ -10,7 +10,7 @@ namespace jarwin.DAL
     [Table]
     public class Feed
     {
-        [Column(Name="feed_id", IsPrimaryKey=true)] public int feedID { get; set; }
+        [Column(Name="feed_id", IsPrimaryKey=true, IsDbGenerated=true)] public int feedID { get; set; }
         [Column(Name="feed_uri")] public string feedURI { get; set; }
         [Column(Name="title")] public string title { get; set; }
         [Column(Name="description")] public string description { get; set; }

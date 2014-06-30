@@ -44,6 +44,7 @@ namespace jarwin.ObjectFactory
                         {
                             case "channel":  // This corresponds to a Feed object - should only be one per Rss XML.
                                 currentObjType = "FEED";
+                                feed.lastDownloadDateTime = System.DateTime.Now;
                                 break;
                             case "item":  // This corresponds to a FeedItem object - 0..n per Rss XML.
                                 currentObjType = "FEEDITEM";
@@ -67,12 +68,26 @@ namespace jarwin.ObjectFactory
                             case "link":
                                 if (currentObjType == "FEED")
                                 {
-                                    feed.feedURI = reader.ReadElementContentAsString();
+                                    feed.siteURI = reader.ReadElementContentAsString();
                                 }
                                 else if (currentObjType == "FEEDITEM")
                                 {
                                     feedItem.itemURI = reader.ReadElementContentAsString();
                                 }
+                                else
+                                {
+                                    reader.Skip();
+                                }
+                                break;
+                            case "atom:link":
+                                if (currentObjType == "FEED")
+                                {
+                                    if (reader.GetAttribute("type").ToLower() == "application/rss+xml")
+                                    {
+                                        feed.feedURI = reader.GetAttribute("href");
+                                    }
+                                }
+
                                 else
                                 {
                                     reader.Skip();
