@@ -27,7 +27,7 @@ namespace jarwin.ObjectFactory
 
         public Rss(string inputUri)
         {
-            feed = new Feed();
+            feed = Factory.CreateFeed();
             feedItems = new List<FeedItem>();
             string currentObjType = String.Empty;
             FeedItem feedItem = null;
@@ -44,7 +44,6 @@ namespace jarwin.ObjectFactory
                         {
                             case "channel":  // This corresponds to a Feed object - should only be one per Rss XML.
                                 currentObjType = "FEED";
-                                feed.lastDownloadDateTime = System.DateTime.Now;
                                 break;
                             case "item":  // This corresponds to a FeedItem object - 0..n per Rss XML.
                                 currentObjType = "FEEDITEM";
@@ -196,8 +195,6 @@ namespace jarwin.ObjectFactory
                     }
                 }
             }
-
-            //return new Rss(feed, feedItems);
         }
     }
 }
