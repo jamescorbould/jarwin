@@ -55,6 +55,20 @@ namespace jarwin
             Rss rss = new Rss(inputUri);
             dataContext.Feed.InsertOnSubmit(rss.feed);
             dataContext.SubmitChanges();
+
+            int feedID = rss.feed.feedID; // Value provided by SQL Server identity column.
+            int feedItemID = 0;
+
+            foreach (var feedItem in rss.feedItems)
+            {
+                feedItem.feedID = feedID;
+                feedItem.feedItemID = feedItemID;
+                dataContext.FeedItem.InsertOnSubmit(feedItem);
+
+                feedItemID += 1;
+            }
+
+            dataContext.SubmitChanges();
         }
     }
 }
