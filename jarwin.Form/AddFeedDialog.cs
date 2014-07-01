@@ -34,21 +34,11 @@ namespace jarwin
 
         private void button1_Click(object sender, EventArgs e)
         {
-            XDocument feedXML = null;
-
-            // Try and load the provided feed.
-            try
+            if (!String.IsNullOrEmpty(textBox1.Text))
             {
-                feedXML = XDocument.Load(textBox1.Text);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-
-            if (feedXML != null)
-            {
-
+                infoLabel.Text = "Processing file...";
+                CreateFeedFromRss(textBox1.Text);
+                infoLabel.Text = "File processed successfully!";
             }
         }
 
@@ -57,8 +47,6 @@ namespace jarwin
             OpenFileDialog fileDialog = new OpenFileDialog();
             var filepath = fileDialog.ShowDialog();
             textBox1.Text = fileDialog.FileName;
-
-            CreateFeedFromRss(textBox1.Text);
         }
 
         private void CreateFeedFromRss(string inputUri)

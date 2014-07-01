@@ -82,12 +82,22 @@ namespace jarwin.ObjectFactory
                             case "atom:link":
                                 if (currentObjType == "FEED")
                                 {
-                                    if (reader.GetAttribute("type").ToLower() == "application/rss+xml")
+                                    string linkType = String.Empty;
+
+                                    try
+                                    {
+                                        linkType = reader.GetAttribute("type").ToLower();
+                                    }
+                                    catch (NullReferenceException)
+                                    {
+                                        linkType = String.Empty;
+                                    }
+
+                                    if (linkType == "application/rss+xml")
                                     {
                                         feed.feedURI = reader.GetAttribute("href");
                                     }
                                 }
-
                                 else
                                 {
                                     reader.Skip();
