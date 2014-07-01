@@ -47,7 +47,7 @@ namespace jarwin.ObjectFactory
                                 break;
                             case "item":  // This corresponds to a FeedItem object - 0..n per Rss XML.
                                 currentObjType = "FEEDITEM";
-                                feedItem = new FeedItem();
+                                feedItem = Factory.CreateFeedItem();
                                 feedItems.Add(feedItem);
                                 break;
                             case "title":

@@ -18,5 +18,10 @@ namespace jarwin.ObjectFactory
 
             return feed;
         }
+
+        public static FeedItem CreateFeedItem()
+        {
+            return new FeedItem();
+        }
     }
 }
