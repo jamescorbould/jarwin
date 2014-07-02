@@ -102,6 +102,19 @@ namespace jarwin.Form
             // Feed -> Add.
             AddFeedDialog addFeedDialog = new AddFeedDialog(dataContext);
             addFeedDialog.Show();
+            addFeedDialog.FormClosing += new FormClosingEventHandler(refreshTreeView);
+        }
+
+        private void refreshTreeView(object sender, FormClosingEventArgs e) // Event handler for addFeedDialog form closing event.
+        {
+            // Reload the tree view to include any additonal Feeds.
+
+            for (int i = 0; i < treeView1.Nodes.Count; i++)
+            {
+                treeView1.Nodes.RemoveAt(i);
+            }
+
+            initTreeView();
         }
 
     }

@@ -27,11 +27,6 @@ namespace jarwin
             dataContext = dataContextMain;
         }
 
-        private void AddFeedDialog_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
             if (!String.IsNullOrEmpty(textBox1.Text))

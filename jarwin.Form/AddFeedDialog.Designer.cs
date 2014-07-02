@@ -80,7 +80,6 @@
             this.Controls.Add(this.textBox1);
             this.Name = "AddFeedDialog";
             this.Text = "Add Feed";
-            this.Load += new System.EventHandler(this.AddFeedDialog_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
