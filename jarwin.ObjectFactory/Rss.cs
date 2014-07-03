@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using jarwin.DAL;
 using System.Xml;
+using System.Net;
 
 namespace jarwin.ObjectFactory
 {
@@ -31,6 +32,14 @@ namespace jarwin.ObjectFactory
             feedItems = new List<FeedItem>();
             string currentObjType = String.Empty;
             FeedItem feedItem = null;
+
+            if (inputUri.Contains("http://") || inputUri.Contains("https://"))
+            {
+                using (WebClient webClient = new WebClient())
+                {
+                    var textFromFile = webClient.DownloadString(inputUri);
+                }
+            }
 
             using (XmlReader reader = XmlReader.Create(inputUri))
             {

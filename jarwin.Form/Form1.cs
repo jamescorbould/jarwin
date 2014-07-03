@@ -54,8 +54,21 @@ namespace jarwin.Form
             treeView1.Nodes.Add(treeNode);
         }
 
+        private void clearDataGridView()
+        {
+            for (int i = 0; i < dataGridView1.Rows.Count; i++)
+            {
+                dataGridView1.Rows.RemoveAt(i);
+            }
+        }
+
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
+            if (dataGridView1.Rows.Count > 0)
+            {
+                clearDataGridView();
+            }
+
             treeView1.SelectedNode = e.Node;
 
             var feedItems =
@@ -117,5 +130,10 @@ namespace jarwin.Form
             initTreeView();
         }
 
+        private void aToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AboutBox aboutBox = new AboutBox();
+            aboutBox.Show();
+        }
     }
 }
