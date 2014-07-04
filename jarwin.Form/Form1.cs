@@ -135,5 +135,10 @@ namespace jarwin.Form
             AboutBox aboutBox = new AboutBox();
             aboutBox.Show();
         }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
