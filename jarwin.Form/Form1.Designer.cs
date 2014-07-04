@@ -97,14 +97,16 @@
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F)));
             this.toolStripMenuItem1.Size = new System.Drawing.Size(37, 20);
-            this.toolStripMenuItem1.Text = "File";
+            this.toolStripMenuItem1.Text = "&File";
             // 
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(92, 22);
-            this.fileToolStripMenuItem.Text = "Exit";
+            this.fileToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.X)));
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.fileToolStripMenuItem.Text = "E&xit";
             this.fileToolStripMenuItem.Click += new System.EventHandler(this.fileToolStripMenuItem_Click);
             // 
             // feedToolStripMenuItem
@@ -113,35 +115,41 @@
             this.addToolStripMenuItem,
             this.syncToolStripMenuItem});
             this.feedToolStripMenuItem.Name = "feedToolStripMenuItem";
+            this.feedToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.E)));
             this.feedToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.feedToolStripMenuItem.Text = "Feed";
+            this.feedToolStripMenuItem.Text = "F&eed";
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.addToolStripMenuItem.Text = "Add";
+            this.addToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A)));
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addToolStripMenuItem.Text = "&Add";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.addToolStripMenuItem_Click);
             // 
             // syncToolStripMenuItem
             // 
             this.syncToolStripMenuItem.Name = "syncToolStripMenuItem";
-            this.syncToolStripMenuItem.Size = new System.Drawing.Size(99, 22);
-            this.syncToolStripMenuItem.Text = "Sync";
+            this.syncToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
+            this.syncToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.syncToolStripMenuItem.Text = "&Sync All";
+            this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.H)));
             this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Text = "&Help";
             // 
             // aToolStripMenuItem
             // 
             this.aToolStripMenuItem.Name = "aToolStripMenuItem";
-            this.aToolStripMenuItem.Size = new System.Drawing.Size(107, 22);
-            this.aToolStripMenuItem.Text = "About";
+            this.aToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.B)));
+            this.aToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.aToolStripMenuItem.Text = "A&bout";
             this.aToolStripMenuItem.Click += new System.EventHandler(this.aToolStripMenuItem_Click);
             // 
             // treeView1

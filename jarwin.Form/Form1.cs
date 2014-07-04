@@ -140,5 +140,10 @@ namespace jarwin.Form
         {
 
         }
+
+        private void syncToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
