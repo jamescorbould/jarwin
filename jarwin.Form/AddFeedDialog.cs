@@ -49,7 +49,7 @@ namespace jarwin
             // Using the Rss feed xml, create an Rss object.
             Rss rss = new Rss(inputUri);
             dataContext.Feed.InsertOnSubmit(rss.feed);
-            //dataContext.SubmitChanges();
+            dataContext.SubmitChanges();
 
             int feedID = rss.feed.feedID; // Value provided by SQL Server identity column.
             int feedItemID = 0;

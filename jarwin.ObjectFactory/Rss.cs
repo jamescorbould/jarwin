@@ -111,6 +111,30 @@ namespace jarwin.ObjectFactory
                                     reader.Skip();
                                 }
                                 break;
+                            case "atom10:link":
+                                if (currentObjType == "FEED")
+                                {
+                                    string linkType = String.Empty;
+
+                                    try
+                                    {
+                                        linkType = reader.GetAttribute("type").ToLower();
+                                    }
+                                    catch (NullReferenceException)
+                                    {
+                                        linkType = String.Empty;
+                                    }
+
+                                    if (linkType == "application/rss+xml")
+                                    {
+                                        feed.feedURI = reader.GetAttribute("href");
+                                    }
+                                }
+                                else
+                                {
+                                    reader.Skip();
+                                }
+                                break;
                             case "description":
                                 if (currentObjType == "FEED")
                                 {
@@ -203,6 +227,9 @@ namespace jarwin.ObjectFactory
                         }
                     }
                 }
+                // TODO: validate that the Rss object has been instantiated correctly,
+                // before attempting to insert into the database.
+
             }
         }
     }

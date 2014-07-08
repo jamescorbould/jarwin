@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2full.xsl"?>
+<?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?>
+<rss xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+
+  <channel>
+    <title>Thomas F. Abraham</title>
+
+    <link>http://www.tfabraham.com/blog</link>
+    <description>Microsoft .NET, BizTalk Server, SQL Server and more...</description>
+    <lastBuildDate>Tue, 22 Apr 2014 06:19:10 +0000</lastBuildDate>
+    <language>en-US</language>
+    <sy:updatePeriod>hourly</sy:updatePeriod>
+    <sy:updateFrequency>1</sy:updateFrequency>
+    <generator>http://wordpress.org/?v=3.8.3</generator>
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/TFAbrahamOnTechnology" />
+    <feedburner:info uri="tfabrahamontechnology" />
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" />
+    <feedburner:feedFlare href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://us.i1.yimg.com/us.yimg.com/i/us/my/addtomyyahoo4.gif">Subscribe with My Yahoo!</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://www.newsgator.com/images/ngsub1.gif">Subscribe with NewsGator</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://feeds.my.aol.com/add.jsp?url=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://o.aolcdn.com/favorites.my.aol.com/webmaster/ffclient/webroot/locale/en-US/images/myAOLButtonSmall.gif">Subscribe with My AOL</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.bloglines.com/sub/http://feeds.feedburner.com/TFAbrahamOnTechnology" src="http://www.bloglines.com/images/sub_modern11.gif">Subscribe with Bloglines</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.netvibes.com/subscribe.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://www.netvibes.com/img/add2netvibes.gif">Subscribe with Netvibes</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://fusion.google.com/add?feedurl=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://buttons.googlesyndication.com/fusion/add.gif">Subscribe with Google</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.pageflakes.com/subscribe.aspx?url=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://www.pageflakes.com/ImageFile.ashx?instanceId=Static_4&amp;fileName=ATP_blu_91x17.gif">Subscribe with Pageflakes</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.plusmo.com/add?url=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://plusmo.com/res/graphics/fbplusmo.gif">Subscribe with Plusmo</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.thefreedictionary.com/_/hp/AddRSS.aspx?http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://img.tfd.com/hp/addToTheFreeDictionary.gif">Subscribe with The Free Dictionary</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.bitty.com/manual/?contenttype=rssfeed&amp;contentvalue=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://www.bitty.com/img/bittychicklet_91x17.gif">Subscribe with Bitty Browser</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.live.com/?add=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://tkfiles.storage.msn.com/x1piYkpqHC_35nIp1gLE68-wvzLZO8iXl_JMledmJQXP-XTBOLfmQv4zhj4MhcWEJh_GtoBIiAl1Mjh-ndp9k47If7hTaFno0mxW9_i3p_5qQw">Subscribe with Live.com</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://mix.excite.eu/add?feedurl=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://image.excite.co.uk/mix/addtomix.gif">Subscribe with Excite MIX</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.webwag.com/wwgthis.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://www.webwag.com/images/wwgthis.gif">Subscribe with Webwag</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.podcastready.com/oneclick_bookmark.php?url=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://www.podcastready.com/images/podcastready_button.gif">Subscribe with Podcast Ready</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.wikio.com/subscribe?url=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://www.wikio.com/shared/img/add2wikio.gif">Subscribe with Wikio</feedburner:feedFlare>
+    <feedburner:feedFlare href="http://www.dailyrotation.com/index.php?feed=http%3A%2F%2Ffeeds.feedburner.com%2FTFAbrahamOnTechnology" src="http://www.dailyrotation.com/rss-dr2.gif">Subscribe with Daily Rotation</feedburner:feedFlare>
+    <item>
+      <title>Choosing a TFS 2010 Process Template for Scrum</title>
+      <link>http://feedproxy.google.com/~r/TFAbrahamOnTechnology/~3/xoLsOT8bKds/</link>
+      <comments>http://www.tfabraham.com/blog/2011/08/choosing-a-tfs-2010-process-template-for-scrum/#comments</comments>
+      <pubDate>Thu, 04 Aug 2011 16:58:00 +0000</pubDate>
+      <dc:creator><![CDATA[Thomas]]></dc:creator>
+      <category><![CDATA[Development]]></category>
+      <category><![CDATA[Microsoft]]></category>
+      <category><![CDATA[Process Template]]></category>
+      <category><![CDATA[Scrum]]></category>
+      <category><![CDATA[TFS]]></category>
+
+      <guid isPermaLink="false">http://www.tfabraham.com/blog/2011/08/choosing-a-tfs-2010-process-template-for-scrum/</guid>
+      <description><![CDATA[I recently had to select a TFS 2010 process template to [&#8230;]]]></description>
+      <content:encoded>
+        <![CDATA[<p>I recently had to select a TFS 2010 process template to support a new development project using Scrum. Besides the obvious need for the template to work well for a Scrum project, I also wanted to keep things simple and flexible for my client. It was critical to choose a fully supported template with a future upgrade path for TFS v.Next.</p>
+<p>Some of the considerations included:</p>
+<ul>
+<li>How well does the template support Scrum?</li>
+<li>How well rounded are the various TFS artifacts (work items, reports and SharePoint)?</li>
+<li>Is there any extra tooling, documentation or other benefits?</li>
+<li>How well supported is the template today and (best guess) into the future?</li>
+</ul>
+<p>One of the great debates around TFS best practices is whether to create a separate team project for every development project, or whether to use a single team project to contain multiple dev projects. There are valid arguments for each option, which have largely been <a href="http://blog.hinshelwood.com/when-should-i-use-areas-in-tfs-instead-of-team-projects-in-team-foundation-server-2010/" target="_blank">discussed</a> <a href="http://blog.hinshelwood.com/project-of-projects-with-team-foundation-server-2010/" target="_blank">elsewhere</a>. To reduce the administrative overhead of managing many team projects and to provide consistency of the process template configuration, I decided that multiple dev projects in one team project was the right choice. If there are ever any custom modifications to the process template, it will only need to be done in one place.</p>
+<p>That led to a few more questions:</p>
+<ul>
+<li>Does any process template tooling assume that the team project contains only one dev project?</li>
+<li>Do the reports included with the process template support multiple dev projects, or can they be easily modified? This applies to both SSRS and Excel reports.</li>
+<li>Can the work item queries be easily modified to support multiple dev projects?</li>
+</ul>
+<p>All of these requirements narrowed the field to three:</p>
+<ol>
+<li><a href="http://msdn.microsoft.com/en-us/library/dd380647.aspx" target="_blank">MSF for Agile Software Development V5.0</a></li>
+<li><a href="http://visualstudiogallery.msdn.microsoft.com/59ac03e3-df99-4776-be39-1917cbfc5d8e" target="_blank">Visual Studio Scrum 1.0</a></li>
+<li><a href="http://www.scrumforteamsystem.co.uk/" target="_blank">Scrum for Team System V3.0</a></li>
+</ol>
+<p>I quickly ruled out Visual Studio Scrum due to concerns about its lack of maturity and support. My guess is that this template will morph into an out-of-the-box template as part of TFS v.Next. Today, however, it’s very basic. It doesn’t have any Excel reports and very few SSRS reports, no document templates and only very basic SharePoint support. It has a handful of seven basic work item types. On the project forum, I found a lot of questions and issues raised with no response from Microsoft, and there haven’t been any posts from Microsoft for months. I got the feeling that this template wasn’t going to receive any more attention until it becomes part of the TFS product (if it ever does).</p>
+<p>That narrowed the field to two: MSF vs SfTS. SfTS is in its third release, now under the EMC brand, so it has been refined through real-world experience over many years. Support was a concern right away, because the SfTS forums are pretty dead and there is no official support program. The extra tooling is nice (TFS Workbench), the work item templates make sense and there’s a good selection of SSRS reports. There’s even a Windows service to do time rollups and so on. There are good feature lists and comparisons elsewhere, so I won’t spend time on that here.</p>
+<p>In the past, SfTS hasn’t always had a clear upgrade path. There was little documentation about upgrading an SfTS project from TFS 2005 to 2008, for example. Today there’s a migration tool from V2 to V3, which is great. However, it’s anyone’s guess if and when the EMC employees who maintain the template will carry it on to TFS v.Next. That’s a definite concern.</p>
+<p>One big sticking point with SfTS is that it has a built-in assumption that one team project holds a single dev project. If you use the project setup wizard in TFS Workbench, it will wipe out and replace the areas and iterations, etc. defined in the project. It also relies on a very specific iteration hierarchy which builds off of a release, not a product. There didn’t appear to be any good way to use this template with multiple dev projects in a single team project, and that’s what finally got it crossed it off the list.</p>
+<p>The choice was MSF for Agile Software Development V5.0, thanks to its clear support from Microsoft, robust process guidance documentation and document templates, extensive reporting, good SharePoint support, reasonable selection of work item types and ability to be tweaked to support multiple dev projects. Is it the best Scrum template? Maybe not, but I think it will work fine for our needs. We’re not purists about Scrum or any agile process, so we’ll take the good parts and tune it to work best with the client’s culture and the particular skills on the team.</p>
+<img src="http://feeds.feedburner.com/~r/TFAbrahamOnTechnology/~4/xoLsOT8bKds" height="1" width="1"/>]]>
+      </content:encoded>
+      <wfw:commentRss>http://www.tfabraham.com/blog/2011/08/choosing-a-tfs-2010-process-template-for-scrum/feed/</wfw:commentRss>
+      <slash:comments>0</slash:comments>
+      <feedburner:origLink>http://www.tfabraham.com/blog/2011/08/choosing-a-tfs-2010-process-template-for-scrum/</feedburner:origLink>
+    </item>
+    <item>
+      <title>Workaround for infinite “Please wait while the installer finishes determining your disk space requirements” dialog during MSI install</title>
+      <link>http://feedproxy.google.com/~r/TFAbrahamOnTechnology/~3/YqACyP0IOrk/</link>
+      <comments>http://www.tfabraham.com/blog/2010/11/workaround-for-infinite-please-wait-while-the-installer-finishes-determining-your-disk-space-requirements-dialog-during-msi-install/#comments</comments>
+      <pubDate>Mon, 15 Nov 2010 06:43:38 +0000</pubDate>
+      <dc:creator><![CDATA[Thomas]]></dc:creator>
+      <category><![CDATA[General]]></category>
+      <category><![CDATA[MSI]]></category>
+      <category><![CDATA[Virtual Machine]]></category>
+      <category><![CDATA[WiX]]></category>
+
+      <guid isPermaLink="false">http://www.tfabraham.com/blog/2010/11/workaround-for-infinite-please-wait-while-the-installer-finishes-determining-your-disk-space-requirements-dialog-during-msi-install/</guid>
+      <description><![CDATA[Tonight I was attempting to test the MSI installer for  [&#8230;]]]></description>
+      <content:encoded>
+        <![CDATA[<p>Tonight I was attempting to test the MSI installer for the Deployment Framework for BizTalk when I encountered an infinite dialog box stating &quot;Please wait while the installer finishes determining your disk space requirements.”&#160; This is by no means the first time that I’ve seen this occur, but usually it goes away after restarting the install once or twice.&#160; Unfortunately, this time every single attempt at a GUI install was blocked by this issue.&#160; (As documented elsewhere, using msiexec.exe to start an unattended install worked, but I needed to test the GUI.)</p>
+<p><a href="http://www.tfabraham.com/blog/wp-content/uploads/2010/11/image.png"><img style="border-bottom: 0px;border-left: 0px;margin: 5px;padding-left: 0px;padding-right: 0px;float: left;border-top: 0px;border-right: 0px;padding-top: 0px" border="0" alt="image" align="left" src="http://www.tfabraham.com/blog/wp-content/uploads/2010/11/image_thumb.png" width="260" height="114" /></a></p>
+<p>The environment was a virtual machine running Windows Server 2008 on Windows Virtual PC (Windows 7).&#160; As others have reported, this problem appears to happen much more often, if not exclusively, on virtual machines.</p>
+<p>I figured that since disk space calculation was behind the issue, the best approach was to eliminate as many disks as possible from my virtual machine until the problem (hopefully) disappeared.&#160; I had one (virtual) floppy drive, one hard drive and one DVD drive.</p>
+<p>Using Device Manager, I disabled the floppy controller.&#160; The floppy drive disappeared, but the problem didn’t.&#160; Next, I disabled ATA Channel 1 of the IDE ATA/ATAPI controllers, which controls the DVD drive.&#160; The DVD drive disappeared – and so did the dialog box!&#160; I did some experimentation with a few combinations of drive configurations, and the problem definitely followed the DVD drive.&#160; It seemed that leaving the IDE controller enabled in the virtual machine, but setting Virtual PC to None for the DVD drive option also worked fine.&#160; The common default setting that maps the virtual DVD drive to a physical DVD drive or to an ISO file caused the problem to appear.</p>
+<p>So, bottom line, if you’re seeing this happen in either a VMWare or Virtual PC VM, try disabling the IDE controller attached to the virtual DVD drive.</p>
+<img src="http://feeds.feedburner.com/~r/TFAbrahamOnTechnology/~4/YqACyP0IOrk" height="1" width="1"/>]]>
+      </content:encoded>
+      <wfw:commentRss>http://www.tfabraham.com/blog/2010/11/workaround-for-infinite-please-wait-while-the-installer-finishes-determining-your-disk-space-requirements-dialog-during-msi-install/feed/</wfw:commentRss>
+      <slash:comments>0</slash:comments>
+      <feedburner:origLink>http://www.tfabraham.com/blog/2010/11/workaround-for-infinite-please-wait-while-the-installer-finishes-determining-your-disk-space-requirements-dialog-during-msi-install/</feedburner:origLink>
+    </item>
+    <item>
+      <title>Fix for BizTalk ESB Toolkit 2.0 Error 115004 in ALL.Exceptions Send Port</title>
+      <link>http://feedproxy.google.com/~r/TFAbrahamOnTechnology/~3/wyYvFqAsElM/</link>
+      <comments>http://www.tfabraham.com/blog/2010/07/fix-for-biztalk-esb-toolkit-2-0-error-115004-in-all-exceptions-send-port/#comments</comments>
+      <pubDate>Mon, 19 Jul 2010 18:11:44 +0000</pubDate>
+      <dc:creator><![CDATA[Thomas]]></dc:creator>
+      <category><![CDATA[BizTalk]]></category>
+      <category><![CDATA[BizTalk 2009]]></category>
+      <category><![CDATA[ESB Toolkit]]></category>
+
+      <guid isPermaLink="false">http://www.tfabraham.com/blog/2010/07/fix-for-biztalk-esb-toolkit-2-0-error-115004-in-all-exceptions-send-port/</guid>
+      <description><![CDATA[On occasion we have had messages suspend on the ALL.Exc [&#8230;]]]></description>
+      <content:encoded>
+        <![CDATA[<p>On occasion we have had messages suspend on the ALL.Exceptions send port with the error:</p>
+<p><em>Error 115004: An unexpected error occurred while attempting to retrieve the System.Exception object from the ESB Fault Message.</em></p>
+<p>The source of the error is the pipeline component Microsoft.Practices.ESB.ExceptionHandling.Pipelines.ESBFaultProcessor, part of the ESB Toolkit’s custom pipeline on the ALL.Exceptions port.</p>
+<p>Some suspicions and hunting through code using .NET Reflector led to an explanation.</p>
+<p>The ExceptionMgmt.CreateFaultMessage() method, which is used to create a fault message in an orchestration exception handler, automatically locates and stores the exception object that was previously thrown.&#160; It stores the exception by binary-serializing it, Base64 encoding it and storing it in a property on the first message part of the fault message.&#160; Later on, the ESBFaultProcessor pipeline component attempts to de-serialize the exception.</p>
+<p>The trouble arises when the thrown exception contains a non-serializable inner exception more than one level deep.&#160; The method ExceptionMgmt.IsExceptionSerializable() only checks the root exception and the first InnerException.&#160; If a non-serializable exception happens to be nested further, the code does not detect it.&#160; As a result, the ESBFaultProcessor fails while attempting to de-serialize it.</p>
+<p>In our case, we are pulling a flat file down from a web service and disassembling it inside of an orchestration using the XLANGPipelineManager class.&#160; If there is a problem with the file format, an XLANGPipelineManagerException is thrown.&#160; It contains an InnerException of XmlException, which in turn contains an InnerException of Microsoft.BizTalk.ParsingEngine.AbortException – which has no serialization constructor.</p>
+<p>To solve this issue, I wrote a short helper method in C#.&#160; I call it immediately after ExceptionMgmt.CreateFaultMessage() and pass it the newly created fault message and the caught exception’s Message property value.&#160; It checks whether the stored exception can be de-serialized, and if not, replaces the stored exception with a special exception class.&#160; This is the same thing that would have happened had the IsExceptionSerializable() method correctly detected the situation.</p>
+<p>I <a href="https://connect.microsoft.com/BizTalk/feedback/details/575510/esbfaultprocessor-pipeline-component-needs-to-handle-non-serializable-exceptions" target="_blank">submitted this bug to Microsoft Connect</a>.</p>
+<p>To use this code, you’ll need a C# class library with references to:</p>
+<ul>
+<li>Microsoft.Practices.ESB.ExceptionHandling </li>
+<li>Microsoft.Practices.ESB.ExceptionHandling.Schemas.Faults </li>
+<li>Microsoft.XLANGS.BaseTypes </li>
+</ul>
+<p>For convenience, I added a couple of using statements at the top.</p>
+<pre><span class="kwrd">using</span> System;
+<span class="kwrd">using</span> Microsoft.XLANGs.BaseTypes;
+<span class="kwrd">using</span> ExceptionHandling = Microsoft.Practices.ESB.ExceptionHandling;
+<span class="kwrd">using</span> ExceptionHandlingSchemas = Microsoft.Practices.ESB.ExceptionHandling.Schemas.Property;
+
+<span class="kwrd">namespace</span> BizTalkHelpers
+{
+    <span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">class</span> OrchestrationHelper
+    {
+        <span class="rem">/// &lt;summary&gt;</span>
+        <span class="rem">/// Work around a bug in the BizTalk ESB Toolkit 2.0 related to</span>
+        <span class="rem">/// non-serializable exceptions. When</span>
+        <span class="rem">/// ExceptionMgmt.CreateFaultMessage() creates a message, it</span>
+        <span class="rem">/// automatically locates and stores the caught exception. If the</span>
+        <span class="rem">/// exception contains an InnerException more than one level deep</span>
+        <span class="rem">/// that is not serializable, the ESBFaultProcessor pipeline</span>
+        <span class="rem">/// component will later fail when it attempts to deserialize the</span>
+        <span class="rem">/// exception, resulting in the error:</span>
+        <span class="rem">/// Error 115004: An unexpected error occurred while attempting to</span>
+        <span class="rem">/// retrieve the System.Exception object from the ESB Fault Message.</span>
+        <span class="rem">/// &lt;/summary&gt;</span>
+        <span class="rem">/// &lt;param name=&quot;msg&quot;&gt;</span>
+        <span class="rem">/// Message created by ExceptionMgmt.CreateFaultMessage()&lt;/param&gt;</span>
+        <span class="rem">/// &lt;param name=&quot;exceptionMsg&quot;&gt;</span>
+        <span class="rem">/// Message property value of the caught exception&lt;/param&gt;</span>
+        <span class="kwrd">public</span> <span class="kwrd">static</span> <span class="kwrd">void</span> FixNonSerializableExceptionInFaultMsg(
+            XLANGMessage msg, <span class="kwrd">string</span> exceptionMsg)
+        {
+            <span class="rem">// Incoming msg must have been created by</span>
+            <span class="rem">// ExceptionMgmt.CreateFaultMessage()</span>
+            XLANGPart p = msg[0];
+
+            <span class="kwrd">if</span> (p == <span class="kwrd">null</span>)
+            {
+              <span class="kwrd">return</span>;
+            }
+
+            <span class="rem">// Extract the Base64-encoded string representation of the</span>
+            <span class="rem">// exception serialized by CreateFaultMessage().</span>
+            <span class="kwrd">string</span> str =
+              p.GetPartProperty(
+                <span class="kwrd">typeof</span>(ExceptionHandlingSchemas.SystemException)) <span class="kwrd">as</span> <span class="kwrd">string</span>;
+
+            <span class="kwrd">if</span> (str == <span class="kwrd">null</span>)
+            {
+              <span class="kwrd">return</span>;
+            }
+
+            <span class="kwrd">try</span>
+            {
+              ExceptionHandling.Formatter.DeserializeObject&lt;Exception&gt;(str);
+            }
+            <span class="kwrd">catch</span> (Exception)
+            {
+              <span class="rem">// If an exception is not serializable, the correct behavior</span>
+              <span class="rem">// is to store a serialized instance of</span>
+              <span class="rem">// SetExceptionNonSerializableException.</span>
+              ExceptionHandling.SetExceptionNonSerializableException ex =
+                <span class="kwrd">new</span> ExceptionHandling.SetExceptionNonSerializableException(
+                  0x1c13e, <span class="kwrd">new</span> <span class="kwrd">object</span>[] { exceptionMsg });
+
+              p.SetPartProperty(
+                <span class="kwrd">typeof</span>(ExceptionHandlingSchemas.SystemException),
+                ExceptionHandling.Formatter.SerializeObject&lt;
+                ExceptionHandling.SetExceptionNonSerializableException&gt;(ex));
+            }
+        }
+    }
+}</pre>
+<img src="http://feeds.feedburner.com/~r/TFAbrahamOnTechnology/~4/wyYvFqAsElM" height="1" width="1"/>]]>
+      </content:encoded>
+      <wfw:commentRss>http://www.tfabraham.com/blog/2010/07/fix-for-biztalk-esb-toolkit-2-0-error-115004-in-all-exceptions-send-port/feed/</wfw:commentRss>
+      <slash:comments>0</slash:comments>
+      <feedburner:origLink>http://www.tfabraham.com/blog/2010/07/fix-for-biztalk-esb-toolkit-2-0-error-115004-in-all-exceptions-send-port/</feedburner:origLink>
+    </item>
+    <item>
+      <title>BizTalk Adapter for DB2 Error SQLSTATE: HY000, SQLCODE: -270</title>
+      <link>http://feedproxy.google.com/~r/TFAbrahamOnTechnology/~3/W1DNFS55PNs/</link>
+      <comments>http://www.tfabraham.com/blog/2010/07/biztalk-adapter-for-db2-error-sqlstate-hy000-sqlcode-270/#comments</comments>
+      <pubDate>Tue, 13 Jul 2010 22:51:01 +0000</pubDate>
+      <dc:creator><![CDATA[Thomas]]></dc:creator>
+      <category><![CDATA[BizTalk]]></category>
+      <category><![CDATA[AS/400]]></category>
+      <category><![CDATA[DB2]]></category>
+      <category><![CDATA[OLE DB]]></category>
+
+      <guid isPermaLink="false">http://www.tfabraham.com/blog/2010/07/biztalk-adapter-for-db2-error-sqlstate-hy000-sqlcode-270/</guid>
+      <description><![CDATA[My client had been using the BizTalk Adapter for DB2 fr [&#8230;]]]></description>
+      <content:encoded>
+        <![CDATA[<p>My client had been using the BizTalk Adapter for DB2 from the BizTalk Adapters for Host Systems for quite some time with no significant issues.&#160; The target system was DB2 on an AS/400 (iSeries/System i).&#160; Late last week, the AS/400’s i5/OS was upgraded from V5R4 to V6R1 and the DB2 team did a database restore.</p>
+<p>Somewhere around that time, BizTalk started logging the following errors:</p>
+<p><em>An internal network library error has occurred. The requested command encountered an implementation-specific error condition on the target system. SQLSTATE: HY000, SQLCODE: –270</em></p>
+<p>Searches for this error turned up only one post on a Host Integration Server newsgroup, which didn’t give us any answers.</p>
+<p>I started out by looking up the SQLCODE –270 in the <a href="http://publib.boulder.ibm.com/iseries/v5r1/ic2924/info/rzala/rzalamst.pdf" target="_blank">IBM SQL Messages and Codes</a> book.&#160; That description had to do with unique indexes or constraints on distributed tables, which didn’t seem relevant to our situation.</p>
+<p>I found the actual meaning of –270 in DB2OLEDB.H on the Host Integration Server 2006 CD (MSI\x86\PFiles\SDK\Include).&#160; It’s defined there as DB2OLEDB_DDM_CMDCHKRM, and CMDCHKRM means “<a href="http://publib.boulder.ibm.com/infocenter/iseries/v5r4/index.jsp?topic=/ddm/rbae5xappc.htm" target="_blank">command check reply message</a>.”&#160; The problem is that the error code(s) contained in the reply message are not surfaced, so this was still a dead end.</p>
+<p>The Microsoft OLE DB Provider for DB2 is the foundation for the DB2 Adapter, so in order to rule out BizTalk and the DB2 Adapter as possible problems, we created a five-line C# command-line app:</p>
+<pre>OleDbConnection cn =
+    <span class="kwrd">new</span> OleDbConnection(<span class="str">&quot;Provider=DB2OLEDB;REST_OF_CONNECTION_STRING_HERE&quot;</span>);
+cn.Open();
+OleDbCommand cmd =
+    <span class="kwrd">new</span> OleDbCommand(<span class="str">&quot;SELECT COUNT(*) FROM A-TABLE-IN-DB2&quot;</span>, cn);
+<span class="kwrd">int</span> rc = Convert.ToInt32(cmd.ExecuteScalar());
+Console.WriteLine(<span class="str">&quot;Rows in table: &quot;</span> + rc.ToString());</pre>
+<p>Sure enough, the test app encountered the same error.&#160; The problem was definitely in the OLE DB Provider for DB2.</p>
+<p>The OLE DB Provider requires various “packages” (<a href="http://www.datadirect.com/developer/odbc/docs/odbcdb2bind.pdf" target="_blank">a DB2 concept</a>) to exist in the DB2 system.&#160; The packages correspond to various transaction isolation levels, so they are named READ UNCOMMITTED, REPEATABLE READ, etc.&#160; We did not enable transactions in the DB2 connection string, nor did we configure isolation level in BizTalk, so we still don’t know which isolation level (and thus which package) is being used.&#160; SERIALIZABLE is a good guess since it is often the BizTalk default.</p>
+<p>When a connection is opened, if the DB2 Provider finds that the package associated with the active isolation level does not exist, it is supposed to automatically create it.&#160; The active user account must have sufficient rights in DB2.&#160; If that is not an option, then the Data Access Tool can be used to manually create the packages (the Packages button on the next-to-last page of the New Data Source wizard).</p>
+<p>In our case, the user account should have had enough permissions to automatically create a package, but evidently that process failed and resulted in the obscure SQLSTATE: HY000, SQLCODE: –270 error.&#160; As soon as I manually created the packages in the Data Access Tool, the error disappeared and everything began working normally again!</p>
+<p><a href="http://msdn.microsoft.com/en-us/library/aa705138(BTS.10).aspx" target="_blank">This page of the OLE DB Provider for DB2 documentation</a> is an excellent resource for understanding the DB2 packages, the auto-create process, various error messages that may result and more.</p>
+<img src="http://feeds.feedburner.com/~r/TFAbrahamOnTechnology/~4/W1DNFS55PNs" height="1" width="1"/>]]>
+      </content:encoded>
+      <wfw:commentRss>http://www.tfabraham.com/blog/2010/07/biztalk-adapter-for-db2-error-sqlstate-hy000-sqlcode-270/feed/</wfw:commentRss>
+      <slash:comments>0</slash:comments>
+      <feedburner:origLink>http://www.tfabraham.com/blog/2010/07/biztalk-adapter-for-db2-error-sqlstate-hy000-sqlcode-270/</feedburner:origLink>
+    </item>
+    <item>
+      <title>An Optimization for the BizTalk ESB Toolkit 2.0 Portal Faults Page</title>
+      <link>http://feedproxy.google.com/~r/TFAbrahamOnTechnology/~3/VeixDbCEPkQ/</link>
+      <comments>http://www.tfabraham.com/blog/2010/07/an-optimization-for-the-biztalk-esb-toolkit-2-0-portal-faults-page/#comments</comments>
+      <pubDate>Mon, 12 Jul 2010 22:46:38 +0000</pubDate>
+      <dc:creator><![CDATA[Thomas]]></dc:creator>
+      <category><![CDATA[BizTalk]]></category>
+      <category><![CDATA[BizTalk 2009]]></category>
+      <category><![CDATA[ESB Toolkit]]></category>
+
+      <guid isPermaLink="false">http://www.tfabraham.com/blog/2010/07/an-optimization-for-the-biztalk-esb-toolkit-2-0-portal-faults-page/</guid>
+      <description><![CDATA[While debugging the issues described in my previous pos [&#8230;]]]></description>
+      <content:encoded>
+        <![CDATA[<p>While debugging the issues described in my previous post, I looked at how the ESB.Exceptions.Service’s GetFaults() method was implemented.&#160; In our case, we had stack traces inside the Description text, so the size of the data returned for each fault was quite large.&#160; Multiplied by thousands of faults, this is why we overflowed the default setting for maxItemsInObjectGraph.</p>
+<p>However, this raised an important question: why was the value for Description (and many other fields) being returned from the service when the web pages never show it?</p>
+<p>The answer?&#160; The service’s GetFaults() method returns every column from the Fault table, including potentially large values like ExceptionStackTrace, ExceptionMessage and Description.&#160; These fields are never used by the ESB Portal, so this behavior only serves to slow down the queries and cause issues like that described in my last post!</p>
+<p>I modified the GetFaults() method’s Linq query to select only the columns used in the portal:</p>
+<pre>select <span class="kwrd">new</span>
+{
+    f.Application,
+    f.DateTime,
+    f.ErrorType,
+    f.FailureCategory,
+    f.FaultCode,
+    f.FaultGenerator,
+    f.FaultID,
+    f.FaultSeverity,
+    f.InsertMessagesFlag,
+    f.MachineName,
+    f.Scope,
+    f.ServiceName
+};</pre>
+<p>And then created the actual Fault objects just before returning from the method:</p>
+<pre>List&lt;Fault&gt; faults = <span class="kwrd">new</span> List&lt;Fault&gt;();
+
+<span class="kwrd">foreach</span> (var fault <span class="kwrd">in</span> result)
+{
+    Fault f = <span class="kwrd">new</span> Fault()
+    {
+        Application = fault.Application,
+        DateTime = fault.DateTime,
+        ErrorType = fault.ErrorType,
+        FailureCategory = fault.FailureCategory,
+        FaultCode = fault.FaultCode,
+        FaultGenerator = fault.FaultGenerator,
+        FaultID = fault.FaultID,
+        FaultSeverity = fault.FaultSeverity,
+        InsertMessagesFlag = fault.InsertMessagesFlag,
+        MachineName = fault.MachineName,
+        Scope = fault.Scope,
+        ServiceName = fault.ServiceName
+    };
+    
+    faults.Add(f);
+}
+
+<span class="kwrd">return</span> faults;</pre>
+<p>This avoids the expense of SQL Server selecting many large data values that are never used, and can greatly reduce the amount of data that must be serialized and de-serialized across the service boundary.</p>
+<p>This change provided a very noticeable boost in performance on the Faults page when searching, filtering and moving between pages.</p>
+<img src="http://feeds.feedburner.com/~r/TFAbrahamOnTechnology/~4/VeixDbCEPkQ" height="1" width="1"/>]]>
+      </content:encoded>
+      <wfw:commentRss>http://www.tfabraham.com/blog/2010/07/an-optimization-for-the-biztalk-esb-toolkit-2-0-portal-faults-page/feed/</wfw:commentRss>
+      <slash:comments>0</slash:comments>
+      <feedburner:origLink>http://www.tfabraham.com/blog/2010/07/an-optimization-for-the-biztalk-esb-toolkit-2-0-portal-faults-page/</feedburner:origLink>
+    </item>
+    <item>
+      <title>BizTalk ESB Toolkit 2.0 Portal Timeouts and (401) Unauthorized Errors</title>
+      <link>http://feedproxy.google.com/~r/TFAbrahamOnTechnology/~3/DkpwQkQjAhI/</link>
+      <comments>http://www.tfabraham.com/blog/2010/07/biztalk-esb-toolkit-2-0-portal-timeouts-and-401-unauthorized-errors/#comments</comments>
+      <pubDate>Mon, 12 Jul 2010 22:41:32 +0000</pubDate>
+      <dc:creator><![CDATA[Thomas]]></dc:creator>
+      <category><![CDATA[BizTalk]]></category>
+      <category><![CDATA[BizTalk 2009]]></category>
+      <category><![CDATA[ESB Toolkit]]></category>
+
+      <guid isPermaLink="false">http://www.tfabraham.com/blog/2010/07/biztalk-esb-toolkit-2-0-portal-timeouts-and-401-unauthorized-errors/</guid>
+      <description><![CDATA[The Problem During application testing in our recently- [&#8230;]]]></description>
+      <content:encoded>
+        <![CDATA[<h2>The Problem</h2>
+<p>During application testing in our recently-built test and newly-built production BizTalk 2009 environments, we started having problems with the ESB Portal throwing a System.TimeoutException or a (401) Unauthorized error.&#160; This was happening with increasing frequency on the portal home page and the Faults page.&#160; On the home page, the problem seemed to be localized to the Faults pane.</p>
+<p>When we saw the (401) Unauthorized errors, they contained a detail message like this:</p>
+<p>MessageSecurityException: The HTTP request is unauthorized with client authentication scheme &#8216;Negotiate&#8217;. The authentication header received from the server was &#8216;Negotiate,NTLM&#8217;.</p>
+<p>De-selecting some of the BizTalk applications in My Settings seemed to decrease but not eliminate the problem.&#160; We had already checked and re-checked virtual directory authentication and application pool settings, etc.&#160; Needless to say, everyone was tired of being unable to reliably view faults through the portal.</p>
+<h2>Debugging</h2>
+<p>A couple of issues complicated the debugging process, both related to the portal pulling fault data from a web service – specifically the ESB.Exceptions.Service.</p>
+<p>First, the ESB.Exceptions.Service uses the webHttp (in other words, REST) binding introduced in .NET 3.5.&#160; REST is fine for certain applications, but it also lacks many features of SOAP.&#160; The one that stands out in particular here is REST’s lack of a fault communication protocol.&#160; SOAP has a well-defined structure and protocol for faults, so from the client side it’s easy to identify and obtain information about a service call failure.&#160; With REST, you’ll probably end up with a 400 Bad Request error and you’re on your own to guess as to what happened.</p>
+<p>In other words, one can’t really trust the error messages arising from calls to the ESB.Exceptions.Service.</p>
+<p>Second, the ESB.Exceptions.Service does not have built-in exception logging.&#160; [In another post I’ll have a simple solution for that.]&#160; Combined with REST’s lack of a fault protocol, any exception that occurs inside the service is essentially lost and obscured.</p>
+<p>One of our first debugging steps was to run SQL Profiler on the EsbExceptionDb and see which queries were taking so long.&#160; To our great surprise, when we refreshed the Faults page in the portal we saw in Profiler the same query running over and over, dozens or hundreds of times!</p>
+<p>Fortunately, I was able to obtain permissions to our test EsbExceptionDb, which had over 10,000 faults in it, and run the portal and WCF services on my development machine.&#160; Sure enough, I kept hitting a breakpoint inside the ESB.Exceptions.Service GetFaults() method over and over until the client timed out.&#160; However, there were no loops in the code to explain that behavior!</p>
+<p>Next, I turned on full WCF diagnostics for the ESB.Exceptions.Service, including message logging, using the WCF Service Configuration Editor.&#160; Using the Service Trace Viewer tool, I indeed saw the same service call happening again and again – but the trace also captured an error at the end of each call cycle.</p>
+<p>The error was a failure serializing the service method’s response back to XML.&#160; The service call was actually completing successfully (which I had also observed in the debugger).&#160; Once WCF took control again to send the response back to the client, it failed.&#160; Instead of just dying, it continuously re-executed the service method!&#160; This could be a bug in WCF 3.5 SP1.</p>
+<h2>Problem Solved</h2>
+<p>The solution to the WCF re-execution problem was increasing the maxItemsInObjectGraph setting.&#160; On the service side, I did this by opening ESB.Exceptions.Service’s web.config, locating the &lt;serviceBehaviors&gt; section, and adding the line &lt;dataContractSerializer maxItemsInObjectGraph=&quot;2147483647&quot; /&gt; to the existing “ExceptionServiceBehavior” behavior.</p>
+<p>With that simple configuration change, the service call now returned promptly and the portal displayed a matching error about being unable to de-serialize the data.&#160; As with the service, I needed to increase the maxItemsInObjectGraph setting.&#160; I opened the portal’s web.config, located the &lt;endpointBehaviors&gt; section, and added the line &lt;dataContractSerializer maxItemsInObjectGraph=&quot;2147483647&quot; /&gt; to the existing “bamservice” behavior.&#160; The error message didn’t change!&#160; I eventually discovered that the &lt;dataContractSerializer&gt; element must be placed <strong>before</strong> the &lt;webHttp /&gt; element.</p>
+<p>The portal now displayed the home page and Faults page properly, and the timeout and unauthorized errors disappeared.</p>
+<img src="http://feeds.feedburner.com/~r/TFAbrahamOnTechnology/~4/DkpwQkQjAhI" height="1" width="1"/>]]>
+      </content:encoded>
+      <wfw:commentRss>http://www.tfabraham.com/blog/2010/07/biztalk-esb-toolkit-2-0-portal-timeouts-and-401-unauthorized-errors/feed/</wfw:commentRss>
+      <slash:comments>1</slash:comments>
+      <feedburner:origLink>http://www.tfabraham.com/blog/2010/07/biztalk-esb-toolkit-2-0-portal-timeouts-and-401-unauthorized-errors/</feedburner:origLink>
+    </item>
+    <item>
+      <title>Race Condition in BizTalk ESB Toolkit 2.0 Exception Notification Service</title>
+      <link>http://feedproxy.google.com/~r/TFAbrahamOnTechnology/~3/cFAjzcTLBHo/</link>
+      <comments>http://www.tfabraham.com/blog/2010/07/race-condition-in-biztalk-esb-toolkit-2-0-exception-notification-service/#comments</comments>
+      <pubDate>Thu, 08 Jul 2010 20:42:12 +0000</pubDate>
+      <dc:creator><![CDATA[Thomas]]></dc:creator>
+      <category><![CDATA[BizTalk]]></category>
+      <category><![CDATA[BizTalk 2009]]></category>
+      <category><![CDATA[ESB Toolkit]]></category>
+
+      <guid isPermaLink="false">http://www.tfabraham.com/blog/2010/07/race-condition-in-biztalk-esb-toolkit-2-0-exception-notification-service/</guid>
+      <description><![CDATA[We are using the ESB Exception Notification (aka ESB.Al [&#8230;]]]></description>
+      <content:encoded>
+        <![CDATA[<p>We are using the ESB Exception Notification (aka ESB.AlertService) Windows service in conjunction with the ESB Portal website.  On occasion, we have a problem where the service indefinitely sends out duplicate emails for the same alert.  In the server’s Application Event Log, we see the error: &#8220;An exception of type &#8216;System.Data.StrongTypingException&#8217; occurred and was caught.&#8221;  The log entry also includes &#8220;The value for column &#8216;To&#8217; in table &#8216;AlertEmail&#8217; is DBNull.&#8221;</p>
+<p>We are allowing the service to pull user email addresses from Active Directory by configuring the LDAP Root under Alert Queue Options to LDAP://DC=company, DC=com.  With Active Directory you don’t need to specify a server name in your LDAP path.  Just point to the domain itself and Windows will figure out which domain controller to contact.</p>
+<p>The vast majority of the rows in AlertEmail contain the correct email address in the To column, but every once in a while there is a NULL.  Looking at the service code (QueueGenerator.cs), we can see that the email address in CustomEmail is always used first, if one was provided when the alert subscription was created.  We do not set this value, so the code next attempts to pull the email address from Active Directory using the GetEmailAddress() method (ActiveDirectoryHelper.cs).</p>
+<p>In order to reduce the number of AD queries, the code caches email addresses using the Enterprise Library caching block.  The cached entries expire after a configurable interval, which defaults to 1 minute.  If the username is already in the cache, then the corresponding email address is returned.  Otherwise, the code looks up the username in AD, grabs the email address and caches it.  The lookup code throws an exception if it doesn’t get back a valid email address, so it doesn’t explain how we got a NULL email address.</p>
+<p>The problematic code is the cache lookup:</p>
+<pre><span class="kwrd">if</span> (CacheMgr.Contains(name))
+{
+  Trace.WriteLine(<span class="str">"Reusing email address for "</span> + name + <span class="str">" from cache."</span>);
+  <span class="kwrd">return</span> (<span class="kwrd">string</span>)CacheMgr.GetData(name);
+}</pre>
+<p>This is a classic race condition.  The code checks to see if the username is in the cache, then runs a Trace.WriteLine(), then asks for the cached data associated with the username.  In the time between the Contains() and the GetData() calls, the cached data can expire and drop out of the cache, in which case GetData() will return null.  Most of the time it gets lucky and the data is still cached.  This probably explains how we sometimes get NULL values in the database.</p>
+<p>The proper code is simple because GetData() simply returns null when the requested data is not in the cache:</p>
+<pre><span class="kwrd">string</span> cachedEmail = (<span class="kwrd">string</span>)CacheMgr.GetData(name);
+
+<span class="kwrd">if</span> (!<span class="kwrd">string</span>.IsNullOrEmpty(cachedEmail))
+{
+    Trace.WriteLine(<span class="str">"Reusing email address for "</span> + name + <span class="str">" from cache."</span>);
+    <span class="kwrd">return</span> cachedEmail;
+}</pre>
+<p>The new version of the code eliminates the race condition and should prevent us from ever seeing NULL values in the database.</p>
+<p>I also created a <a href="http://connect.microsoft.com/BizTalk/feedback/details/573935/esb-toolkit-2-0-alert-service-race-condition-retreiving-email-address-from-cache-or-ad" target="_blank">bug report on Microsoft Connect</a>.</p>
+<img src="http://feeds.feedburner.com/~r/TFAbrahamOnTechnology/~4/cFAjzcTLBHo" height="1" width="1"/>]]>
+      </content:encoded>
+      <wfw:commentRss>http://www.tfabraham.com/blog/2010/07/race-condition-in-biztalk-esb-toolkit-2-0-exception-notification-service/feed/</wfw:commentRss>
+      <slash:comments>0</slash:comments>
+      <feedburner:origLink>http://www.tfabraham.com/blog/2010/07/race-condition-in-biztalk-esb-toolkit-2-0-exception-notification-service/</feedburner:origLink>
+    </item>
+    <item>
+      <title>Fix for BizTalk ESB Toolkit 2.0 Portal Message Viewer Error About BizTalkMsgBoxDb.dbo.ProcessHeartbeats</title>
+      <link>http://feedproxy.google.com/~r/TFAbrahamOnTechnology/~3/BXpP6J-Mx2Q/</link>
+      <comments>http://www.tfabraham.com/blog/2010/07/fix-for-biztalk-esb-toolkit-2-0-portal-message-viewer-error-about-biztalkmsgboxdb-dbo-processheartbeats/#comments</comments>
+      <pubDate>Wed, 07 Jul 2010 19:27:19 +0000</pubDate>
+      <dc:creator><![CDATA[Thomas]]></dc:creator>
+      <category><![CDATA[BizTalk]]></category>
+      <category><![CDATA[BizTalk 2009]]></category>
+      <category><![CDATA[ESB Toolkit]]></category>
+
+      <guid isPermaLink="false">http://www.tfabraham.com/blog/2010/07/fix-for-biztalk-esb-toolkit-2-0-portal-message-viewer-error-about-biztalkmsgboxdb-dbo-processheartbeats/</guid>
+      <description><![CDATA[When we recently configured the ESB Portal website, we  [&#8230;]]]></description>
+      <content:encoded>
+        <![CDATA[<p>When we recently configured the ESB Portal website, we encountered a number of permissions-related issues.  Our initial experience was the same as that <a href="http://social.msdn.microsoft.com/Forums/en/biztalkesb/thread/1fb510a8-9f4b-4e1e-9261-3273b037786c" target="_blank">of many others</a> who have discovered that the Portal’s included permissions script is inadequate.  Once we granted additional permissions to the existing database roles the permission errors cleared up – but we couldn’t overcome one last error: Invalid object name &#8216;BizTalkMsgBoxDb.dbo.ProcessHeartbeats&#8217;.</p>
+<p>As most of you know, Microsoft decided not to ship the source code for the ESB Toolkit 2.0 aside from the Management Portal &#8220;sample&#8221;.  In order to diagnose this error, I pulled out Red Gate’s .NET Reflector and started digging through disassembled code.  The source of this particular issue lies in the ESB.BizTalkOperationsService.</p>
+<p>In our environment, as in most high-performance BizTalk installations, the message box database is on a different SQL Server instance than the other BizTalk databases.  In a great oversight, <strong>the BizTalkOperationsService was hard-coded to expect the message box database to be present on the same server as the management database</strong>.  The operations service attempts to run this SQL query on the database that holds the management database: SELECT 1 FROM BizTalkMsgBoxDb.dbo.ProcessHeartbeats with (nolock) where uidProcessID=&#8217;{0}&#8217;.</p>
+<p>You’ll note another potential issue here: the message box database name is hard-coded in the query.  That has also <a href="http://social.msdn.microsoft.com/Forums/en-US/biztalkesb/thread/22a6c86f-7aed-476d-843a-740dab3d3b12" target="_blank">caused trouble</a> for people.</p>
+<p>To solve this problem, I first used .NET Reflector to re-create Visual Studio 2008 projects for the ESB.BizTalkOperationsService ASMX web service and Microsoft.Practices.ESB.BizTalkOperations.dll class library.  Once the projects were cleaned up and building successfully, I modified the code to query the management database for the primary message box database name and server using the existing stored procedure adm_MessageBox_Enum.  With that information in hand, I updated the code to create a connection string to the message box database and execute the ProcessHeartbeats query there.  I also removed the hard-coded database name.</p>
+<p>I tested my version of the BizTalkOperationsService using the ESB.BizTalkOperations.Test.Client included with the Toolkit source code and verified that everything still worked as expected.</p>
+<p>Since this was a fairly time-consuming issue to fix and it is a problem that should affect a good percentage of the installations out there, I decided to post my updated service and source code (download link at the end of this post).  I cannot make any guarantees about the correctness of the code, so consider it as-is and use at your own risk.  (That said, I believe that it works just fine.)</p>
+<p>Let’s hope that Microsoft reconsiders its unfortunate decision not to ship source code.</p>
+<p><a href="http://www.tfabraham.com/blog/wp-content/uploads/2010/07/ESB.BizTalkOperationsService.zip">ESB.BizTalkOperationsService.zip</a></p>
+<img src="http://feeds.feedburner.com/~r/TFAbrahamOnTechnology/~4/BXpP6J-Mx2Q" height="1" width="1"/>]]>
+      </content:encoded>
+      <wfw:commentRss>http://www.tfabraham.com/blog/2010/07/fix-for-biztalk-esb-toolkit-2-0-portal-message-viewer-error-about-biztalkmsgboxdb-dbo-processheartbeats/feed/</wfw:commentRss>
+      <slash:comments>1</slash:comments>
+      <feedburner:origLink>http://www.tfabraham.com/blog/2010/07/fix-for-biztalk-esb-toolkit-2-0-portal-message-viewer-error-about-biztalkmsgboxdb-dbo-processheartbeats/</feedburner:origLink>
+    </item>
+    <item>
+      <title>Performance Tips for the WCF SQL Adapter for BizTalk Server</title>
+      <link>http://feedproxy.google.com/~r/TFAbrahamOnTechnology/~3/79oRFVjE1ig/</link>
+      <comments>http://www.tfabraham.com/blog/2010/04/performance-tips-with-wcf-sql-adapter-for-biztalk-server/#comments</comments>
+      <pubDate>Thu, 29 Apr 2010 16:23:55 +0000</pubDate>
+      <dc:creator><![CDATA[Thomas]]></dc:creator>
+      <category><![CDATA[BizTalk]]></category>
+      <category><![CDATA[BizTalk 2009]]></category>
+      <category><![CDATA[SQL Adapter]]></category>
+      <category><![CDATA[wcf]]></category>
+
+      <guid isPermaLink="false">http://www.tfabraham.com/blog/2010/04/performance-tips-with-wcf-sql-adapter-for-biztalk-server/</guid>
+      <description><![CDATA[I&#8217;ve recently experienced (and largely solved) so [&#8230;]]]></description>
+      <content:encoded>
+        <![CDATA[<p>I&#8217;ve recently experienced (and largely solved) some serious performance issues with the BizTalk WCF Adapter for SQL Server (aka WCF-SQL).  This post describes the problem and the solution that I discovered.</p>
+<p>The BizTalk application in question has a fairly simple data flow:</p>
+<ol>
+<li>Receive a file containing multiple data records (i.e. an interchange) in XML format</li>
+<li>Use the standard XML Disassembler pipeline component to split the interchange into multiple messages</li>
+<li>Assign a static ESB Toolkit 2.0 itinerary to each message (still in the pipeline)</li>
+<li>Execute the itinerary as follows:</li>
+<li>  Map to canonical format (itinerary step 1 – messaging)</li>
+<li>  Execute a custom orchestration &#8220;service&#8221; to send the message to a SQL Server stored procedure (itinerary step 2 – orchestration)</li>
+<li>  Route the message to an off-ramp</li>
+</ol>
+<p>In this application I was doing things &#8220;the ESB Toolkit way&#8221; so everything was fairly dynamic.  The maps were identified and executed on the fly and the stored procedure was called through a dynamic one-way port configured on the fly by an ESB resolver.  If you&#8217;re not using the ESB Toolkit, keep reading – these tips still apply to you.</p>
+<p>There&#8217;s really not much to the application.  A batch of records comes in, gets split up into individual messages, and each message gets sent to a stored procedure in SQL Server using the WCF SQL adapter.  Except the performance was <strong>terrible</strong>.  On my (not-so-quick) machine, a batch containing 100 records was taking over one minute to process!</p>
+<p>I ruled out stored procedure performance as a factor by simply changing it to immediately return without doing any work.  Surprisingly, that barely increased the speed (a few seconds at most) even though the stored procedure call now returned instantly.</p>
+<p>I discovered a couple of things with SQL Profiler that led to the solution.</p>
+<p>First, we were sending an XML message to the stored procedure, so the parameter was typed as &#8216;xml&#8217; (the SQL Server XML data type).  However, BizTalk can&#8217;t send messages to SQL Server in that format.  It always sends them as a Unicode string.  SQL Server (or the .NET SQL client that underlies the adapter) was automatically inserting a CONVERT() on each call to turn the Unicode string into a variable of type &#8216;xml&#8217;, then executing the stored procedure.  To avoid this &#8220;magic&#8221; conversion, we converted the stored proc parameter to NVARCHAR(MAX) and added a CONVERT() inside the stored proc.  That moved the CONVERT() into the stored proc where SQL Server could pre-compile, optimize and cache it along with the rest of the code.</p>
+<p><strong>Always type your stored procedure parameter(s) as NVARCHAR(MAX) when sending an XML message to SQL Server.</strong></p>
+<p>Second, the major performance loss was related to the fact that this adapter is based on WCF and the fact that we were using a dynamic send port.  I realized that for every call to the stored procedure, there was also a second dynamic SQL call to obtain metadata about the stored proc&#8217;s parameters.  This was effectively doubling the number of calls to SQL Server, and running a relatively slow query to boot.</p>
+<p>For those of you who have worked with WCF, hopefully you know that creating WCF proxy clients is a relatively expensive operation.  It is always best to cache proxy objects or at least a ChannelFactory, or take advantage of the built-in caching added in .NET 3.0 SP1.  Details on all of that are <a href="http://blogs.msdn.com/wenlong/archive/2007/10/27/performance-improvement-of-wcf-client-proxy-creation-and-best-practices.aspx" target="_blank">here</a>.  The important thing is that if BizTalk is not able to cache the WCF proxy objects that it uses to talk to the WCF SQL adapter, then performance is definitely going to be bad.</p>
+<p>That&#8217;s where the dynamic port comes in.  Since the port is dynamically configured on every call to SQL Server, <em>the proxy objects are not cached</em>.  This explained a lot!  On every call we were taking a hit from creating and setting up a WCF proxy object, then taking a second hit because the WCF adapter has to obtain metadata about the stored procedure before it calls it.</p>
+<p><strong>Avoid dynamic ports with the WCF adapters, and in particular the WCF SQL adapter, in favor of static ports with a dynamic Action.</strong></p>
+<p>The solution in my case was to create a static WCF-Custom port configured for the SQL adapter, leaving the Action setting blank (because we call multiple stored procedures).  Instead of fully configuring the port on the fly, I now dynamically configure only the Action property.  <em><span style="text-decoration: underline">This produced a 45-50% increase in performance.</span></em></p>
+<p>The end result of these changes was that processing 100 messages went from over 65 seconds to about 20 seconds.</p>
+<p>The final tip is only relevant when you are using a fully dynamic send port with any of the WCF adapters on BizTalk 2009 and is described in <a href="http://blogs.msdn.com/mdoctor/archive/2009/12/18/performance-tip-when-using-wcf-custom-with-dynamic-send-ports-and-custom-bindings-on-biztalk-server-2009.aspx" target="_blank">this post</a>.  Here&#8217;s <a href="http://geekswithblogs.net/BizTalkUnleashed/archive/2010/03/31/configure-enabletransaction-and-isolationlevel-property-in-business-rules-for-dynamic.aspx" target="_blank">another post</a> on how to do it with the ESB Toolkit.  Performance can be modestly improved by explicitly setting the EnableTransaction and IsolationLevel context properties.  In my fully dynamic scenario, this improved performance by about 25%.  I am not clear how these settings interact with the SQL binding&#8217;s own useAmbientTransaction property.</p>
+<p><strong>When using dynamic ports with the BizTalk 2009 (only) WCF adapters, set the EnableTransaction and IsolationLevel context properties.</strong></p>
+<p>Our application is now performing at the speed that we expected, and hopefully these tips will give your own apps a nice speed boost too.</p>
+<img src="http://feeds.feedburner.com/~r/TFAbrahamOnTechnology/~4/79oRFVjE1ig" height="1" width="1"/>]]>
+      </content:encoded>
+      <wfw:commentRss>http://www.tfabraham.com/blog/2010/04/performance-tips-with-wcf-sql-adapter-for-biztalk-server/feed/</wfw:commentRss>
+      <slash:comments>0</slash:comments>
+      <feedburner:origLink>http://www.tfabraham.com/blog/2010/04/performance-tips-with-wcf-sql-adapter-for-biztalk-server/</feedburner:origLink>
+    </item>
+    <item>
+      <title>Orchestration Designer Views of the BizTalk ESB Toolkit 2.0 Transform and Routing Services</title>
+      <link>http://feedproxy.google.com/~r/TFAbrahamOnTechnology/~3/Pl8sGtiCf1A/</link>
+      <comments>http://www.tfabraham.com/blog/2010/04/orchestration-designer-views-of-the-biztalk-esb-toolkit-2-0-transform-and-routing-services/#comments</comments>
+      <pubDate>Tue, 27 Apr 2010 19:19:57 +0000</pubDate>
+      <dc:creator><![CDATA[Thomas]]></dc:creator>
+      <category><![CDATA[BizTalk]]></category>
+      <category><![CDATA[BizTalk 2009]]></category>
+      <category><![CDATA[ESB Toolkit]]></category>
+      <category><![CDATA[Orchestration]]></category>
+      <category><![CDATA[Routing]]></category>
+      <category><![CDATA[Transform]]></category>
+
+      <guid isPermaLink="false">http://www.tfabraham.com/blog/2010/04/orchestration-designer-views-of-the-biztalk-esb-toolkit-2-0-transform-and-routing-services/</guid>
+      <description><![CDATA[If you’ve worked with the BizTalk ESB Toolkit 2.0, you’ [&#8230;]]]></description>
+      <content:encoded>
+        <![CDATA[<p>If you’ve worked with the BizTalk ESB Toolkit 2.0, you’ve probably used Orchestration Extenders in your itineraries.  The Toolkit includes two default orchestrations (services) named Microsoft.Practices.ESB.Services.Transform and Microsoft.Practices.ESB.Services.Routing.  These service names correspond to two orchestrations installed in the Microsoft.Practices.ESB BizTalk application, named Microsoft.Practices.ESB.Agents.Transform and Microsoft.Practices.ESB.Agents.Delivery, respectively.</p>
+<p>These two orchestrations/services are somewhat mysterious since Microsoft chose not to release the Toolkit source code, and there is no detailed step-by-step documentation that describes what each orchestration does – not even a picture of the orchestration design surfaces.</p>
+<p>After running some itineraries through BizTalk that used these two orchestrations, I launched the resulting instances in the Orchestration Debugger.  As you probably know, the Orchestration Debugger shows a close representation of the Visual Studio Orchestration Designer view, albeit without ports and with no ability to drill into Expression shapes, etc.</p>
+<p>I screen captured the orchestration views in the debugger and made some annotations to make the Send and Receive shapes more apparent.  Since these will probably be useful to many other BizTalk developers, I’m sharing them below in PDF and PNG formats:</p>
+<p><a href="/blog/wp-content/uploads/2010/04/Microsoft.ESB.Agents.Transform.png" target="_blank">Microsoft.ESB.Agents.Transform.png</a><br />
+<a href="/blog/wp-content/uploads/2010/04/Microsoft.ESB.Agents.Transform.pdf" target="_blank">Microsoft.ESB.Agents.Transform.pdf</a><br />
+<a href="/blog/wp-content/uploads/2010/04/Microsoft.ESB.Agents.Delivery.png" target="_blank">Microsoft.ESB.Agents.Delivery.png</a><br />
+<a href="/blog/wp-content/uploads/2010/04/Microsoft.ESB.Agents.Delivery.pdf" target="_blank">Microsoft.ESB.Agents.Delivery.pdf</a></p>
+<p>UPDATE (04/27/2010): After my original post, I was able to extract the original ODX XML’s and re-create an ODX file for each orchestration. This will let you open up either orchestration in the Orchestration Designer and view all of the code in Expression shapes, etc. They are posted below.</p>
+<p><a href="/blog/wp-content/uploads/2010/04/Microsoft.ESB.Agents.Transform.odx" target="_blank">Microsoft.ESB.Agents.Transform.odx</a><br />
+<a href="/blog/wp-content/uploads/2010/04/Microsoft.ESB.Agents.Delivery.odx" target="_blank">Microsoft.ESB.Agents.Delivery.odx</a></p>
+<img src="http://feeds.feedburner.com/~r/TFAbrahamOnTechnology/~4/Pl8sGtiCf1A" height="1" width="1"/>]]>
+      </content:encoded>
+      <wfw:commentRss>http://www.tfabraham.com/blog/2010/04/orchestration-designer-views-of-the-biztalk-esb-toolkit-2-0-transform-and-routing-services/feed/</wfw:commentRss>
+      <slash:comments>0</slash:comments>
+      <feedburner:origLink>http://www.tfabraham.com/blog/2010/04/orchestration-designer-views-of-the-biztalk-esb-toolkit-2-0-transform-and-routing-services/</feedburner:origLink>
+    </item>
+  </channel>
+</rss>
