@@ -35,10 +35,10 @@ namespace jarwin.ObjectFactory
 
             if (inputUri.Contains("http://") || inputUri.Contains("https://"))
             {
-                using (WebClient webClient = new WebClient())
-                {
-                    var textFromFile = webClient.DownloadString(inputUri);
-                }
+                //using (WebClient webClient = new WebClient())
+                //{
+                //    var textFromFile = webClient.DownloadString(inputUri);
+                //}
 
                 feed.feedURI = inputUri;
             }

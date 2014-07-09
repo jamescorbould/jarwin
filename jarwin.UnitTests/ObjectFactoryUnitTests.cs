@@ -35,5 +35,15 @@ namespace jarwin.UnitTests
             Assert.IsTrue(rss != null);
             Assert.IsTrue(rss.feed.feedURI == null);  // Not provided in the file, hence cannot be assigned.
         }
+
+        [TestMethod]
+        public void CreateRssFromUriFileSystemStephenson()
+        {
+            string inputUri = @"http://geekswithblogs.net/michaelstephenson/Rss.aspx";
+            Rss rss = new Rss(inputUri);
+
+            Assert.IsTrue(rss != null);
+            Assert.IsTrue(rss.feed.feedURI == null);  // Not provided in the file, hence cannot be assigned.
+        }
     }
 }

@@ -64,44 +64,51 @@ namespace jarwin.Form
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (dataGridView1.Rows.Count > 0)
+            if (e.Button == MouseButtons.Right && e.Node.Name != "my feeds")
             {
-                clearDataGridView();
+                contextMenuStrip1.Show(e.Location.X, e.Location.Y);
             }
-
-            treeView1.SelectedNode = e.Node;
-
-            var feedItems =
-                from feedItem in dataContext.FeedItem
-                where feedItem.feedID == (int)e.Node.Tag
-                select feedItem;
-
-            int index = 0;
-
-            try
+            else
             {
-                if (feedItems.Count() > 0)
+                if (dataGridView1.Rows.Count > 0)
                 {
-                    foreach (var item in feedItems)
+                    clearDataGridView();
+                }
+
+                treeView1.SelectedNode = e.Node;
+
+                var feedItems =
+                    from feedItem in dataContext.FeedItem
+                    where feedItem.feedID == (int)e.Node.Tag
+                    select feedItem;
+
+                int index = 0;
+
+                try
+                {
+                    if (feedItems.Count() > 0)
                     {
-                        dataGridView1.Rows.Add();
-                        dataGridView1.Rows[index].Cells[0].Value = item.publishedDateTime;
-                        dataGridView1.Rows[index].Cells[1].Value = item.title;
+                        foreach (var item in feedItems)
+                        {
+                            dataGridView1.Rows.Add();
+                            dataGridView1.Rows[index].Cells[0].Value = item.publishedDateTime;
+                            dataGridView1.Rows[index].Cells[1].Value = item.title;
 
-                        dataGridView1.Rows[index].Tag = item;
+                            dataGridView1.Rows[index].Tag = item;
 
-                        ++index;
+                            ++index;
+                        }
                     }
                 }
+                catch (NullReferenceException)
+                { }
             }
-            catch (NullReferenceException)
-            { }
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             FeedItem item = (FeedItem)dataGridView1.Rows[e.RowIndex].Tag;
-            richTextBox1.Text = item.content;
+            richTextBox1.Text = String.IsNullOrEmpty(item.content) ? item.description : item.content;
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -142,6 +149,11 @@ namespace jarwin.Form
         }
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
         {
 
         }
