@@ -32,8 +32,15 @@ namespace jarwin
             if (!String.IsNullOrEmpty(textBox1.Text))
             {
                 infoLabel.Text = "Processing file...";
-                CreateFeedFromRss(textBox1.Text);
-                infoLabel.Text = "File processed successfully!";
+
+                if (CreateFeedFromRss(textBox1.Text))
+                {
+                    infoLabel.Text = "File processed successfully!";
+                }
+                else
+                {
+                    infoLabel.Text = "File processing failed!  Sorry, can't process this file.";
+                }
             }
         }
 
@@ -44,12 +51,21 @@ namespace jarwin
             textBox1.Text = fileDialog.FileName;
         }
 
-        private void CreateFeedFromRss(string inputUri)
+        private bool CreateFeedFromRss(string inputUri)
         {
             // Using the Rss feed xml, create an Rss object.
             Rss rss = new Rss(inputUri);
             dataContext.Feed.InsertOnSubmit(rss.feed);
-            dataContext.SubmitChanges();
+
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("Error processing feed.\n\nError message as follows: {0}", ex.Message), "jarwin - Error Processing Feed");
+                return false;
+            }
 
             int feedID = rss.feed.feedID; // Value provided by SQL Server identity column.
             int feedItemID = 0;
@@ -63,7 +79,17 @@ namespace jarwin
                 feedItemID += 1;
             }
 
-            dataContext.SubmitChanges();
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(String.Format("Error process feed.\n\nError message as follows: {0}", ex.Message), "jarwin - Error Processing Feed Items");
+                return false;
+            }
+
+            return true;
         }
     }
 }

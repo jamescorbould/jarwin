@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionArtefacts", "Soluti
 		SolutionArtefacts\abraham_blog_rss.xml = SolutionArtefacts\abraham_blog_rss.xml
 		SolutionArtefacts\jc_blog_rss.xml = SolutionArtefacts\jc_blog_rss.xml
 		README.txt = README.txt
+		SolutionArtefacts\stephenson_blog_rss.xml = SolutionArtefacts\stephenson_blog_rss.xml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.Utility", "jarwin.Utility\jarwin.Utility.csproj", "{74CA8CCF-42A1-48E8-AC31-D68F58995848}"

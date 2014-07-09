@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using jarwin.ObjectFactory;
+using jarwin.DAL;
 
 namespace jarwin.UnitTests
 {
@@ -23,6 +24,16 @@ namespace jarwin.UnitTests
             Rss rss = new Rss(inputUri);
 
             Assert.IsTrue(rss != null);
+        }
+
+        [TestMethod]
+        public void CreateRssFromUriFileSystemStephenson()
+        {
+            string inputUri = @"..\..\..\SolutionArtefacts\stephenson_blog_rss.xml";
+            Rss rss = new Rss(inputUri);
+
+            Assert.IsTrue(rss != null);
+            Assert.IsTrue(rss.feed.feedURI == null);  // Not provided in the file, hence cannot be assigned.
         }
     }
 }

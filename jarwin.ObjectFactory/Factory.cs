@@ -14,7 +14,10 @@ namespace jarwin.ObjectFactory
             Feed feed = new Feed();
 
             feed.lastDownloadDateTime = System.DateTime.Now;
-            feed.status = "ACTIVE";
+            feed.lastBuildDateTime = System.DateTime.Now;
+            feed.updatePeriod = "hourly";
+            feed.updateFrequency = 1;
+            feed.status = "active";
 
             return feed;
         }

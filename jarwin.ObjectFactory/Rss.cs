@@ -39,6 +39,8 @@ namespace jarwin.ObjectFactory
                 {
                     var textFromFile = webClient.DownloadString(inputUri);
                 }
+
+                feed.feedURI = inputUri;
             }
 
             using (XmlReader reader = XmlReader.Create(inputUri))
@@ -170,7 +172,7 @@ namespace jarwin.ObjectFactory
                                     reader.Skip();
                                 }
                                 break;
-                            case "sy:updatePeriod":
+                            case "sy:updateperiod":
                                 if (currentObjType == "FEED")
                                 {
                                     feed.updatePeriod = reader.ReadElementContentAsString();
@@ -180,7 +182,7 @@ namespace jarwin.ObjectFactory
                                     reader.Skip();
                                 }
                                 break;
-                            case "sy:updateFrequency":
+                            case "sy:updatefrequency":
                                 if (currentObjType == "FEED")
                                 {
                                     feed.updateFrequency = reader.ReadElementContentAsInt();
@@ -229,7 +231,7 @@ namespace jarwin.ObjectFactory
                 }
                 // TODO: validate that the Rss object has been instantiated correctly,
                 // before attempting to insert into the database.
-
+                
             }
         }
     }

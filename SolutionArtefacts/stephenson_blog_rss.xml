@@ -1,0 +1,432 @@
+﻿<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/" xmlns:wfw="http://wellformedweb.org/CommentAPI/" xmlns:slash="http://purl.org/rss/1.0/modules/slash/" xmlns:copyright="http://blogs.law.harvard.edu/tech/rss" xmlns:image="http://purl.org/rss/1.0/modules/image/">
+  <channel>
+    <title>Michael Stephenson</title>
+    <link>http://geekswithblogs.net/michaelstephenson/Default.aspx</link>
+    <description>keeping your feet on premise while your heads in the cloud</description>
+    <language>en-GB</language>
+    <copyright>Michael Stephenson</copyright>
+    <managingEditor>michael_stephensonuk@yahoo.co.uk</managingEditor>
+    <generator>Subtext Version 0.0.0.0</generator>
+    <image>
+      <title>Michael Stephenson</title>
+      <url>http://geekswithblogs.net/images/RSS2Image.gif</url>
+      <link>http://geekswithblogs.net/michaelstephenson/Default.aspx</link>
+      <width>77</width>
+      <height>60</height>
+    </image>
+    <item>
+      <title>Why use Service Bus Relay when I can use Hybrid Connections?</title>
+      <category>BizTalk</category>
+      <category>BizTalk</category>
+      <category>Azure Service Bus</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/07/07/157350.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/07/07/157350.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/07/07/157350.aspx&lt;/a&gt;&lt;/p&gt;Im slowly in the process of moving over to a new website so ill be cross posting on both blogs for a while.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Here is my new article talking about service bus relay and hybrid connections&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="http://microsoftintegration.guru/2014/07/07/use-service-bus-relay-now-hybrid-connections/"&gt;http://microsoftintegration.guru/2014/07/07/use-service-bus-relay-now-hybrid-connections/&lt;/a&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/157350.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/07/07/157350.aspx</guid>
+      <pubDate>Mon, 07 Jul 2014 19:47:37 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/157350.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/07/07/157350.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/157350.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/157350.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>8 ways any BizTalk customer can use Azure right now</title>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/06/05/156805.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/06/05/156805.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/06/05/156805.aspx&lt;/a&gt;&lt;/p&gt;just posted this on technet wiki&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;http://social.technet.microsoft.com/wiki/contents/articles/24755.8-ways-any-biztalk-customer-can-use-azure-right-now.aspx&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/156805.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/06/05/156805.aspx</guid>
+      <pubDate>Thu, 05 Jun 2014 23:02:27 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/156805.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/06/05/156805.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/156805.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/156805.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>BizTalk Server Best Practices</title>
+      <category>BizTalk</category>
+      <category>BizTalk</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/05/19/156438.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/05/19/156438.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/05/19/156438.aspx&lt;/a&gt;&lt;/p&gt;Theres a few articles out there about various opinions on best practices for BizTalk.  I thought id create a place on technet wiki to collate them all.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="http://social.technet.microsoft.com/wiki/contents/articles/24508.biztalk-server-best-practices.aspx"&gt;http://social.technet.microsoft.com/wiki/contents/articles/24508.biztalk-server-best-practices.aspx&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Please add any ive missed&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/156438.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/05/19/156438.aspx</guid>
+      <pubDate>Tue, 20 May 2014 01:15:33 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/156438.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/05/19/156438.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/156438.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/156438.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>BizTalk HL7 Testing - Tool to get config from BTS Management DB</title>
+      <category>BizTalk</category>
+      <category>BizTalk</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/04/21/156030.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/04/21/156030.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/04/21/156030.aspx&lt;/a&gt;&lt;/p&gt;&lt;div&gt;As a follow up to the HL7 testing framework I published recently the below video is about a tool which is part of the framework which will allow you to generate the configuration you might require for the tests to stub an application or to send messages to biztalk by pointing the tool at your biztalk management database and letting it inspect the ports you have already setup.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="https://www.youtube.com/watch?v=Mos8co5GUsc&amp;amp;feature=youtu.be"&gt;https://www.youtube.com/watch?v=Mos8co5GUsc&amp;amp;feature=youtu.be&lt;/a&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/156030.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/04/21/156030.aspx</guid>
+      <pubDate>Mon, 21 Apr 2014 22:33:23 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/156030.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/04/21/156030.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/156030.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/156030.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Automated Testing of BizTalk HL7 solutions with Specflow</title>
+      <category>BizTalk</category>
+      <category>BizTalk</category>
+      <category>BizTalk Testing</category>
+      <category>BizTalk Testing</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/04/20/156021.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/04/20/156021.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/04/20/156021.aspx&lt;/a&gt;&lt;/p&gt;&lt;div&gt;Recently ive been working on a small widget to help with automated testing of BizTalk HL7 implementations.  In the below link there is a video which walks through how all of this works.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="http://youtu.be/DivfVafMqmM"&gt;http://youtu.be/DivfVafMqmM&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Ive open sourced an assembly and the sample from the video if you would like to play around with this&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="https://appfxhl7testing.codeplex.com/"&gt;https://appfxhl7testing.codeplex.com/&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Love to hear any feedback on how people get on with it.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/156021.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/04/20/156021.aspx</guid>
+      <pubDate>Mon, 21 Apr 2014 11:41:07 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/156021.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/04/20/156021.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/156021.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/156021.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>BizTalk Services – Can I create a mapping service in the cloud</title>
+      <category>BizTalk</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/03/17/155701.aspx</link>
+      <description>
+        &lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/03/17/155701.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/03/17/155701.aspx&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Ive recently been playing with some of the use cases you might be able to implement using Windows Azure BizTalk Services.  In this case I wanted to look at the options for exposing the transformation capability of BizTalk as a service which applications could use.  This is something that you might occasionally do in BizTalk Server where you simply take a message transform it and return a response.  It allows you to abstract this transformation logic outside of the application and perhaps centralize things like reference data.
+        &lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;This sample would look a little like the below diagram.
+        &lt;/p&gt;&lt;p&gt;&lt;img src="https://gwb.blob.core.windows.net/michaelstephenson/031714_1330_BizTalkServ1.png" alt="" /&gt;
+        &lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;Rather than writing a big article about this I have decided to make a short video walking through how you can do this.  The video is available at the following location:
+        &lt;/p&gt;&lt;p&gt;&lt;a href="https://www.youtube.com/watch?v=cn93YN7HHoI"&gt;https://www.youtube.com/watch?v=cn93YN7HHoI&lt;/a&gt;
+        &lt;/p&gt;&lt;p&gt;Also just a quick thanks for the WCF Loopback Binding which was created by Synthesis Consulting.
+        &lt;/p&gt;&lt;p&gt;&lt;a href="http://synthesisconsulting.net/blog/2012/5/17/biztalk-wcf-loopback-binding.html"&gt;http://synthesisconsulting.net/blog/2012/5/17/biztalk-wcf-loopback-binding.html&lt;/a&gt;&lt;/p&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/155701.aspx" width="1" height="1" /&gt;
+      </description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/03/17/155701.aspx</guid>
+      <pubDate>Mon, 17 Mar 2014 13:30:45 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/155701.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/03/17/155701.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/155701.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/155701.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Real-world WABS - Part 1</title>
+      <category>BizTalk</category>
+      <category>BizTalk</category>
+      <category>BizTalk Services</category>
+      <category>Windows Azure</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/03/09/155627.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/03/09/155627.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/03/09/155627.aspx&lt;/a&gt;&lt;/p&gt;Ive done a video about some thoughts about using windows azure biztalk services in the real world.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Check it out here:&lt;/div&gt;&lt;div&gt;&lt;a href="https://www.youtube.com/watch?v=BXbLQPeLtdg&amp;amp;feature=youtu.be"&gt;https://www.youtube.com/watch?v=BXbLQPeLtdg&amp;amp;feature=youtu.be&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Love to hear peoples thoughts&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/155627.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/03/09/155627.aspx</guid>
+      <pubDate>Mon, 10 Mar 2014 02:04:05 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/155627.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/03/09/155627.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/155627.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/155627.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Introducing ROBODOC</title>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/02/08/155396.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/02/08/155396.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/02/08/155396.aspx&lt;/a&gt;&lt;/p&gt;We are currently in ward 23 the kids cardiac ward at the Freeman Hospital in Newcastle and have been playing with the code club kids programming books and AJ has created his first computer programme.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;The Dr's work so hard here so we decided to help by creating ROBODOC the new NHS Super Computer Doctor.  &lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;To use ROBODOC you simply ask it for a diagnosis  and it will give you advice to help you.  - Note this is not real Dr's advice so please dont use this to genuinely diagnose your health issues :-)&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Anyway if anyone wants to play with ROBODOC, you need python and the code is below:&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;#ROBODOC - The NHS Super Computer Doctor&lt;/div&gt;&lt;div&gt;&lt;div&gt;#AJ Stephenson&lt;/div&gt;&lt;div&gt;#Aged 8&lt;/div&gt;&lt;div&gt;#Written on: 2014-01-08&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;import random&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;# save the answers to use later&lt;/div&gt;&lt;div&gt;ans1="I think lots of medicine is required!"&lt;/div&gt;&lt;div&gt;ans2="I recommend a long session in the play room"&lt;/div&gt;&lt;div&gt;ans3="I blame the hospital food!"&lt;/div&gt;&lt;div&gt;ans4="I think it could be man flu?"&lt;/div&gt;&lt;div&gt;ans5="I prescribe TLC!"&lt;/div&gt;&lt;div&gt;ans6="On no its highly contagious"&lt;/div&gt;&lt;div&gt;ans7="Hmmmm it doesnt look good!"&lt;/div&gt;&lt;div&gt;ans8="Man up theres nothing wrong with you"&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;loopVal=1&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;while loopVal == 1:&lt;/div&gt;&lt;div&gt;    # open game&lt;/div&gt;&lt;div&gt;    print("welcome to ROBODOC \n\tThe new NHS super computer doctor \n")&lt;/div&gt;&lt;div&gt;    &lt;/div&gt;&lt;div&gt;    # get the users for advice&lt;/div&gt;&lt;div&gt;    question = input("Ask me for a diagnosis.  \n Then press ENTER and ill work my magic \n")&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;    print("shaking ...\n" * 4)&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;    # choose a random answer&lt;/div&gt;&lt;div&gt;    choice = random.randint(1,8)&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;    if choice == 1:&lt;/div&gt;&lt;div&gt;        answer=ans1&lt;/div&gt;&lt;div&gt;    elif choice == 2:&lt;/div&gt;&lt;div&gt;        answer = ans2&lt;/div&gt;&lt;div&gt;    elif choice == 3:&lt;/div&gt;&lt;div&gt;        answer = ans3&lt;/div&gt;&lt;div&gt;    elif choice == 4:&lt;/div&gt;&lt;div&gt;        answer = ans4&lt;/div&gt;&lt;div&gt;    elif choice == 5:&lt;/div&gt;&lt;div&gt;        answer=ans5&lt;/div&gt;&lt;div&gt;    elif choice == 6:&lt;/div&gt;&lt;div&gt;        answer = ans6&lt;/div&gt;&lt;div&gt;    elif choice == 7:&lt;/div&gt;&lt;div&gt;        answer = ans7&lt;/div&gt;&lt;div&gt;    else:&lt;/div&gt;&lt;div&gt;        answer = ans8&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;    # print the answer&lt;/div&gt;&lt;div&gt;    print (answer)&lt;/div&gt;&lt;div&gt;    print ("\n\n\n")&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;    #input("\n\n\Press the RETURN key to finish.")&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Wonder how many people we can get to like ROBODOC?&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/155396.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/02/08/155396.aspx</guid>
+      <pubDate>Sat, 08 Feb 2014 18:53:31 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/155396.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/02/08/155396.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/155396.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/155396.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Deployment Automation, DevOps and a bit of BizTalk</title>
+      <category>BizTalk</category>
+      <category>BizTalk</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/01/29/155299.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/01/29/155299.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/01/29/155299.aspx&lt;/a&gt;&lt;/p&gt;&lt;div&gt;I should have done a shout out about this ages ago, but if anyone is interested in deployment automation and at a high level touching on how BizTalk played into this for a large enterprise check out the below video.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;http://channel9.msdn.com/Events/ALM-Summit/ALM-Summit-3/Implementing-Successful-Continuous-Deployment-Practices-for-DevOps&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/155299.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/01/29/155299.aspx</guid>
+      <pubDate>Wed, 29 Jan 2014 16:09:23 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/155299.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/01/29/155299.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/155299.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/155299.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Flowing a Windows Identity through Azure Service Bus Queues</title>
+      <category>Kerberos Adventures</category>
+      <category>Windows Azure</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/01/24/155271.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/01/24/155271.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/01/24/155271.aspx&lt;/a&gt;&lt;/p&gt;Ive recently written a whitepaper about how you could flow the details of a Windows Identity through Windows Azure Service Bus Queues and then use that on-premise to act as that user when accessing downstream resources.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;The paper shows a walk through of setting up a complex scenario involving protocol translation, and kerberos multi-hop delegation to get the message from a queue with the identity associated and then to flow the identity through 2 WCF hops and then to impersonate the user when accessing a SQL database.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Im hoping this complex scenario is explained nice and clearly so that it helps people really understand what settings need to be configured where to implement this.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;The paper is available in:&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;ul&gt;&lt;li&gt;PDF - &lt;a href="http://cscblogsamples.blob.core.windows.net/whitepapers/Windows%20Identity%20Flow%20and%20Windows%20Azure%20Service%20Bus%20Queues.pdf"&gt;Click Here&lt;/a&gt;&lt;/li&gt;&lt;li&gt;Word - &lt;a href="http://cscblogsamples.blob.core.windows.net/whitepapers/Windows%20Identity%20Flow%20and%20Windows%20Azure%20Service%20Bus%20Queues.docx"&gt;Click Here&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;div&gt;Also special thanks to Brian Milburn for reviewing this for me&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Love to hear what people think&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/155271.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/01/24/155271.aspx</guid>
+      <pubDate>Sat, 25 Jan 2014 00:05:21 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/155271.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/01/24/155271.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/155271.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/155271.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>RabbitMQ for .net Developers Part 2</title>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/01/23/155262.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/01/23/155262.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/01/23/155262.aspx&lt;/a&gt;&lt;/p&gt;My recent course on RabbitMQ for .net Developers part 2 has just gone live on Pluralsight&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;http://pluralsight.com/training/Courses/TableOfContents/rabbitmq-dotnet-developers-pt2&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Yay!&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/155262.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/01/23/155262.aspx</guid>
+      <pubDate>Thu, 23 Jan 2014 16:59:23 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/155262.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/01/23/155262.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/155262.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/155262.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Architectural Thoughts on JSON from a BizTalk Perspective</title>
+      <category>BizTalk</category>
+      <category>BizTalk</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2014/01/23/155260.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2014/01/23/155260.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2014/01/23/155260.aspx&lt;/a&gt;&lt;/p&gt;&lt;div&gt;I wrote this article a while back and Saravana has been kind enough to publish it as a whitepaper through BizTalk 360's whitepaper gallery.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Its a discussion around JSON and BizTalk and some of the things BizTalk people need to think about as the use of JSON with BizTalk increases&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="http://go.biztalk360.com/architectural-thoughts-on-json-from-biztalk-perspective"&gt;http://go.biztalk360.com/architectural-thoughts-on-json-from-biztalk-perspective&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Also a big thanks to my friends Richard Seroter, Steef-Jan Wiggers and Kent Weare for reviewing it&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Be great to hear what people think&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/155260.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2014/01/23/155260.aspx</guid>
+      <pubDate>Thu, 23 Jan 2014 15:26:34 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/155260.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2014/01/23/155260.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/155260.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/155260.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>BizTalk Maturity Assessment vs BizTalk Health Check</title>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/11/20/154675.aspx</link>
+      <description>
+        &lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/11/20/154675.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/11/20/154675.aspx&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;Recently a few people have asked me about the differences between the BizTalk Health Check and the BizTalk Maturity Assessment so I thought I'd put a few thoughts out here.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;Firstly let's start with what the BizTalk Health Assessment is.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;h1&gt;Health Check
+        &lt;/h1&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;Most consultancies who have a BizTalk capability offer some flavour of BizTalk Health Check.  In these cases they will bring in a BizTalk consultant who will look at your production environment and do an evaluation of the current state of the environment and identify any deficiencies and updates which may be required or any optimizations which may have been missed.  Often the customer is in a painful place when they call someone in for a health check.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;A health check is often focused on the customer's production environment but sometimes they will also cover test environments.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;The focus of a health check is usually to answer the following questions:
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;Is my infrastructure setup according to good practices for my scenario
+        &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;Is my BizTalk/SQL/Windows setup configured in line with good practices and appropriately for my scenario
+        &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;Am I doing the right admin/operator tasks to make sure my environment stays healthy
+        &lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;The main audience of the BizTalk Health Check is the BizTalk Administrator and perhaps the BizTalk Service Owner.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;In addition to the BizTalk Health Check's which most consultancies offer, Tord Glad Nordhal who is one of the most respected BizTalk Admin/Infrastructure consultants in the community has also produced a BizTalk Health Check which has been made publically available.  This health check pulls together his years of experience in this space and then made it available to BizTalk people and companies who use BizTalk so that they can access this information themselves.  The aim is to get customers to setup BizTalk successfully and to maintain a healthy BizTalk environment.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;Tord has made this tool available at the following location:
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;a href="http://biztalkadmin.com/biztalk/"&gt;&lt;span style="color:blue; font-family:Times New Roman; font-size:13pt; text-decoration:underline"&gt;http://biztalkadmin.com/biztalk/&lt;/span&gt;&lt;/a&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;I'm a big fan of Tord's work and love the health check!
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;h1&gt;BizTalk Maturity Assessment
+        &lt;/h1&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;The BizTalk Maturity Assessment is taking a wider look at a customer's investment in BizTalk and is focusing on the following questions:
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;What are the things I should do to ensure I have a positive experience with BizTalk
+        &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;How can I make sure I get a good ROI from BizTalk
+        &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;I have invested in BizTalk and its going wrong, how can I identify the cause of the problems
+        &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;Are the different areas of my business (eg: development, test, production support) displaying the right behaviours to ensure I am successful with BizTalk
+        &lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;There is a small amount of overlap with the health check because the Maturity Assessment has a section which looks at your infrastructure and operations areas, but the health check is a deep dive in the infrastructure and configuration area where as the Maturity Assessment is taking a higher level view of these areas.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;The Maturity Assessment is taking a holistic view across your organisation and looking at the behaviours that should be displayed in different areas to see if they will compliment or conflict with making a successful investment in BizTalk.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;The BizTalk Maturity Assessment has drawn from the experience of a number of well-respected people within the BizTalk Community (including Tord)  and should help you to have the capability to deliver great solutions using BizTalk.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;h1&gt;Conclusion
+        &lt;/h1&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;In conclusion the BizTalk Maturity Assessment and the BizTalk Health Check complement each other quite nicely and are both things which your organisation should be using on a regular basis (id recommend minimum quarterly).
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;Even better is that they are both free!
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="color:black; font-family:Times New Roman; font-size:13pt"&gt;
+        &lt;/span&gt; &lt;/p&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/154675.aspx" width="1" height="1" /&gt;
+      </description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/11/20/154675.aspx</guid>
+      <pubDate>Thu, 21 Nov 2013 02:06:27 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/154675.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/11/20/154675.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/154675.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/154675.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>RabbitMQ for .net Developers Part 1</title>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/11/15/154631.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/11/15/154631.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/11/15/154631.aspx&lt;/a&gt;&lt;/p&gt;Ive just completed a training course with Pluralsight for RabbitMQ for .net developers.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Part 1 of this course will  be a gentlish introduction to rabbitmq from the perspective of a .net developer.  It will help you get up and running and talk about some of the message exchange patterns your likely to use.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Check it out on the following link&lt;/div&gt;&lt;div&gt;&lt;a href="http://pluralsight.com/training/Courses/TableOfContents/rabbitmq-dotnet-developers"&gt;http://pluralsight.com/training/Courses/TableOfContents/rabbitmq-dotnet-developers&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Part 2 will be coming soon where we will look at some of the real world type topics and considerations for using RabbitMQ&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/154631.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/11/15/154631.aspx</guid>
+      <pubDate>Sat, 16 Nov 2013 03:40:43 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/154631.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/11/15/154631.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/154631.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/154631.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Automated Build &amp; Azure Service Bus</title>
+      <category>Azure Service Bus</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/11/14/154622.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/11/14/154622.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/11/14/154622.aspx&lt;/a&gt;&lt;/p&gt;&lt;div&gt;Recently with a little advice from Paolo who created the Windows Azure Service Bus Explorer tool ive worked to create a few tasks which will help us to do a little automation around the use of Windows Azure Service Bus.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Being a BizTalk guy at heart I have been thinking about the best ways to manage the configuration of my service bus namespace and in particular when my development team is working on components which interact with Service Bus.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;In general we want each developer to be able to work on their own in isolation so when running some tests they dont interfere with other developers so each dev has their own service bus namespace.  From here I wanted to have an experience similar to a BizTalk binding file.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;We use the Service Bus Explorer to manage the namespace but then once changes are made we export these to an xml file which we keep in TFS.  This file is then used like a binding file.  When the build runs on our component we will create a new namespace and import the xml to be able to set the namespace up with the right queues and topics etc for any test cases we wish to run.  We also use the Shared Access Secret API to be able to set the security the same for each developer so we dont need to keep juggling config settings around in the development environment.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;With this we have created a codeplex project to share this with everyone.&lt;/div&gt;&lt;div&gt;&lt;a rel="nofollow" shape="rect" target="_blank" href="https://appfxservicebusbuild.codeplex.com/" id="yui_3_13_0_1_1384353537263_64108" style="margin: 0px; padding: 0px; background-color: rgb(255, 255, 255); color: purple; outline: none; font-family: 'Helvetica Neue', 'Segoe UI', Helvetica, Arial, 'Lucida Grande', sans-serif; font-size: 13px;"&gt;https://appfxservicebusbuild.codeplex.com/&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;In the project I have an assembly which encapsulates the use of the Azure Management API, the Service Bus Management API and some of the helper classes which come with Service Bus Explorer and provide a simple interface to these features which can then easily be called from powershell or you could also use the MsBuild tasks which come with the project.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;In the documentation page on codeplex Ive got examples of how this works and I hope everyone finds this useful&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/154622.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/11/14/154622.aspx</guid>
+      <pubDate>Thu, 14 Nov 2013 19:33:30 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/154622.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/11/14/154622.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/154622.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/154622.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Good News</title>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/10/25/154474.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/10/25/154474.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/10/25/154474.aspx&lt;/a&gt;&lt;/p&gt;&lt;div&gt;A while back i asked people to vote for charlie for that mountain warehouse charity thing and apparently he won it and will get £5000 towards helping him to learn to walk&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;http://votecharlie.co.uk/&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Cheers everyone&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/154474.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/10/25/154474.aspx</guid>
+      <pubDate>Sat, 26 Oct 2013 01:30:23 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/154474.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/10/25/154474.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/154474.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/154474.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Bridging Subsidiaries With the Cloud to Create a Global API</title>
+      <category>Azure Service Bus</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/10/15/154367.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/10/15/154367.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/10/15/154367.aspx&lt;/a&gt;&lt;/p&gt;Ive just had an article published on InfoQ about bridging companies to create a consolidated API and some of the considerations you might have to make&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Thanks to Brian Milburn for reviewing this!&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="http://www.infoq.com/articles/cloud-eai"&gt;http://www.infoq.com/articles/cloud-eai&lt;/a&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/154367.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/10/15/154367.aspx</guid>
+      <pubDate>Wed, 16 Oct 2013 09:04:57 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/154367.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/10/15/154367.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/154367.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/154367.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Minecraft on Azure</title>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/10/08/154295.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/10/08/154295.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/10/08/154295.aspx&lt;/a&gt;&lt;/p&gt;A few people have asked me over recent months how I setup a minecraft server for AJ on Windows Azure.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;John Savill has beat me to the punch and done a really cool video walking through how its done.  Its on the following link:&lt;/div&gt;&lt;div&gt;&lt;a href="http://www.youtube.com/watch?v=KzESaLpV8l8"&gt;http://www.youtube.com/watch?v=KzESaLpV8l8&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Just wanted to share&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/154295.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/10/08/154295.aspx</guid>
+      <pubDate>Wed, 09 Oct 2013 11:22:29 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/154295.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/10/08/154295.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/154295.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/154295.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Not a techy post but if your a reader of my blog please take a look</title>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/09/27/154161.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/09/27/154161.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/09/27/154161.aspx&lt;/a&gt;&lt;/p&gt;I tend not to do many non technical posts but this one if for a work colleague of my mum.  Charlie is the nephew of my mum's colleague and he has had many health problems since he was born.  They have been raising funds for an operation in the USA for a while now.  Mountain Warehouse have a competition going to give £5000 to a good cause or charity event which is taking place.  Charlie's cause has been short-listed as one of the 10 who have a chance of getting this money which would go towards his operation.  All he has to do is to get people to vote for his cause.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;The link to findout about charlies case is &lt;a href="http://votecharlie.co.uk/posters.html"&gt;http://votecharlie.co.uk/posters.html&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;If you would like to see the other causes and how many votes they have check out here&lt;/div&gt;&lt;div&gt;&lt;a href="http://www.mountainwarehouse.com/charity/top10/?v=93LJ349SYRVF"&gt;http://www.mountainwarehouse.com/charity/top10/?v=93LJ349SYRVF&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Over the years ive developed a nice little readership of my blog and Id like to reach out to any readers who might like to support this cause to simply take a look, vote if its something you would like to support and most importantly spread the word and share it on twitter or facebook etc&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Many thanks&lt;/div&gt;&lt;div&gt;Mike&lt;br /&gt;&lt;div&gt;&lt;br /&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/154161.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/09/27/154161.aspx</guid>
+      <pubDate>Fri, 27 Sep 2013 20:00:57 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/154161.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/09/27/154161.aspx#feedback</comments>
+      <slash:comments>1</slash:comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/154161.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/154161.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Architecture, Agile and Cloud Challenges</title>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/09/13/154013.aspx</link>
+      <description>
+        &lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/09/13/154013.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/09/13/154013.aspx&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="background-color:white"&gt;While I am a huge fan of cloud and agile when they are done well, as an architect I am very cautious about some of the dangers which can result from the way good architecture can be side stepped by the "just get it done quick and simple mentality" which agile sometimes falls into and that cloud can make it easy to happen.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style="background-color:white"&gt;Anyone who knows me well will know that as an architect I am a big fan of a decision making framework where decisions are made by looking at the options in terms of delivery, design, operations and organization.  In this space my dislike of the way agile architecture decisions are sometimes made is that in my experience most of the time: &lt;/span&gt;&lt;br /&gt;&lt;span style="background-color:white"&gt;
+        &lt;/span&gt;&lt;/p&gt;&lt;ol&gt;&lt;li&gt;&lt;span style="background-color:white"&gt;The only area considered is delivery.  Design, operations and organization aspects aren't analyzed or considered
+        &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;span style="background-color:white"&gt;The decision is rarely documented so we can't review the decision making process at a later date and understand the motives behind that decision. &lt;span style="color:#454545; font-family:Arial; font-size:10pt"&gt; &lt;/span&gt;&lt;/span&gt;&lt;br /&gt;&lt;span style="color:#454545; font-family:Arial; font-size:10pt; background-color:white"&gt;
+        &lt;/span&gt;&lt;/li&gt;&lt;/ol&gt;&lt;p&gt;&lt;span style="background-color:white"&gt;So we are in a position where in the real world agile is allowing teams to get away with poor decision making but fortunately often on premise constraints can put the rains on some decisions.  A telltale sign of this is often conflict between agile development teams and security or infrastructure teams.  This is where cloud comes in.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style="background-color:white"&gt;In the cloud developers often have the ability to spin up new stuff without any real checks and balances about what they are doing.  In most cases the only real obvious measure of the impact of this is the bottom line cost of your cloud investment, but also the billing models for cloud providers are still quite immature so the identification of any new resources isn't always obvious.  There is also the pay as you go billing aspect which means that any new resource has its cost split over a period of time making it less obvious.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style="background-color:white"&gt;To summarize what I'm saying so far.  Agile development teams often make delivery focused architecture decisions without enough consideration for other aspects.  The cloud has typically removed some of the constraints on teams allowing the team to implement these decisions much more easily.  The cloud billing models mean that you might not notice the impact of these decisions because rather than an upfront cost it would be spread over a longer period of time and also harder to identify.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style="background-color:white"&gt;That's the observation I have made and I see this being a general issue facing the IT industry over the medium term.  Now let's look at an example to back up what I am saying.&lt;/span&gt;&lt;br /&gt;&lt;span style="color:#454545; font-family:Arial; font-size:10pt; background-color:white"&gt;
+        &lt;/span&gt;&lt;/p&gt;&lt;h1&gt;Example
+        &lt;/h1&gt;&lt;p&gt;&lt;span style="background-color:white"&gt;We have a project on going at the moment were there was a requirement for a temporary storage requirement in the cloud. Early in the foundation sprints this design decision was looked at and after some discussion it was recommended to use the azure table storage. &lt;span style="color:#454545; font-family:Arial; font-size:10pt"&gt; &lt;/span&gt;&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style="background-color:white"&gt;Later in the project the scrum team implemented a solution with SQL Azure &lt;/span&gt;instead&lt;span style="background-color:white"&gt;.  The key to this implementation was that they had already prototyped this and it was easy to implement and get it finished by the end of the sprint.  It's something when this was identified there was apparently no time to refactor this without having an impact on the delivery schedule.  If you're technical you are probably assuming at this point that it would only be a relatively small amount of work to refactor this and I would agree with that.  If it's not then again as an architect this is another yellow warning light that there are more problems.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style="background-color:white"&gt;As a non-technical person you're probably thinking "if it works so what"!&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style="background-color:white"&gt;Well let's look at the implications of this decision.  Probably the best way to do this is to consider the overall cost.  Let's say that the cost to refactor to use table storage would be a very generous 3 days development and 3 days retesting.  Even though I'd expect the solution to be behind the scenes and covered by normal regression testing but let's argue 3 days at £250 per day which is £750.&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;&lt;span style="background-color:white"&gt;Now let's consider the cost implications of the approach implemented.  Firstly let's ignore the cost of what's been implemented so far, what's done is done.  Let's focus on what's left.&lt;/span&gt;&lt;br /&gt;
+        &lt;/p&gt;&lt;h2&gt;Licensing &amp;amp; Running Cost
+        &lt;/h2&gt;&lt;p&gt;&lt;span style="background-color:white"&gt;To begin with there is licensing, this solution requires a SQL Azure database at present which costs £30 per month per environment for about 10GB and about £7 per month for 1GB.  If we said that we think we will store around 10GB of data most of the time and there is production, 7 x test and 2 x development environments which is a ball park estimate for the environments plan we would be looking at something in the region of £300 per month.  If we take the assumption that the solution will live for 5 years then we are talking approximately £18000 over the course of the life of the project.  We also need to consider the size of the database because if it goes over 10GB then the cost would increase.  There would probably be a maintenance/cleanup process to clean up un-needed data.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="background-color:white"&gt;The table storage solution costs approximately 1p per GB per month.  We can have as many storage accounts as we like and just pay per size for storage.  If we assume that the data is 10GB ongoing then we will have a running cost for the same scenario of 10 environments would be approximately £1 per month.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="background-color:white"&gt;Over the 5 year lifecycle then the approximate cost comparison would be:
+        &lt;/span&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;span style="background-color:white"&gt;SQL Azure = £18000
+        &lt;/span&gt;&lt;/li&gt;&lt;li&gt;&lt;div&gt;&lt;span style="background-color:white"&gt;Table Storage = £60
+        &lt;/span&gt;&lt;/div&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;h2&gt;&lt;span style="background-color:white"&gt;Knowledge Transfer Cost
+        &lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;span style="color:#454545; font-family:Arial; font-size:10pt; background-color:white"&gt;The KT cost for the SQL Azure solution would be significantly higher than the table storage one.  The SQL Azure solution would need review by a DBA and the organization currently doesn't really have experience with SQL Azure so there is likely to need to be some kind of training requirement.  For table storage it's a much simpler concept and the KT for this could be done in a much quicker and lower cost way.  The SQL Azure solution should really have a more sophisticated monitoring solution and needs closer review by a DBA.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;h2&gt;&lt;span style="background-color:white"&gt;Archiving
+        &lt;/span&gt;&lt;/h2&gt;&lt;p&gt;&lt;span style="color:#454545; font-family:Arial; font-size:10pt; background-color:white"&gt;For the specific scenario here there is the potential with table storage that we might never need to consider the archiving option.  The cost is so cheap and the data retained if we didn't archive means that the cost of implementing the archive solution would probably outweigh the overall cost saved by doing it.  With these levels of data performance wouldn't be affected either way.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="color:#454545; font-family:Arial; font-size:10pt; background-color:white"&gt;In the SQL Azure approach there would need to be a more considered archiving or cleanup approach, the cost/size side of the database is much more significant for the SQL Azure solution at the wider scale.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;
+        &lt;/p&gt;&lt;h1&gt;&lt;span style="background-color:white"&gt;Conclusion
+        &lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;span style="color:#454545; font-family:Arial; font-size:10pt; background-color:white"&gt;Hopefully you can see that in this example a purely delivery focused approach to the architecture decision means that we will reach the end of the sprint the team will be able to do a nice show and tell but because they have not considered the bigger picture the longer term life of the project will be affected very significantly.
+        &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style="color:#454545; font-family:Arial; font-size:10pt; background-color:white"&gt;Using the cloud allows the team to be able to make this kind of poor decision without the checks and balances which a more mature governance model would provide and there would be a fair chance that the cost implication of this would go relatively unnoticed.
+        &lt;/span&gt;&lt;/p&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/154013.aspx" width="1" height="1" /&gt;
+      </description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/09/13/154013.aspx</guid>
+      <pubDate>Fri, 13 Sep 2013 12:57:43 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/154013.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/09/13/154013.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/154013.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/154013.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Developer Lab in Windows Azure</title>
+      <category>Windows Azure</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/08/31/153904.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/08/31/153904.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/08/31/153904.aspx&lt;/a&gt;&lt;/p&gt;Ive just published a video about a little project I've been working on where we have been creating developer labs in Windows Azure IaaS.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;In the video I will discuss some of the reasoning behind why this was a great solution for us and some of the considerations we had to make.&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Love to hear anyone's thoughts on this and if anyone else is doing similar stuff&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="http://www.youtube.com/watch?v=Cpspl_suyvA"&gt;http://www.youtube.com/watch?v=Cpspl_suyvA&lt;/a&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/153904.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/08/31/153904.aspx</guid>
+      <pubDate>Sun, 01 Sep 2013 00:47:59 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/153904.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/08/31/153904.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/153904.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/153904.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>UK Connected Systems User Group Website</title>
+      <category>BizTalk</category>
+      <category>BizTalk</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/08/29/153888.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/08/29/153888.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/08/29/153888.aspx&lt;/a&gt;&lt;/p&gt;Hi All&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Just a heads up that the new uk connected system user group website is now live and out there.  &lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="http://ukcsug.co.uk/the-hybrid-organisation/"&gt;http://ukcsug.co.uk&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Also some info about the UK Hybrid Integration Event including Azure, BizTalk Services, BizTalk, et al&lt;/div&gt;&lt;div&gt;&lt;a href="http://ukcsug.co.uk/the-hybrid-organisation/"&gt;http://ukcsug.co.uk/the-hybrid-organisation/&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/153888.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/08/29/153888.aspx</guid>
+      <pubDate>Thu, 29 Aug 2013 14:59:44 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/153888.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/08/29/153888.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/153888.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/153888.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>UK Connected Systems User Group Website</title>
+      <category>BizTalk</category>
+      <category>BizTalk</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/08/29/153886.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/08/29/153886.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/08/29/153886.aspx&lt;/a&gt;&lt;/p&gt;Hi All&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Just a heads up that the new uk connected system user group website is now live and out there.  &lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;a href="http://ukcsug.co.uk/the-hybrid-organisation/"&gt;http://ukcsug.co.uk&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Also some info about the UK Hybrid Integration Event including Azure, BizTalk Services, BizTalk, et al&lt;/div&gt;&lt;div&gt;&lt;a href="http://ukcsug.co.uk/the-hybrid-organisation/"&gt;http://ukcsug.co.uk/the-hybrid-organisation/&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/153886.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/08/29/153886.aspx</guid>
+      <pubDate>Thu, 29 Aug 2013 14:33:33 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/153886.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/08/29/153886.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/153886.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/153886.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>Testing BizTalk 2013 Maps with the Visual Studio Fakes Framework</title>
+      <category>BizTalk</category>
+      <category>BizTalk Testing</category>
+      <category>BizTalk Testing</category>
+      <category>BizTalk</category>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/08/19/153778.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/08/19/153778.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/08/19/153778.aspx&lt;/a&gt;&lt;/p&gt;A few people have been asking me about this since I originally showed this presentation back at the BizTalk bootcamp in Charlotte in May 2013 so I have eventually gotten around to videoing this presentation.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Its not a long one but hopefully it will give you some very useful thoughts on how to improve the testing of BizTalk solutions&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;Check it out on the below link....&lt;/div&gt;&lt;div&gt;&lt;a href="http://www.youtube.com/watch?v=KKdaHzATCqk"&gt;http://www.youtube.com/watch?v=KKdaHzATCqk&lt;/a&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/153778.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/08/19/153778.aspx</guid>
+      <pubDate>Mon, 19 Aug 2013 23:28:45 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/153778.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/08/19/153778.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/153778.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/153778.aspx</trackback:ping>
+    </item>
+    <item>
+      <title>UK Azure Hybrid Integration Event</title>
+      <link>http://geekswithblogs.net/michaelstephenson/archive/2013/08/16/153748.aspx</link>
+      <description>&lt;p&gt;Originally posted on: &lt;a href='http://geekswithblogs.net/michaelstephenson/archive/2013/08/16/153748.aspx'&gt;http://geekswithblogs.net/michaelstephenson/archive/2013/08/16/153748.aspx&lt;/a&gt;&lt;/p&gt;We have an event coming up on the 11th September which is a really exciting event in the UK with some awesome speakers from overseas.&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;For details/registration of the event please refer to:&lt;/div&gt;&lt;div&gt;&lt;a href="https://ukcsug-hybridintegration-sept2013.eventbrite.com/"&gt;https://ukcsug-hybridintegration-sept2013.eventbrite.com/&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;There is a brochure for the event also available on the following url&lt;/div&gt;&lt;div&gt;&lt;a href="http://ukcsug.blob.core.windows.net/public/The%20Hybrid%20Organisation.pdf"&gt;http://ukcsug.blob.core.windows.net/public/The%20Hybrid%20Organisation.pdf&lt;/a&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt;&lt;div&gt;&lt;br /&gt;&lt;/div&gt; &lt;img src="http://geekswithblogs.net/michaelstephenson/aggbug/153748.aspx" width="1" height="1" /&gt;</description>
+      <dc:creator>Michael Stephenson</dc:creator>
+      <guid>http://geekswithblogs.net/michaelstephenson/archive/2013/08/16/153748.aspx</guid>
+      <pubDate>Fri, 16 Aug 2013 12:47:17 GMT</pubDate>
+      <wfw:comment>http://geekswithblogs.net/michaelstephenson/comments/153748.aspx</wfw:comment>
+      <comments>http://geekswithblogs.net/michaelstephenson/archive/2013/08/16/153748.aspx#feedback</comments>
+      <wfw:commentRss>http://geekswithblogs.net/michaelstephenson/comments/commentRss/153748.aspx</wfw:commentRss>
+      <trackback:ping>http://geekswithblogs.net/michaelstephenson/services/trackbacks/153748.aspx</trackback:ping>
+    </item>
+  </channel>
+</rss>
