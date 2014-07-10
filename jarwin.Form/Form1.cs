@@ -21,6 +21,12 @@ namespace jarwin.Form
             private set;
         }
 
+        private TreeNode currentNode
+        { 
+            get;
+            set;
+        }
+
         public jarwin()
         {
             InitializeComponent();
@@ -66,7 +72,8 @@ namespace jarwin.Form
         {
             if (e.Button == MouseButtons.Right && e.Node.Name != "my feeds")
             {
-                contextMenuStrip1.Show(e.Location.X, e.Location.Y);
+                contextMenuStrip1.Show(e.Location);
+                currentNode = treeView1.GetNodeAt(e.Location);
             }
             else
             {
@@ -137,25 +144,50 @@ namespace jarwin.Form
             initTreeView();
         }
 
+        private void refreshTreeView()
+        {
+            // Reload the tree view to include any additonal Feeds.
+
+            for (int i = 0; i < treeView1.Nodes.Count; i++)
+            {
+                treeView1.Nodes.RemoveAt(i);
+            }
+
+            initTreeView();
+        }
+
         private void aToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AboutBox aboutBox = new AboutBox();
             aboutBox.Show();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            int feedID = (int)currentNode.Tag;
+            
+            var deleteFeedItems = 
+                from feedItem in dataContext.FeedItem
+                where feedItem.feedID == feedID
+                select feedItem;
 
-        }
+            foreach (var feedItem in deleteFeedItems)
+            {
+                dataContext.FeedItem.DeleteOnSubmit(feedItem);
+            }
+                
+            dataContext.SubmitChanges();
 
-        private void syncToolStripMenuItem_Click(object sender, EventArgs e)
-        {
+            var deleteFeed =
+                from feed in dataContext.Feed
+                where feed.feedID == feedID
+                select feed;
 
-        }
+            dataContext.Feed.DeleteOnSubmit(deleteFeed.First<Feed>());
+            
+            dataContext.SubmitChanges();
 
-        private void contextMenuStrip1_Opening(object sender, CancelEventArgs e)
-        {
-
+            refreshTreeView();
         }
     }
 }

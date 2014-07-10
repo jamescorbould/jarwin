@@ -51,6 +51,7 @@ namespace jarwin.ObjectFactory
                 {
                     if (reader.NodeType == XmlNodeType.Element)
                     {
+                        // TODO: rewrite this using a state machine?
                         switch (reader.Name.ToLower())
                         {
                             case "channel":  // This corresponds to a Feed object - should only be one per Rss XML.

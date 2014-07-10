@@ -37,7 +37,7 @@ namespace jarwin.UnitTests
         }
 
         [TestMethod]
-        public void CreateRssFromUriFileSystemStephenson()
+        public void CreateRssFromWebUriStephenson()
         {
             string inputUri = @"http://geekswithblogs.net/michaelstephenson/Rss.aspx";
             Rss rss = new Rss(inputUri);
