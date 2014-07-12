@@ -235,5 +235,45 @@ namespace jarwin.ObjectFactory
                 
             }
         }
+        
+        public bool Delete(int feedID, JarwinDataContext dataContext)
+        {
+            // Destroy thyself :-(
+
+            var deleteFeedItems =
+                from feedItem in dataContext.FeedItem
+                where feedItem.feedID == feedID
+                select feedItem;
+
+            foreach (var feedItem in deleteFeedItems)
+            {
+                dataContext.FeedItem.DeleteOnSubmit(feedItem);
+            }
+
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+
+            var deleteFeed =
+                from feed in dataContext.Feed
+                where feed.feedID == feedID
+                select feed;
+
+            dataContext.Feed.DeleteOnSubmit(deleteFeed.First<Feed>());
+
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

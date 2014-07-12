@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using jarwin.DAL;
 using jarwin.Form;
+using jarwin.ObjectFactory;
 
 namespace jarwin.Form
 {
@@ -72,7 +73,7 @@ namespace jarwin.Form
         {
             if (e.Button == MouseButtons.Right && e.Node.Name != "my feeds")
             {
-                contextMenuStrip1.Show(e.Location);
+                contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
                 currentNode = treeView1.GetNodeAt(e.Location);
             }
             else
@@ -165,29 +166,16 @@ namespace jarwin.Form
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             int feedID = (int)currentNode.Tag;
-            
-            var deleteFeedItems = 
-                from feedItem in dataContext.FeedItem
-                where feedItem.feedID == feedID
-                select feedItem;
 
-            foreach (var feedItem in deleteFeedItems)
+            DialogResult result = MessageBox.Show("Are you sure you want delete this feed?", "jarwin", MessageBoxButtons.OKCancel);
+
+            if (result == DialogResult.OK)
             {
-                dataContext.FeedItem.DeleteOnSubmit(feedItem);
+                Rss rss = new Rss();
+                rss.Delete(feedID, dataContext);
+
+                refreshTreeView();
             }
-                
-            dataContext.SubmitChanges();
-
-            var deleteFeed =
-                from feed in dataContext.Feed
-                where feed.feedID == feedID
-                select feed;
-
-            dataContext.Feed.DeleteOnSubmit(deleteFeed.First<Feed>());
-            
-            dataContext.SubmitChanges();
-
-            refreshTreeView();
         }
     }
 }
