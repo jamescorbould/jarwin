@@ -60,15 +60,54 @@ namespace jarwin.UnitTests
             Utility.Utility utility = new Utility.Utility();
             JarwinDataContext dataContext = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
 
-            var feedHdr =
-                from feed in dataContext.Feed
-                where feed.feedID == rss.feed.feedID
-                select feed;
+            dataContext.Feed.InsertOnSubmit(rss.feed);
 
-            Assert.IsTrue(feedHdr != null);
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Error - failed to insert Feed record: " + ex.Message);
+            }
 
+            int feedID = rss.feed.feedID; // Value provided by SQL Server identity column.
+            int feedItemID = 0;
 
+            foreach (var feedItem in rss.feedItems)
+            {
+                feedItem.feedID = feedID;
+                feedItem.feedItemID = feedItemID;
+                dataContext.FeedItem.InsertOnSubmit(feedItem);
 
+                feedItemID += 1;
+            }
+
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Error - failed to insert FeedItem record: " + ex.Message);
+            }
+
+            // Delete Feed and FeedItems.
+            bool success = true;
+
+            try
+            {
+                success = rss.Delete(rss.feed.feedID, dataContext);
+            }
+            catch (Exception ex)
+            {
+                Assert.Fail("Error - failed to delete Feed or FeedItem record: " + ex.Message);
+            }
+
+            if (!success)
+            {
+                Assert.Fail("Error - failed to delete Feed or FeedItems record.");
+            }
         }
     }
 }
