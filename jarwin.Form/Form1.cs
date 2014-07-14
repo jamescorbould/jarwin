@@ -172,9 +172,16 @@ namespace jarwin.Form
             if (result == DialogResult.OK)
             {
                 Rss rss = new Rss();
-                rss.Delete(feedID, dataContext);
-
-                refreshTreeView();
+                
+                if (!rss.Delete(feedID, dataContext))
+                {
+                    MessageBox.Show("Sorry, failed to delete the feed.", "jarwin");
+                }
+                else
+                {
+                    refreshTreeView();
+                    clearDataGridView();
+                }
             }
         }
     }
