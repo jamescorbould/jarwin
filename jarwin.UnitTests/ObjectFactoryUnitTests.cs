@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using jarwin.ObjectFactory;
 using jarwin.DAL;
+using System.Linq;
 
 namespace jarwin.UnitTests
 {
@@ -44,6 +45,30 @@ namespace jarwin.UnitTests
 
             Assert.IsTrue(rss != null);
             Assert.IsTrue(rss.feed.feedURI == null);  // Not provided in the file, hence cannot be assigned.
+        }
+
+        [TestMethod]
+        public void CreateAndDeleteRssFromUriFileSystem()
+        {
+            // Create and delete Rss in succession.  Any db locking issues?
+
+            string inputUri = @"..\..\..\SolutionArtefacts\jc_blog_rss.xml";
+            Rss rss = new Rss(inputUri);
+
+            Assert.IsTrue(rss != null);
+
+            Utility.Utility utility = new Utility.Utility();
+            JarwinDataContext dataContext = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
+
+            var feedHdr =
+                from feed in dataContext.Feed
+                where feed.feedID == rss.feed.feedID
+                select feed;
+
+            Assert.IsTrue(feedHdr != null);
+
+
+
         }
     }
 }

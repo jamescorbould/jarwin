@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Data.Linq" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -61,6 +62,10 @@
     <ProjectReference Include="..\jarwin.ObjectFactory\jarwin.ObjectFactory.csproj">
       <Project>{6ab67fe7-cd4f-402a-922e-d3f6ddde1b77}</Project>
       <Name>jarwin.ObjectFactory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\jarwin.Utility\jarwin.Utility.csproj">
+      <Project>{74ca8ccf-42a1-48e8-ac31-d68f58995848}</Project>
+      <Name>jarwin.Utility</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
