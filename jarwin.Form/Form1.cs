@@ -116,7 +116,7 @@ namespace jarwin.Form
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             FeedItem item = (FeedItem)dataGridView1.Rows[e.RowIndex].Tag;
-            webBrowser.Text = String.IsNullOrEmpty(item.content) ? item.description : item.content;
+            webBrowser.DocumentText = String.IsNullOrEmpty(item.content) ? item.description : item.content;
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
