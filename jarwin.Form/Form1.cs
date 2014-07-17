@@ -116,7 +116,7 @@ namespace jarwin.Form
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             FeedItem item = (FeedItem)dataGridView1.Rows[e.RowIndex].Tag;
-            richTextBox1.Text = String.IsNullOrEmpty(item.content) ? item.description : item.content;
+            webBrowser.Text = String.IsNullOrEmpty(item.content) ? item.description : item.content;
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -186,6 +186,11 @@ namespace jarwin.Form
         }
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
 
         }
