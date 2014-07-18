@@ -63,10 +63,7 @@ namespace jarwin.Form
 
         private void clearDataGridView()
         {
-            for (int i = 0; i < dataGridView1.Rows.Count; i++)
-            {
-                dataGridView1.Rows.RemoveAt(i);
-            }
+            dataGridView1.Rows.Clear();
         }
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
@@ -110,6 +107,13 @@ namespace jarwin.Form
                 }
                 catch (NullReferenceException)
                 { }
+
+                if (dataGridView1.Rows.Count > 0)
+                {
+                    // Set the WebBrowser view to contain the first blog entry.
+                    FeedItem item = (FeedItem)dataGridView1.Rows[0].Tag;
+                    webBrowser.DocumentText = String.IsNullOrEmpty(item.content) ? item.description : item.content;
+                }
             }
         }
 
