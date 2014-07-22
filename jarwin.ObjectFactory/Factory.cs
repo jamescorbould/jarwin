@@ -13,8 +13,8 @@ namespace jarwin.ObjectFactory
         {
             Feed feed = new Feed();
 
-            feed.lastDownloadDateTime = System.DateTime.Now;
-            feed.lastBuildDateTime = System.DateTime.Now;
+            feed.lastDownloadDateTime = DateTime.Now;
+            feed.lastBuildDateTime = DateTime.Now;
             feed.updatePeriod = "hourly";
             feed.updateFrequency = 1;
             feed.status = "active";
@@ -24,7 +24,11 @@ namespace jarwin.ObjectFactory
 
         public static FeedItem CreateFeedItem()
         {
-            return new FeedItem();
+            FeedItem feedItem = new FeedItem();
+
+            feedItem.lastDownloadDateTime = DateTime.Now;
+
+            return feedItem;
         }
     }
 }

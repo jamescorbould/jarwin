@@ -19,5 +19,6 @@ namespace jarwin.DAL
         [Column(Name="creator")] public string creator { get; set; }
         [Column(Name="description")] public string description { get; set; }
         [Column(Name="content")] public string content { get; set; }
+        [Column(Name="last_download_datetime")] public DateTime lastDownloadDateTime { get; set; }
     }
 }

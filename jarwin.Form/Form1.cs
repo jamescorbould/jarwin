@@ -191,7 +191,20 @@ namespace jarwin.Form
 
         private void syncToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // "Sync all" button pressed.  Update Feed and associated FeedItems.
 
+            Rss rss = new Rss();
+
+            var feeds =
+                from feed in dataContext.Feed
+                where feed.status == "ACTIVE"
+                && feed.lastDownloadDateTime.AddHours((double)feed.updateFrequency) <= DateTime.Now
+                select feed;
+
+            foreach (var feed in feeds)
+            {
+                rss.Update(feed.feedID, dataContext);
+            }
         }
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
