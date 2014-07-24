@@ -14,5 +14,7 @@ namespace jarwin.DAL
         public JarwinDataContext(string connection) : base(connection) { }
         public Table<Feed> Feed;
         public Table<FeedItem> FeedItem;
+        public Table<FeedHistory> FeedHistory;
+        public Table<FeedItemHistory> FeedItemHistory;
     }
 }

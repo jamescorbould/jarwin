@@ -28,6 +28,11 @@ namespace jarwin.ObjectFactory
 
         public Rss(string inputUri)
         {
+            CreateTypes(inputUri);
+        }
+
+        public void CreateTypes(string inputUri)
+        {
             feed = Factory.CreateFeed();
             feedItems = new List<FeedItem>();
             string currentObjType = String.Empty;
@@ -225,9 +230,6 @@ namespace jarwin.ObjectFactory
                         }
                     }
                 }
-                // TODO: validate that the Rss object has been instantiated correctly,
-                // before attempting to insert into the database.
-                
             }
         }
         
@@ -277,10 +279,26 @@ namespace jarwin.ObjectFactory
         {
             // Update thyself.
 
+            // Copy existing Feed and FeedItems to a history table first.
+
             var deleteFeedItems =
                 from feedItem in dataContext.FeedItem
                 where feedItem.feedID == feedID
                 select feedItem;
+
+            foreach (var feedItem in deleteFeedItems)
+            {
+                dataContext.FeedItemHistory.InsertOnSubmit(Factory.CreateFeedItemHistoryFromFeedItem(feedItem));
+            }
+
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch (Exception)
+            {
+                return false;
+            }
 
             foreach (var feedItem in deleteFeedItems)
             {
@@ -296,12 +314,12 @@ namespace jarwin.ObjectFactory
                 return false;
             }
 
-            var deleteFeed =
+            var updateFeed =
                 from feed in dataContext.Feed
                 where feed.feedID == feedID
                 select feed;
 
-            dataContext.Feed.DeleteOnSubmit(deleteFeed.First<Feed>());
+            dataContext.FeedHistory.InsertOnSubmit(Factory.CreateFeedHistoryFromFeed(updateFeed.First<Feed>()));
 
             try
             {
@@ -311,6 +329,37 @@ namespace jarwin.ObjectFactory
             {
                 return false;
             }
+            
+            // Feed and FeedItem now backed up in history tables.
+            // Update Feed and insert latest FeedItem records.
+
+            // Create local Feed and FeedItem types using the provided URL to the Rss feed.
+            CreateTypes(updateFeed.First<Feed>().feedURI);
+
+            // Update Feed.
+
+            // Update Feed in the local data context with the new locally downloaded Feed details.
+            updateFeed.First<Feed>().description = this.feed.description;
+            updateFeed.First<Feed>().language = this.feed.language;
+            updateFeed.First<Feed>().lastBuildDateTime = this.feed.lastBuildDateTime;
+            updateFeed.First<Feed>().lastDownloadDateTime = DateTime.Now;
+            updateFeed.First<Feed>().title = this.feed.title + "NEW";
+            updateFeed.First<Feed>().type = this.feed.type;
+            updateFeed.First<Feed>().updateFrequency = this.feed.updateFrequency;
+            updateFeed.First<Feed>().updatePeriod = this.feed.updatePeriod;
+
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch
+            {
+                return false;
+            }
+
+            // Insert new FeedItem.
+
+
 
             return true;
         }
