@@ -343,7 +343,7 @@ namespace jarwin.ObjectFactory
             updateFeed.First<Feed>().language = this.feed.language;
             updateFeed.First<Feed>().lastBuildDateTime = this.feed.lastBuildDateTime;
             updateFeed.First<Feed>().lastDownloadDateTime = DateTime.Now;
-            updateFeed.First<Feed>().title = this.feed.title + "NEW";
+            updateFeed.First<Feed>().title = this.feed.title;
             updateFeed.First<Feed>().type = this.feed.type;
             updateFeed.First<Feed>().updateFrequency = this.feed.updateFrequency;
             updateFeed.First<Feed>().updatePeriod = this.feed.updatePeriod;
