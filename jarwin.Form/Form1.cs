@@ -205,6 +205,9 @@ namespace jarwin.Form
             {
                 rss.Update(feed.feedID, dataContext);
             }
+
+            refreshTreeView();
+            clearDataGridView();
         }
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)

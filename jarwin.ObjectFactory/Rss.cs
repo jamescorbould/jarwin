@@ -357,9 +357,28 @@ namespace jarwin.ObjectFactory
                 return false;
             }
 
-            // Insert new FeedItem.
+            // Insert new FeedItem(s).
+            int feedItemID = 0;
 
+            foreach (var feedItem in feedItems)
+            {
+                feedItem.feedID = feedID;
+                feedItem.feedItemID = feedItemID;
+                dataContext.FeedItem.InsertOnSubmit(feedItem);
 
+                feedItemID += 1;
+            }
+
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch
+            {
+                return false;
+            }
+
+            // TODO: log errors and cleanup database on failures.
 
             return true;
         }
