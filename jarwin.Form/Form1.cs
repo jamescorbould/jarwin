@@ -66,6 +66,11 @@ namespace jarwin.Form
             dataGridView1.Rows.Clear();
         }
 
+        private void clearBrowserView()
+        {
+            webBrowser.DocumentText = String.Empty;
+        }
+
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
             if (e.Button == MouseButtons.Right && e.Node.Name != "my feeds")
@@ -208,6 +213,7 @@ namespace jarwin.Form
 
             refreshTreeView();
             clearDataGridView();
+            clearBrowserView();
         }
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
