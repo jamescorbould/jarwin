@@ -1,15 +1,15 @@
 USE [jarwin]
 GO
 
-/****** Object:  Table [dbo].[feed]    Script Date: 29/07/2014 7:25:24 a.m. ******/
+/****** Object:  Table [dbo].[feed_history]    Script Date: 29/07/2014 7:25:58 a.m. ******/
 SET ANSI_NULLS ON
 GO
 
 SET QUOTED_IDENTIFIER ON
 GO
 
-CREATE TABLE [dbo].[feed](
-	[feed_id] [int] IDENTITY(0,1) NOT NULL,
+CREATE TABLE [dbo].[feed_history](
+	[feed_id] [int] NOT NULL,
 	[feed_uri] [nvarchar](512) NOT NULL,
 	[title] [nvarchar](512) NOT NULL,
 	[description] [nvarchar](512) NULL,
@@ -22,18 +22,19 @@ CREATE TABLE [dbo].[feed](
 	[type] [nvarchar](16) NULL,
 	[folder_id] [int] NULL,
 	[update_period] [nchar](10) NULL,
- CONSTRAINT [PK_feed] PRIMARY KEY CLUSTERED 
+ CONSTRAINT [PK_feed_history] PRIMARY KEY CLUSTERED 
 (
-	[feed_id] ASC
+	[feed_id] ASC,
+	[last_download_datetime] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 
 GO
 
-ALTER TABLE [dbo].[feed]  WITH CHECK ADD  CONSTRAINT [FK_feed_folder] FOREIGN KEY([folder_id])
+ALTER TABLE [dbo].[feed_history]  WITH CHECK ADD  CONSTRAINT [FK_feed_history_folder] FOREIGN KEY([folder_id])
 REFERENCES [dbo].[folder] ([folder_id])
 GO
 
-ALTER TABLE [dbo].[feed] CHECK CONSTRAINT [FK_feed_folder]
+ALTER TABLE [dbo].[feed_history] CHECK CONSTRAINT [FK_feed_history_folder]
 GO
 

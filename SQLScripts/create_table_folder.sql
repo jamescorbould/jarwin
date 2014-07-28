@@ -1,7 +1,7 @@
 USE [jarwin]
 GO
 
-/****** Object:  Table [dbo].[folder]    Script Date: 30/05/2014 7:25:48 a.m. ******/
+/****** Object:  Table [dbo].[folder]    Script Date: 29/07/2014 7:26:55 a.m. ******/
 SET ANSI_NULLS ON
 GO
 

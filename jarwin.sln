@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.Form", "jarwin.Form\jarwin.Form.csproj", "{6DF4CE2E-1880-479F-9108-E9918D7B174B}"
 EndProject
@@ -20,7 +20,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLScripts", "SQLScripts", 
 		SQLScripts\create_db_jarwin.sql = SQLScripts\create_db_jarwin.sql
 		SQLScripts\create_table_feed.sql = SQLScripts\create_table_feed.sql
 		SQLScripts\create_table_feed_category.sql = SQLScripts\create_table_feed_category.sql
+		SQLScripts\create_table_feed_history.sql = SQLScripts\create_table_feed_history.sql
 		SQLScripts\create_table_feed_item.sql = SQLScripts\create_table_feed_item.sql
+		SQLScripts\create_table_feed_item_history.sql = SQLScripts\create_table_feed_item_history.sql
 		SQLScripts\create_table_feed_media.sql = SQLScripts\create_table_feed_media.sql
 		SQLScripts\create_table_folder.sql = SQLScripts\create_table_folder.sql
 	EndProjectSection
