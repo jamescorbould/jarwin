@@ -279,6 +279,25 @@ namespace jarwin.ObjectFactory
         {
             // Update thyself.
 
+            // Check if can access feed URL first (i.e. are we online?).
+            
+            // TODO: implement error logging to specified log.
+
+            using(WebClient webClient = new WebClient())
+            {
+                try
+                {
+                    webClient.BaseAddress = "http://localhost";
+                    webClient.OpenRead("http://www.google.co.nz");
+                }
+                catch
+                {
+                    // Not online for whatever reason.
+                    // Need to log reason.
+                    return false;
+                }
+            }
+
             // Copy existing Feed and FeedItems to a history table first.
 
             var deleteFeedItems =

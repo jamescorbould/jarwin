@@ -73,7 +73,7 @@ namespace jarwin.Form
 
         private void treeView1_NodeMouseClick(object sender, TreeNodeMouseClickEventArgs e)
         {
-            if (e.Button == MouseButtons.Right && e.Node.Name != "my feeds")
+            if (e.Button == MouseButtons.Right && e.Node.Name.ToUpper() != "MY FEEDS")
             {
                 contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
                 currentNode = treeView1.GetNodeAt(e.Location);
@@ -83,9 +83,12 @@ namespace jarwin.Form
                 if (dataGridView1.Rows.Count > 0)
                 {
                     clearDataGridView();
+                    clearBrowserView();
                 }
 
                 treeView1.SelectedNode = e.Node;
+
+                // Load feed items into the data grid view for the selected node:
 
                 var feedItems =
                     from feedItem in dataContext.FeedItem
@@ -124,6 +127,8 @@ namespace jarwin.Form
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            // When the user clicks on a feed in the data grid,
+            // populate the browser view with details of the feed.
             FeedItem item = (FeedItem)dataGridView1.Rows[e.RowIndex].Tag;
             webBrowser.DocumentText = String.IsNullOrEmpty(item.content) ? item.description : item.content;
         }
@@ -145,13 +150,7 @@ namespace jarwin.Form
         private void refreshTreeView(object sender, FormClosingEventArgs e) // Event handler for addFeedDialog form closing event.
         {
             // Reload the tree view to include any additonal Feeds.
-
-            for (int i = 0; i < treeView1.Nodes.Count; i++)
-            {
-                treeView1.Nodes.RemoveAt(i);
-            }
-
-            initTreeView();
+            refreshTreeView();
         }
 
         private void refreshTreeView()
@@ -174,6 +173,8 @@ namespace jarwin.Form
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            // Delete feed selected from tree view context menu.
+
             int feedID = (int)currentNode.Tag;
 
             DialogResult result = MessageBox.Show("Are you sure you want delete this feed?", "jarwin", MessageBoxButtons.OKCancel);
@@ -202,7 +203,7 @@ namespace jarwin.Form
 
             var feeds =
                 from feed in dataContext.Feed
-                where feed.status == "ACTIVE"
+                where feed.status.ToUpper() == "ACTIVE"
                 && feed.lastDownloadDateTime.AddHours((double)feed.updateFrequency) <= DateTime.Now
                 select feed;
 
