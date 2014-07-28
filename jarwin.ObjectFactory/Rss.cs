@@ -298,6 +298,7 @@ namespace jarwin.ObjectFactory
                 }
             }
 
+            // We are online so we can sync.
             // Copy existing Feed and FeedItems to a history table first.
 
             var deleteFeedItems =
@@ -397,7 +398,7 @@ namespace jarwin.ObjectFactory
                 return false;
             }
 
-            // TODO: log errors and cleanup database on failures.
+            // TODO: log errors and cleanup database on failures (rollback steps).
 
             return true;
         }
