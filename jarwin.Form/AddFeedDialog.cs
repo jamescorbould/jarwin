@@ -33,13 +33,15 @@ namespace jarwin
             {
                 infoLabel.Text = "Processing file...";
 
-                if (CreateFeedFromRss(textBox1.Text))
+                try
                 {
+                    CreateFeedFromRss(textBox1.Text);
                     infoLabel.Text = "File processed successfully!";
                 }
-                else
+                catch
                 {
                     infoLabel.Text = "File processing failed!  Sorry, can't process this file.";
+                    // TODO: do some logging here.
                 }
             }
         }
@@ -51,7 +53,7 @@ namespace jarwin
             textBox1.Text = fileDialog.FileName;
         }
 
-        private bool CreateFeedFromRss(string inputUri)
+        private void CreateFeedFromRss(string inputUri)
         {
             // Using the Rss feed xml, create an Rss object.
             Rss rss = new Rss(inputUri);
@@ -64,7 +66,7 @@ namespace jarwin
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format("Error processing feed.\n\nError message as follows: {0}", ex.Message), "jarwin - Error Processing Feed");
-                return false;
+                throw;
             }
 
             int feedID = rss.feed.feedID; // Value provided by SQL Server identity column.
@@ -86,10 +88,8 @@ namespace jarwin
             catch (Exception ex)
             {
                 MessageBox.Show(String.Format("Error process feed.\n\nError message as follows: {0}", ex.Message), "jarwin - Error Processing Feed Items");
-                return false;
+                throw;
             }
-
-            return true;
         }
     }
 }

@@ -183,14 +183,16 @@ namespace jarwin.Form
             {
                 Rss rss = new Rss();
                 
-                if (!rss.Delete(feedID, dataContext))
+                try
                 {
-                    MessageBox.Show("Sorry, failed to delete the feed.", "jarwin");
-                }
-                else
-                {
+                    rss.Delete(feedID, dataContext);
                     refreshTreeView();
                     clearDataGridView();
+                }
+                catch
+                {
+                    MessageBox.Show("Sorry, failed to delete the feed.", "jarwin");
+                    // TODO: implement logging.
                 }
             }
         }
@@ -199,6 +201,9 @@ namespace jarwin.Form
         {
             // "Sync all" button pressed.  Update Feed and associated FeedItems.
 
+            // TODO: set app state to "SYNCING".
+            // This event should trigger message bar to display suitable text.
+            
             Rss rss = new Rss();
 
             var feeds =
@@ -209,8 +214,23 @@ namespace jarwin.Form
 
             foreach (var feed in feeds)
             {
-                rss.Update(feed.feedID, dataContext);
+                // Run each update on a separate thread, to keep the UI responsive.
+                Task t = Task.Run(() =>
+                {
+                    try
+                    {
+                        rss.Update(feed.feedID, dataContext);
+                    }
+                    catch (Exception)
+                    {
+                        // TODO: Log the error.
+                        // Update state of this feed to "FAILED_SYNCING"??
+                    }
+                });
             }
+
+            // TODO: set app state to "NOT_SYNCING".
+            // This event should trigger message bar to display suitable text.
 
             refreshTreeView();
             clearDataGridView();

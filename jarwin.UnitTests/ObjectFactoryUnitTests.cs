@@ -92,21 +92,13 @@ namespace jarwin.UnitTests
                 Assert.Fail("Error - failed to insert FeedItem record: " + ex.Message);
             }
 
-            // Delete Feed and FeedItems.
-            bool success = true;
-
             try
             {
-                success = rss.Delete(rss.feed.feedID, dataContext);
+                rss.Delete(rss.feed.feedID, dataContext);
             }
             catch (Exception ex)
             {
                 Assert.Fail("Error - failed to delete Feed or FeedItem record: " + ex.Message);
-            }
-
-            if (!success)
-            {
-                Assert.Fail("Error - failed to delete Feed or FeedItems record.");
             }
         }
 
@@ -155,21 +147,13 @@ namespace jarwin.UnitTests
                 Assert.Fail("Error - failed to insert FeedItem record: " + ex.Message);
             }
 
-            // Update Feed and FeedItems.
-            bool success = true;
-
             try
             {
-                success = rss.Update(rss.feed.feedID, dataContext);
+                rss.Update(rss.feed.feedID, dataContext);
             }
             catch (Exception ex)
             {
                 Assert.Fail("Error - failed to update Feed or FeedItem record: " + ex.Message);
-            }
-
-            if (!success)
-            {
-                Assert.Fail("Error - failed to update Feed or FeedItems record.");
             }
         }
     }

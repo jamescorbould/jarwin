@@ -233,7 +233,7 @@ namespace jarwin.ObjectFactory
             }
         }
         
-        public bool Delete(int feedID, JarwinDataContext dataContext)
+        public void Delete(int feedID, JarwinDataContext dataContext)
         {
             // Destroy thyself :-(
 
@@ -253,7 +253,8 @@ namespace jarwin.ObjectFactory
             }
             catch (Exception)
             {
-                return false;
+                // TODO: need to log.
+                throw;
             }
 
             var deleteFeed =
@@ -269,13 +270,12 @@ namespace jarwin.ObjectFactory
             }
             catch
             {
-                return false;
+                // TODO: need to log.
+                throw;
             }
-
-            return true;
         }
 
-        public bool Update(int feedID, JarwinDataContext dataContext)
+        public void Update(int feedID, JarwinDataContext dataContext)
         {
             // Update thyself.
 
@@ -293,8 +293,8 @@ namespace jarwin.ObjectFactory
                 catch
                 {
                     // Not online for whatever reason.
-                    // Need to log reason.
-                    return false;
+                    // TODO: Need to log reason.
+                    throw;
                 }
             }
 
@@ -317,7 +317,8 @@ namespace jarwin.ObjectFactory
             }
             catch (Exception)
             {
-                return false;
+                // TODO: need to log.
+                throw;
             }
 
             foreach (var feedItem in deleteFeedItems)
@@ -331,7 +332,8 @@ namespace jarwin.ObjectFactory
             }
             catch (Exception)
             {
-                return false;
+                // TODO: need to log.
+                throw;
             }
 
             var updateFeed =
@@ -347,7 +349,8 @@ namespace jarwin.ObjectFactory
             }
             catch
             {
-                return false;
+                // TODO: need to log.
+                throw;
             }
             
             // Feed and FeedItem now backed up in history tables.
@@ -374,7 +377,8 @@ namespace jarwin.ObjectFactory
             }
             catch
             {
-                return false;
+                // TODO: need to log.
+                throw;
             }
 
             // Insert new FeedItem(s).
@@ -395,12 +399,11 @@ namespace jarwin.ObjectFactory
             }
             catch
             {
-                return false;
+                // TODO: need to log.
+                throw;
             }
 
             // TODO: log errors and cleanup database on failures (rollback steps).
-
-            return true;
         }
     }
 }
