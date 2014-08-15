@@ -227,6 +227,7 @@ namespace jarwin.Form
                         // Update state of this feed to "FAILED_SYNCING"??
                     }
                 });
+
             }
 
             // TODO: set app state to "NOT_SYNCING".

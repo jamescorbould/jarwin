@@ -40,7 +40,7 @@ namespace jarwin
                 }
                 catch
                 {
-                    infoLabel.Text = "File processing failed!  Sorry, can't process this file.";
+                    infoLabel.Text = "File processing failed!  Sorry, can't process that file.";
                     // TODO: do some logging here.
                 }
             }
