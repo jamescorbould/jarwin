@@ -228,6 +228,7 @@ namespace jarwin.Form
                     }
                 });
 
+                t.Wait();
             }
 
             // TODO: set app state to "NOT_SYNCING".
