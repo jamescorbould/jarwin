@@ -212,10 +212,13 @@ namespace jarwin.Form
                 && feed.lastDownloadDateTime.AddHours((double)feed.updateFrequency) <= DateTime.Now
                 select feed;
 
+            Task[] tasks = new Task[feeds.Count()];
+            int index = -1;
+
             foreach (var feed in feeds)
             {
                 // Run each update on a separate thread, to keep the UI responsive.
-                Task t = Task.Run(() =>
+                tasks[++index] = Task.Run(() =>
                 {
                     try
                     {
@@ -227,16 +230,18 @@ namespace jarwin.Form
                         // Update state of this feed to "FAILED_SYNCING"??
                     }
                 });
-
-                t.Wait();
             }
+
+            Task.WaitAll(tasks);
 
             // TODO: set app state to "NOT_SYNCING".
             // This event should trigger message bar to display suitable text.
 
+            // TODO: prompt before refreshing the tree view.
+            // TODO: if user selects to not update the tree view, update status to "TREE_REFRESH_PENDING" and update message bar status message.
             refreshTreeView();
-            clearDataGridView();
-            clearBrowserView();
+            //clearDataGridView();
+            //clearBrowserView();
         }
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
