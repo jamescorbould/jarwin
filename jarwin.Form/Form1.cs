@@ -218,10 +218,13 @@ namespace jarwin.Form
             foreach (var feed in feeds)
             {
                 // Run each update on a separate thread, to keep the UI responsive.
+                // And to run multiple updates on different threads to increase performance.
+
                 tasks[++index] = Task.Run(() =>
                 {
                     try
                     {
+                        // Don't want to await this method call.
                         rss.Update(feed.feedID, dataContext);
                     }
                     catch (Exception)

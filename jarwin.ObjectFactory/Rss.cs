@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using jarwin.DAL;
 using System.Xml;
 using System.Net;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
+using jarwin.Utility;
 
 namespace jarwin.ObjectFactory
 {
@@ -13,22 +15,33 @@ namespace jarwin.ObjectFactory
     {
         public Feed feed { get; set; }
         public List<FeedItem> feedItems { get; set; }
+        public LoggingConfiguration loggingConfiguration { get; set; }
+        public LogWriter logWriter { get; set; }
 
         public Rss()
         {
             feed = new Feed();
             feedItems = new List<FeedItem>();
+
+            loggingConfiguration = Utility.Utility.BuildProgrammaticConfig();
+            logWriter = new LogWriter(loggingConfiguration);
         }
 
         public Rss(Feed feedIn, List<FeedItem> feedItemsIn)
         {
             feed = feedIn;
             feedItems = feedItemsIn;
+
+            loggingConfiguration = Utility.Utility.BuildProgrammaticConfig();
+            logWriter = new LogWriter(loggingConfiguration);
         }
 
         public Rss(string inputUri)
         {
             CreateTypes(inputUri);
+
+            loggingConfiguration = Utility.Utility.BuildProgrammaticConfig();
+            logWriter = new LogWriter(loggingConfiguration);
         }
 
         public void CreateTypes(string inputUri)
@@ -275,9 +288,16 @@ namespace jarwin.ObjectFactory
             }
         }
 
-        public void Update(int feedID, JarwinDataContext dataContext)
+        public async Task<Boolean> Update(int feedID, JarwinDataContext dataContext)
         {
             // Update thyself.
+            Boolean result = new Boolean();
+            result = true;
+
+            if (logWriter.IsLoggingEnabled())
+            {
+                logWriter.Write(String.Format("START :: Update Rss with feedID = {0}", feedID));
+            }
 
             // Check if can access feed URL first (i.e. are we online?).
             
@@ -288,12 +308,14 @@ namespace jarwin.ObjectFactory
                 try
                 {
                     webClient.BaseAddress = "http://localhost";
-                    webClient.OpenRead("http://www.google.co.nz");
+                    System.IO.Stream resultStream = await webClient.OpenReadTaskAsync("http://www.google.co.nz");
                 }
-                catch
+                catch (Exception ex)
                 {
                     // Not online for whatever reason.
                     // TODO: Need to log reason.
+                    logWriter.Write(String.Format("START :: Not online.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    result = false;
                     throw;
                 }
             }
@@ -318,6 +340,7 @@ namespace jarwin.ObjectFactory
             catch (Exception)
             {
                 // TODO: need to log.
+                result = false;
                 throw;
             }
 
@@ -333,6 +356,7 @@ namespace jarwin.ObjectFactory
             catch (Exception)
             {
                 // TODO: need to log.
+                result = false;
                 throw;
             }
 
@@ -350,6 +374,7 @@ namespace jarwin.ObjectFactory
             catch
             {
                 // TODO: need to log.
+                result = false;
                 throw;
             }
             
@@ -378,6 +403,7 @@ namespace jarwin.ObjectFactory
             catch
             {
                 // TODO: need to log.
+                result = false;
                 throw;
             }
 
@@ -400,10 +426,18 @@ namespace jarwin.ObjectFactory
             catch
             {
                 // TODO: need to log.
+                result = false;
                 throw;
             }
 
             // TODO: log errors and cleanup database on failures (rollback steps).
+
+            if (logWriter.IsLoggingEnabled())
+            {
+                logWriter.Write(String.Format("END :: Update Rss with feedID = {0}", feedID));
+            }
+
+            return result;
         }
     }
 }
