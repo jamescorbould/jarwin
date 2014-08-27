@@ -66,6 +66,7 @@ namespace jarwin.ObjectFactory
             feedItemHistory.lastDownloadDateTime = feedItem.lastDownloadDateTime;
             feedItemHistory.publishedDateTime = feedItem.publishedDateTime;
             feedItemHistory.title = feedItem.title;
+            feedItemHistory.archivedDateTime = DateTime.Now;
 
             return feedItemHistory;
         }

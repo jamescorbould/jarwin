@@ -20,5 +20,6 @@ namespace jarwin.DAL
         [Column(Name="description")] public string description { get; set; }
         [Column(Name="content")] public string content { get; set; }
         [Column(Name="last_download_datetime")] public DateTime lastDownloadDateTime { get; set; }
+        [Column(Name="archived_datetime", IsPrimaryKey=true)] public DateTime archivedDateTime { get; set; }
     }
 }

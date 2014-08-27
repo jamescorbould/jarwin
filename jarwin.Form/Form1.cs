@@ -11,10 +11,11 @@ using System.Windows.Forms;
 using jarwin.DAL;
 using jarwin.Form;
 using jarwin.ObjectFactory;
+using Microsoft.Practices.EnterpriseLibrary.Logging;
 
 namespace jarwin.Form
 {
-    public partial class jarwin : System.Windows.Forms.Form
+    public partial class jarwin : System.Windows.Forms.Form, IDisposable
     {
         public JarwinDataContext dataContext
         {
@@ -22,10 +23,21 @@ namespace jarwin.Form
             private set;
         }
 
+        public LoggingConfiguration loggingConfiguration { get; set; }
+        public LogWriter logWriter { get; set; }
+
         private TreeNode currentNode
         { 
             get;
             set;
+        }
+
+        private void Dispose()
+        {
+            if (dataContext != null)
+            {
+                dataContext.Dispose();
+            }
         }
 
         public jarwin()
@@ -33,6 +45,8 @@ namespace jarwin.Form
             InitializeComponent();
             Utility.Utility utility = new Utility.Utility();
             dataContext = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
+            loggingConfiguration = Utility.Utility.BuildProgrammaticConfig();
+            logWriter = new LogWriter(loggingConfiguration);
         }
 
         private void jarwin_Load(object sender, EventArgs e)
@@ -204,7 +218,7 @@ namespace jarwin.Form
             // TODO: set app state to "SYNCING".
             // This event should trigger message bar to display suitable text.
             
-            Rss rss = new Rss();
+            //Rss rss = new Rss();
 
             var feeds =
                 from feed in dataContext.Feed
@@ -225,12 +239,14 @@ namespace jarwin.Form
                     try
                     {
                         // Don't want to await this method call.
-                        rss.Update(feed.feedID, dataContext);
+                        Rss rss = new Rss();
+                        Task<bool> result = rss.Update(feed.feedID, dataContext);
                     }
                     catch (Exception)
                     {
                         // TODO: Log the error.
                         // Update state of this feed to "FAILED_SYNCING"??
+                        logWriter.Write(String.Format("Error :: Failed to update Rss with feedID = {0}", feed.feedID));
                     }
                 });
             }

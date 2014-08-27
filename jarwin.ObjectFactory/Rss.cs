@@ -308,13 +308,22 @@ namespace jarwin.ObjectFactory
                 try
                 {
                     webClient.BaseAddress = "http://localhost";
-                    System.IO.Stream resultStream = await webClient.OpenReadTaskAsync("http://www.google.co.nz");
+                    var task = webClient.OpenReadTaskAsync("http://www.google.co.nz");
+
+                    if (await Task.WhenAny(task, Task.Delay(10000)) == task)
+                    {
+                        
+                    }
+                    else
+                    {
+                        throw new TimeoutException("Timed out waiting to connect.");
+                    }
                 }
                 catch (Exception ex)
                 {
                     // Not online for whatever reason.
                     // TODO: Need to log reason.
-                    logWriter.Write(String.Format("START :: Not online.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    logWriter.Write(String.Format("ERROR :: Not online.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
                     result = false;
                     throw;
                 }
@@ -322,6 +331,8 @@ namespace jarwin.ObjectFactory
 
             // We are online so we can sync.
             // Copy existing Feed and FeedItems to a history table first.
+
+            logWriter.Write(String.Format("INFO :: Insert into FeedItemHistory.  feedID = {0}", feedID));
 
             var deleteFeedItems =
                 from feedItem in dataContext.FeedItem
@@ -337,12 +348,15 @@ namespace jarwin.ObjectFactory
             {
                 dataContext.SubmitChanges();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // TODO: need to log.
+                logWriter.Write(String.Format("ERROR :: Failed to insert into FeedItemHistory.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
                 result = false;
                 throw;
             }
+
+            logWriter.Write(String.Format("INFO :: Delete from FeedItem.  feedID = {0}", feedID));
 
             foreach (var feedItem in deleteFeedItems)
             {
@@ -353,12 +367,15 @@ namespace jarwin.ObjectFactory
             {
                 dataContext.SubmitChanges();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 // TODO: need to log.
+                logWriter.Write(String.Format("ERROR :: Failed to delete from FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
                 result = false;
                 throw;
             }
+            
+            logWriter.Write(String.Format("INFO :: Insert into FeedHistory.  feedID = {0}", feedID));
 
             var updateFeed =
                 from feed in dataContext.Feed
@@ -371,9 +388,10 @@ namespace jarwin.ObjectFactory
             {
                 dataContext.SubmitChanges();
             }
-            catch
+            catch (Exception ex)
             {
                 // TODO: need to log.
+                logWriter.Write(String.Format("ERROR :: Failed to insert into from FeedHistory.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
                 result = false;
                 throw;
             }
@@ -382,9 +400,11 @@ namespace jarwin.ObjectFactory
             // Update Feed and insert latest FeedItem records.
 
             // Create local Feed and FeedItem types using the provided URL to the Rss feed.
+            logWriter.Write(String.Format("INFO :: Call CreateTypes to hydrate local types.  feedID = {0}", feedID));
             CreateTypes(updateFeed.First<Feed>().feedURI);
 
             // Update Feed.
+            logWriter.Write(String.Format("INFO :: Update Feed.  feedID = {0}", feedID));
 
             // Update Feed in the local data context with the new locally downloaded Feed details.
             updateFeed.First<Feed>().description = this.feed.description;
@@ -400,14 +420,18 @@ namespace jarwin.ObjectFactory
             {
                 dataContext.SubmitChanges();
             }
-            catch
+            catch (Exception ex)
             {
                 // TODO: need to log.
+                logWriter.Write(String.Format("ERROR :: Failed to update Feed.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
                 result = false;
                 throw;
             }
 
             // Insert new FeedItem(s).
+
+            logWriter.Write(String.Format("INFO :: Insert into FeedItem.  feedID = {0}", feedID));
+
             int feedItemID = 0;
 
             foreach (var feedItem in feedItems)
@@ -423,9 +447,10 @@ namespace jarwin.ObjectFactory
             {
                 dataContext.SubmitChanges();
             }
-            catch
+            catch (Exception ex)
             {
                 // TODO: need to log.
+                logWriter.Write(String.Format("ERROR :: Failed to insert into FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
                 result = false;
                 throw;
             }

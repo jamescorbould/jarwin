@@ -23,5 +23,6 @@ namespace jarwin.DAL
         [Column(Name="status")] public string status { get; set; }
         [Column(Name="type")] public string type { get; set; }
         [Column(Name="folder_id")] public int? folderID { get; set; }
+        [Column(Name="archived_datetime", IsPrimaryKey = true)] public DateTime archivedDateTime { get; set; }
     }
 }
