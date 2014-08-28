@@ -228,6 +228,7 @@ namespace jarwin.Form
 
             Task[] tasks = new Task[feeds.Count()];
             int index = -1;
+            Utility.Utility utility = new Utility.Utility();
 
             foreach (var feed in feeds)
             {
@@ -240,7 +241,7 @@ namespace jarwin.Form
                     {
                         // Don't want to await this method call.
                         Rss rss = new Rss();
-                        Task<bool> result = rss.Update(feed.feedID, dataContext);
+                        Task<bool> result = rss.Update(feed.feedID, new JarwinDataContext(utility.GetAppSetting("connectionString2")));
                     }
                     catch (Exception)
                     {

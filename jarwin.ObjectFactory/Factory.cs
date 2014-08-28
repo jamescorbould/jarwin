@@ -48,6 +48,7 @@ namespace jarwin.ObjectFactory
             feedHistory.updateFrequency = feed.updateFrequency;
             feedHistory.updatePeriod = feed.updatePeriod;
             feedHistory.feedURI = feed.feedURI;
+            feedHistory.archivedDateTime = DateTime.Now;
 
             return feedHistory;
         }
