@@ -293,7 +293,6 @@ namespace jarwin.ObjectFactory
             // Update thyself.
             Boolean result = new Boolean();
             result = true;
-            object lockObj = new object();
 
             if (logWriter.IsLoggingEnabled())
             {
@@ -308,23 +307,36 @@ namespace jarwin.ObjectFactory
             {
                 try
                 {
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("INFO :: Starting call to web client to see if online.  feedID = {0}", feedID));
+                    }
+
+                    // The default connection limit is 2 - increase this to 100.
+                    System.Net.ServicePointManager.DefaultConnectionLimit = 100;
+
                     webClient.BaseAddress = "http://localhost";
                     var task = webClient.OpenReadTaskAsync("http://www.google.co.nz");
 
                     if (await Task.WhenAny(task, Task.Delay(10000)) == task)
                     {
-                        
+                        if (logWriter.IsLoggingEnabled())
+                        {
+                            logWriter.Write(String.Format("INFO :: Yes online.  feedID = {0}", feedID));
+                        }
                     }
                     else
                     {
+                        // TODO: need to cancel the task.
                         throw new TimeoutException("Timed out waiting to connect.");
                     }
                 }
                 catch (Exception ex)
                 {
-                    // Not online for whatever reason.
-                    // TODO: Need to log reason.
-                    logWriter.Write(String.Format("ERROR :: Not online.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("ERROR :: Not online.  Exception msg = {0}  feedID = {1}", ex.Message, feedID));
+                    }
                     result = false;
                     throw;
                 }
@@ -333,139 +345,156 @@ namespace jarwin.ObjectFactory
             // We are online so we can sync.
             // Copy existing Feed and FeedItems to a history table first.
 
-            logWriter.Write(String.Format("INFO :: Insert into FeedItemHistory.  feedID = {0}", feedID));
-
-            lock (lockObj)
+            if (logWriter.IsLoggingEnabled())
             {
-                var deleteFeedItems =
-                    from feedItem in dataContext.FeedItem
-                    where feedItem.feedID == feedID
-                    select feedItem;
-
-                foreach (var feedItem in deleteFeedItems)
-                {
-                    dataContext.FeedItemHistory.InsertOnSubmit(Factory.CreateFeedItemHistoryFromFeedItem(feedItem));
-                }
-
-                try
-                {
-                    dataContext.SubmitChanges();
-                }
-                catch (Exception ex)
-                {
-                    // TODO: need to log.
-                    logWriter.Write(String.Format("ERROR :: Failed to insert into FeedItemHistory.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
-                    result = false;
-                    throw;
-                }
-
-                logWriter.Write(String.Format("INFO :: Delete from FeedItem.  feedID = {0}", feedID));
-
-                foreach (var feedItem in deleteFeedItems)
-                {
-                    dataContext.FeedItem.DeleteOnSubmit(feedItem);
-                }
-
-                try
-                {
-                    dataContext.SubmitChanges();
-                }
-                catch (Exception ex)
-                {
-                    // TODO: need to log.
-                    logWriter.Write(String.Format("ERROR :: Failed to delete from FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
-                    result = false;
-                    throw;
-                }
+                logWriter.Write(String.Format("INFO :: Insert into FeedItemHistory.  feedID = {0}", feedID));
             }
-            
-            logWriter.Write(String.Format("INFO :: Insert into FeedHistory.  feedID = {0}", feedID));
 
-            lock (lockObj)
+            var deleteFeedItems =
+                from feedItem in dataContext.FeedItem
+                where feedItem.feedID == feedID
+                select feedItem;
+
+            foreach (var feedItem in deleteFeedItems)
             {
-                logWriter.Write(String.Format("INFO :: Got lock.  feedID = {0}", feedID));
+                dataContext.FeedItemHistory.InsertOnSubmit(Factory.CreateFeedItemHistoryFromFeedItem(feedItem));
+            }
 
-                var updateFeed =
-                    from feed in dataContext.Feed
-                    where feed.feedID == feedID
-                    select feed;
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                if (logWriter.IsLoggingEnabled())
+                {
+                    logWriter.Write(String.Format("ERROR :: Failed to insert into FeedItemHistory.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                }
+                result = false;
+                throw;
+            }
 
-                dataContext.FeedHistory.InsertOnSubmit(Factory.CreateFeedHistoryFromFeed(updateFeed.First<Feed>()));
+            logWriter.Write(String.Format("INFO :: Delete from FeedItem.  feedID = {0}", feedID));
 
-                try
+            foreach (var feedItem in deleteFeedItems)
+            {
+                dataContext.FeedItem.DeleteOnSubmit(feedItem);
+            }
+
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                if (logWriter.IsLoggingEnabled())
+                {
+                    logWriter.Write(String.Format("ERROR :: Failed to delete from FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                }
+                result = false;
+                throw;
+            }
+
+            if (logWriter.IsLoggingEnabled())
+            {
+                logWriter.Write(String.Format("INFO :: Insert into FeedHistory.  feedID = {0}", feedID));
+            }
+
+            var updateFeed =
+                from feed in dataContext.Feed
+                where feed.feedID == feedID
+                select feed;
+
+            dataContext.FeedHistory.InsertOnSubmit(Factory.CreateFeedHistoryFromFeed(updateFeed.First<Feed>()));
+
+            try
+            {
+                if (logWriter.IsLoggingEnabled())
                 {
                     logWriter.Write(String.Format("INFO :: Insert into FeedHistory.  feedID = {0}", feedID));
-                    dataContext.SubmitChanges();
                 }
-                catch (Exception ex)
+                dataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                if (logWriter.IsLoggingEnabled())
                 {
-                    // TODO: need to log.
                     logWriter.Write(String.Format("ERROR :: Failed to insert into from FeedHistory.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
-                    result = false;
-                    throw;
                 }
+                result = false;
+                throw;
+            }
 
-                // Feed and FeedItem now backed up in history tables.
-                // Update Feed and insert latest FeedItem records.
+            // Feed and FeedItem now backed up in history tables.
+            // Update Feed and insert latest FeedItem records.
 
-                // Create local Feed and FeedItem types using the provided URL to the Rss feed.
+            // Create local Feed and FeedItem types using the provided URL to the Rss feed.
+            if (logWriter.IsLoggingEnabled())
+            {
                 logWriter.Write(String.Format("INFO :: Call CreateTypes to hydrate local types.  feedID = {0}", feedID));
-                CreateTypes(updateFeed.First<Feed>().feedURI);
+            }
+            CreateTypes(updateFeed.First<Feed>().feedURI);
 
-                // Update Feed.
+            // Update Feed.
+            if (logWriter.IsLoggingEnabled())
+            {
                 logWriter.Write(String.Format("INFO :: Update Feed.  feedID = {0}", feedID));
+            }
 
-                // Update Feed in the local data context with the new locally downloaded Feed details.
-                updateFeed.First<Feed>().description = this.feed.description;
-                updateFeed.First<Feed>().language = this.feed.language;
-                updateFeed.First<Feed>().lastBuildDateTime = this.feed.lastBuildDateTime;
-                updateFeed.First<Feed>().lastDownloadDateTime = DateTime.Now;
-                updateFeed.First<Feed>().title = this.feed.title;
-                updateFeed.First<Feed>().type = this.feed.type;
-                updateFeed.First<Feed>().updateFrequency = this.feed.updateFrequency;
-                updateFeed.First<Feed>().updatePeriod = this.feed.updatePeriod;
+            // Update Feed in the local data context with the new locally downloaded Feed details.
+            updateFeed.First<Feed>().description = this.feed.description;
+            updateFeed.First<Feed>().language = this.feed.language;
+            updateFeed.First<Feed>().lastBuildDateTime = this.feed.lastBuildDateTime;
+            updateFeed.First<Feed>().lastDownloadDateTime = DateTime.Now;
+            updateFeed.First<Feed>().title = this.feed.title;
+            updateFeed.First<Feed>().type = this.feed.type;
+            updateFeed.First<Feed>().updateFrequency = this.feed.updateFrequency;
+            updateFeed.First<Feed>().updatePeriod = this.feed.updatePeriod;
 
-                try
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                if (logWriter.IsLoggingEnabled())
                 {
-                    dataContext.SubmitChanges();
-                }
-                catch (Exception ex)
-                {
-                    // TODO: need to log.
                     logWriter.Write(String.Format("ERROR :: Failed to update Feed.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
-                    result = false;
-                    throw;
                 }
+                result = false;
+                throw;
             }
 
             // Insert new FeedItem(s).
 
-            logWriter.Write(String.Format("INFO :: Insert into FeedItem.  feedID = {0}", feedID));
-
-            lock (lockObj)
+            if (logWriter.IsLoggingEnabled())
             {
-                int feedItemID = 0;
+                logWriter.Write(String.Format("INFO :: Insert into FeedItem.  feedID = {0}", feedID));
+            }
 
-                foreach (var feedItem in feedItems)
-                {
-                    feedItem.feedID = feedID;
-                    feedItem.feedItemID = feedItemID;
-                    dataContext.FeedItem.InsertOnSubmit(feedItem);
+            int feedItemID = 0;
 
-                    feedItemID += 1;
-                }
+            foreach (var feedItem in feedItems)
+            {
+                feedItem.feedID = feedID;
+                feedItem.feedItemID = feedItemID;
+                dataContext.FeedItem.InsertOnSubmit(feedItem);
 
-                try
+                feedItemID += 1;
+            }
+
+            try
+            {
+                dataContext.SubmitChanges();
+            }
+            catch (Exception ex)
+            {
+                if (logWriter.IsLoggingEnabled())
                 {
-                    dataContext.SubmitChanges();
-                }
-                catch (Exception ex)
-                {
-                    // TODO: need to log.
                     logWriter.Write(String.Format("ERROR :: Failed to insert into FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
-                    result = false;
-                    throw;
                 }
+                result = false;
+                throw;
             }
 
             // TODO: log errors and cleanup database on failures (rollback steps).

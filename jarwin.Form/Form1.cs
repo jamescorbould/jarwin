@@ -245,7 +245,6 @@ namespace jarwin.Form
                     }
                     catch (Exception)
                     {
-                        // TODO: Log the error.
                         // Update state of this feed to "FAILED_SYNCING"??
                         logWriter.Write(String.Format("Error :: Failed to update Rss with feedID = {0}", feed.feedID));
                     }
