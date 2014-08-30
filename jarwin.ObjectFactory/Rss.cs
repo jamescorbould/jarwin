@@ -288,7 +288,7 @@ namespace jarwin.ObjectFactory
             }
         }
 
-        public async Task<Boolean> Update(int feedID, JarwinDataContext dataContext)
+        public async Task<bool> Update(int feedID, JarwinDataContext dataContext)
         {
             // Update thyself.
             Boolean result = new Boolean();

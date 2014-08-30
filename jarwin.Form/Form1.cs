@@ -211,7 +211,7 @@ namespace jarwin.Form
             }
         }
 
-        private void syncToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void syncToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // "Sync all" button pressed.  Update Feed and associated FeedItems.
 
@@ -235,13 +235,14 @@ namespace jarwin.Form
                 // Run each update on a separate thread, to keep the UI responsive.
                 // And to run multiple updates on different threads to increase performance.
 
-                tasks[++index] = Task.Run(() =>
+                tasks[++index] = Task.Run( async() =>
                 {
                     try
                     {
                         // Don't want to await this method call.
                         Rss rss = new Rss();
-                        Task<bool> result = rss.Update(feed.feedID, new JarwinDataContext(utility.GetAppSetting("connectionString2")));
+                        //Task<bool> result = rss.Update(feed.feedID, new JarwinDataContext(utility.GetAppSetting("connectionString2")));
+                        await rss.Update(feed.feedID, new JarwinDataContext(utility.GetAppSetting("connectionString2")));
                     }
                     catch (Exception)
                     {
@@ -251,7 +252,7 @@ namespace jarwin.Form
                 });
             }
 
-            Task.WaitAll(tasks);
+            //Task.WaitAll(tasks); --> this is blocking.
 
             // TODO: set app state to "NOT_SYNCING".
             // This event should trigger message bar to display suitable text.
