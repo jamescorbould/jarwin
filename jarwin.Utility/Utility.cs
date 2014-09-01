@@ -38,7 +38,7 @@ namespace jarwin.Utility
 
             // Trace Listener
             var flatFileTraceListener = new FlatFileTraceListener(
-                @"C:\Temp\FlatFile.log", 
+                @"C:\Temp\jarwin.log", 
                 "----------------------------------------", 
                 "----------------------------------------", 
                 briefFormatter);

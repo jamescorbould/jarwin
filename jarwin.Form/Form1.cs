@@ -17,20 +17,10 @@ namespace jarwin.Form
 {
     public partial class jarwin : System.Windows.Forms.Form, IDisposable
     {
-        public JarwinDataContext dataContext
-        {
-            get;
-            private set;
-        }
-
+        public JarwinDataContext dataContext { get; private set; }
         public LoggingConfiguration loggingConfiguration { get; set; }
         public LogWriter logWriter { get; set; }
-
-        private TreeNode currentNode
-        { 
-            get;
-            set;
-        }
+        private TreeNode currentNode { get; set; }
 
         private void Dispose()
         {
@@ -68,6 +58,7 @@ namespace jarwin.Form
             {
                 TreeNode node = new TreeNode(feed.title);
                 node.Tag = feed.feedID;
+                node.ToolTipText = feed.description;
                 nodes.Add(node);
             }
 
@@ -92,7 +83,7 @@ namespace jarwin.Form
                 contextMenuStrip1.Show(MousePosition.X, MousePosition.Y);
                 currentNode = treeView1.GetNodeAt(e.Location);
             }
-            else
+            else if (e.Node.Name.ToUpper() != "MY FEEDS")
             {
                 if (dataGridView1.Rows.Count > 0)
                 {
@@ -136,6 +127,10 @@ namespace jarwin.Form
                     FeedItem item = (FeedItem)dataGridView1.Rows[0].Tag;
                     webBrowser.DocumentText = String.IsNullOrEmpty(item.content) ? item.description : item.content;
                 }
+            }
+            else
+            {
+                // Do nothing.
             }
         }
 
@@ -203,10 +198,14 @@ namespace jarwin.Form
                     refreshTreeView();
                     clearDataGridView();
                 }
-                catch
+                catch (Exception ex)
                 {
                     MessageBox.Show("Sorry, failed to delete the feed.", "jarwin");
-                    // TODO: implement logging.
+                    
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("ERROR :: Failed to delete feed.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                    }
                 }
             }
         }
@@ -217,8 +216,6 @@ namespace jarwin.Form
 
             // TODO: set app state to "SYNCING".
             // This event should trigger message bar to display suitable text.
-            
-            //Rss rss = new Rss();
 
             var feeds =
                 from feed in dataContext.Feed
@@ -239,19 +236,23 @@ namespace jarwin.Form
                 {
                     try
                     {
-                        // Don't want to await this method call.
                         Rss rss = new Rss();
-                        //Task<bool> result = rss.Update(feed.feedID, new JarwinDataContext(utility.GetAppSetting("connectionString2")));
                         await rss.Update(feed.feedID, new JarwinDataContext(utility.GetAppSetting("connectionString2")));
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
                         // Update state of this feed to "FAILED_SYNCING"??
-                        logWriter.Write(String.Format("Error :: Failed to update Rss with feedID = {0}", feed.feedID));
+
+                        if (logWriter.IsLoggingEnabled())
+                        {
+                            logWriter.Write(String.Format("ERROR :: Failed to update feed.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feed.feedID));
+                        }
                     }
                 });
             }
 
+            // TODO: need a continuation task - when all tasks have completed, indicate that syncing has completed
+            // and refresh of the tree view is required.
             //Task.WaitAll(tasks); --> this is blocking.
 
             // TODO: set app state to "NOT_SYNCING".
@@ -259,7 +260,7 @@ namespace jarwin.Form
 
             // TODO: prompt before refreshing the tree view.
             // TODO: if user selects to not update the tree view, update status to "TREE_REFRESH_PENDING" and update message bar status message.
-            refreshTreeView();
+            //refreshTreeView();
             //clearDataGridView();
             //clearBrowserView();
         }

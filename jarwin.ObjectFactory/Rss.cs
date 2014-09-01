@@ -264,9 +264,13 @@ namespace jarwin.ObjectFactory
             {
                 dataContext.SubmitChanges();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: need to log.
+                if (logWriter.IsLoggingEnabled())
+                {
+                    logWriter.Write(String.Format("ERROR :: Failed to from table FeedItem.  Source = Rss.Delete.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                }
+
                 throw;
             }
 
@@ -281,27 +285,30 @@ namespace jarwin.ObjectFactory
             {
                 dataContext.SubmitChanges();
             }
-            catch
+            catch (Exception ex)
             {
-                // TODO: need to log.
+                if (logWriter.IsLoggingEnabled())
+                {
+                    logWriter.Write(String.Format("ERROR :: Failed to from table Feed.  Source = Rss.Delete.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                }
+
                 throw;
             }
         }
 
         public async Task<bool> Update(int feedID, JarwinDataContext dataContext)
         {
-            // Update thyself.
+            // Try and download latest rss feed and process it.
+
             Boolean result = new Boolean();
             result = true;
 
             if (logWriter.IsLoggingEnabled())
             {
-                logWriter.Write(String.Format("START :: Update Rss with feedID = {0}", feedID));
+                logWriter.Write(String.Format("START :: Source = Rss.Update.  Update Rss with feedID = {0}", feedID));
             }
 
             // Check if can access feed URL first (i.e. are we online?).
-            
-            // TODO: implement error logging to specified log.
 
             using(WebClient webClient = new WebClient())
             {
@@ -309,7 +316,7 @@ namespace jarwin.ObjectFactory
                 {
                     if (logWriter.IsLoggingEnabled())
                     {
-                        logWriter.Write(String.Format("INFO :: Starting call to web client to see if online.  feedID = {0}", feedID));
+                        logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Starting call to web client to see if online.  feedID = {0}", feedID));
                     }
 
                     // The default connection limit is 2 - increase this to 100.
@@ -322,7 +329,7 @@ namespace jarwin.ObjectFactory
                     {
                         if (logWriter.IsLoggingEnabled())
                         {
-                            logWriter.Write(String.Format("INFO :: Yes online.  feedID = {0}", feedID));
+                            logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Yes online.  feedID = {0}", feedID));
                         }
                     }
                     else
@@ -335,8 +342,9 @@ namespace jarwin.ObjectFactory
                 {
                     if (logWriter.IsLoggingEnabled())
                     {
-                        logWriter.Write(String.Format("ERROR :: Not online.  Exception msg = {0}  feedID = {1}", ex.Message, feedID));
+                        logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Not online.  Exception msg = {0}  feedID = {1}", ex.Message, feedID));
                     }
+
                     result = false;
                     throw;
                 }
@@ -347,7 +355,7 @@ namespace jarwin.ObjectFactory
 
             if (logWriter.IsLoggingEnabled())
             {
-                logWriter.Write(String.Format("INFO :: Insert into FeedItemHistory.  feedID = {0}", feedID));
+                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedItemHistory.  feedID = {0}", feedID));
             }
 
             var deleteFeedItems =
@@ -368,13 +376,17 @@ namespace jarwin.ObjectFactory
             {
                 if (logWriter.IsLoggingEnabled())
                 {
-                    logWriter.Write(String.Format("ERROR :: Failed to insert into FeedItemHistory.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                    logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into FeedItemHistory.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
                 }
+
                 result = false;
                 throw;
             }
 
-            logWriter.Write(String.Format("INFO :: Delete from FeedItem.  feedID = {0}", feedID));
+            if (logWriter.IsLoggingEnabled())
+            {
+                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Delete from FeedItem.  feedID = {0}", feedID));
+            }
 
             foreach (var feedItem in deleteFeedItems)
             {
@@ -389,15 +401,16 @@ namespace jarwin.ObjectFactory
             {
                 if (logWriter.IsLoggingEnabled())
                 {
-                    logWriter.Write(String.Format("ERROR :: Failed to delete from FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to delete from FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
                 }
+
                 result = false;
                 throw;
             }
 
             if (logWriter.IsLoggingEnabled())
             {
-                logWriter.Write(String.Format("INFO :: Insert into FeedHistory.  feedID = {0}", feedID));
+                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedHistory.  feedID = {0}", feedID));
             }
 
             var updateFeed =
@@ -411,16 +424,18 @@ namespace jarwin.ObjectFactory
             {
                 if (logWriter.IsLoggingEnabled())
                 {
-                    logWriter.Write(String.Format("INFO :: Insert into FeedHistory.  feedID = {0}", feedID));
+                    logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedHistory.  feedID = {0}", feedID));
                 }
+
                 dataContext.SubmitChanges();
             }
             catch (Exception ex)
             {
                 if (logWriter.IsLoggingEnabled())
                 {
-                    logWriter.Write(String.Format("ERROR :: Failed to insert into from FeedHistory.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into from FeedHistory.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
                 }
+
                 result = false;
                 throw;
             }
@@ -431,14 +446,15 @@ namespace jarwin.ObjectFactory
             // Create local Feed and FeedItem types using the provided URL to the Rss feed.
             if (logWriter.IsLoggingEnabled())
             {
-                logWriter.Write(String.Format("INFO :: Call CreateTypes to hydrate local types.  feedID = {0}", feedID));
+                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Call CreateTypes to hydrate local types.  feedID = {0}", feedID));
             }
+
             CreateTypes(updateFeed.First<Feed>().feedURI);
 
             // Update Feed.
             if (logWriter.IsLoggingEnabled())
             {
-                logWriter.Write(String.Format("INFO :: Update Feed.  feedID = {0}", feedID));
+                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Update Feed.  feedID = {0}", feedID));
             }
 
             // Update Feed in the local data context with the new locally downloaded Feed details.
@@ -459,8 +475,9 @@ namespace jarwin.ObjectFactory
             {
                 if (logWriter.IsLoggingEnabled())
                 {
-                    logWriter.Write(String.Format("ERROR :: Failed to update Feed.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to update Feed.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
                 }
+
                 result = false;
                 throw;
             }
@@ -469,7 +486,7 @@ namespace jarwin.ObjectFactory
 
             if (logWriter.IsLoggingEnabled())
             {
-                logWriter.Write(String.Format("INFO :: Insert into FeedItem.  feedID = {0}", feedID));
+                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedItem.  feedID = {0}", feedID));
             }
 
             int feedItemID = 0;
@@ -491,17 +508,17 @@ namespace jarwin.ObjectFactory
             {
                 if (logWriter.IsLoggingEnabled())
                 {
-                    logWriter.Write(String.Format("ERROR :: Failed to insert into FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
                 }
                 result = false;
                 throw;
             }
 
-            // TODO: log errors and cleanup database on failures (rollback steps).
+            // TODO: need to make this atomic and rollback on failures i.e. cleanup database.
 
             if (logWriter.IsLoggingEnabled())
             {
-                logWriter.Write(String.Format("END :: Update Rss with feedID = {0}", feedID));
+                logWriter.Write(String.Format("END :: Source = Rss.Update.  Update Rss with feedID = {0}", feedID));
             }
 
             return result;
