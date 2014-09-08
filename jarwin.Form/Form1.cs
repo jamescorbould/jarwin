@@ -11,7 +11,9 @@ using System.Windows.Forms;
 using jarwin.DAL;
 using jarwin.Form;
 using jarwin.ObjectFactory;
+using jarwin.State;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
+using System.Threading;
 
 namespace jarwin.Form
 {
@@ -21,6 +23,9 @@ namespace jarwin.Form
         public LoggingConfiguration loggingConfiguration { get; set; }
         public LogWriter logWriter { get; set; }
         private TreeNode currentNode { get; set; }
+        private StateAbstract currentState { get; set; }
+        private delegate void SetTextCallback(string text);
+        private Thread updateThread = null;
 
         private void Dispose()
         {
@@ -37,6 +42,7 @@ namespace jarwin.Form
             dataContext = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
             loggingConfiguration = Utility.Utility.BuildProgrammaticConfig();
             logWriter = new LogWriter(loggingConfiguration);
+            this.toolStripStatusLabel2.Text = String.Empty;
         }
 
         private void jarwin_Load(object sender, EventArgs e)
@@ -214,8 +220,10 @@ namespace jarwin.Form
         {
             // "Sync all" button pressed.  Update Feed and associated FeedItems.
 
-            // TODO: set app state to "SYNCING".
-            // This event should trigger message bar to display suitable text.
+            // Set status to "syncing".
+            currentState = new StateSyncing();
+            this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
+            this.updateThread.Start();
 
             var feeds =
                 from feed in dataContext.Feed
@@ -232,7 +240,7 @@ namespace jarwin.Form
                 // Run each update on a separate thread, to keep the UI responsive.
                 // And to run multiple updates on different threads to increase performance.
 
-                tasks[++index] = Task.Run( async() =>
+                tasks[++index] = Task.Run(async () =>
                 {
                     try
                     {
@@ -251,18 +259,31 @@ namespace jarwin.Form
                 });
             }
 
-            // TODO: need a continuation task - when all tasks have completed, indicate that syncing has completed
-            // and refresh of the tree view is required.
-            //Task.WaitAll(tasks); --> this is blocking.
+            await Task.WhenAll(tasks).ContinueWith( (t) =>
+            {
+                currentState = new StateRefreshRequired();
+                this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
+                this.updateThread.Start();
+            }
+            );
+        }
 
-            // TODO: set app state to "NOT_SYNCING".
-            // This event should trigger message bar to display suitable text.
+        private void threadProcSafe()
+        {
+            this.updateStatusText(currentState.description);
+        }
 
-            // TODO: prompt before refreshing the tree view.
-            // TODO: if user selects to not update the tree view, update status to "TREE_REFRESH_PENDING" and update message bar status message.
-            //refreshTreeView();
-            //clearDataGridView();
-            //clearBrowserView();
+        private void updateStatusText(string text)
+        {
+            if (this.statusStrip.InvokeRequired)
+            {
+                SetTextCallback d = new SetTextCallback(updateStatusText);
+                this.Invoke(d, new object[] { text });
+            }
+            else
+            {
+                this.toolStripStatusLabel2.Text = currentState.description;
+            }
         }
 
         private void webBrowser_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
