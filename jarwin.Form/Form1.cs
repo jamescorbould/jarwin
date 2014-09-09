@@ -43,6 +43,7 @@ namespace jarwin.Form
             loggingConfiguration = Utility.Utility.BuildProgrammaticConfig();
             logWriter = new LogWriter(loggingConfiguration);
             this.toolStripStatusLabel2.Text = String.Empty;
+            currentState = new StateNormal();
         }
 
         private void jarwin_Load(object sender, EventArgs e)
@@ -220,20 +221,23 @@ namespace jarwin.Form
         {
             // "Sync all" button pressed.  Update Feed and associated FeedItems.
 
+            int failedSyncCount = 0;
+            Utility.Utility utility = new Utility.Utility();
+            JarwinDataContext dataContextLocal = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
+
             // Set status to "syncing".
             currentState = new StateSyncing();
             this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
             this.updateThread.Start();
 
             var feeds =
-                from feed in dataContext.Feed
+                from feed in dataContextLocal.Feed
                 where feed.status.ToUpper() == "ACTIVE"
                 && feed.lastDownloadDateTime.AddHours((double)feed.updateFrequency) <= DateTime.Now
                 select feed;
 
             Task[] tasks = new Task[feeds.Count()];
             int index = -1;
-            Utility.Utility utility = new Utility.Utility();
 
             foreach (var feed in feeds)
             {
@@ -251,6 +255,8 @@ namespace jarwin.Form
                     {
                         // Update state of this feed to "FAILED_SYNCING"??
 
+                        ++failedSyncCount;
+
                         if (logWriter.IsLoggingEnabled())
                         {
                             logWriter.Write(String.Format("ERROR :: Failed to update feed.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feed.feedID));
@@ -261,15 +267,25 @@ namespace jarwin.Form
 
             await Task.WhenAll(tasks).ContinueWith( (t) =>
             {
-                currentState = new StateRefreshRequired();
-                this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
-                this.updateThread.Start();
+                if (feeds.Count() > 0 && (failedSyncCount < feeds.Count()))
+                {
+                    currentState = new StateRefreshRequired();
+                    this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
+                    this.updateThread.Start();
+                }
+                else
+                {
+                    currentState = new StateNormal();
+                    this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
+                    this.updateThread.Start();
+                }
             }
             );
         }
 
         private void threadProcSafe()
         {
+            // Ensure that the UI thread is used to update the status bar.
             this.updateStatusText(currentState.description);
         }
 
