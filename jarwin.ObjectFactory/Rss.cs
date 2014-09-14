@@ -327,9 +327,12 @@ namespace jarwin.ObjectFactory
 
                     if (await Task.WhenAny(task, Task.Delay(10000)) == task)
                     {
-                        if (logWriter.IsLoggingEnabled())
+                        if (task.Result.Length > 0)
                         {
-                            logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Yes online.  feedID = {0}", feedID));
+                            if (logWriter.IsLoggingEnabled())
+                            {
+                                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Yes online.  feedID = {0}", feedID));
+                            }
                         }
                     }
                     else

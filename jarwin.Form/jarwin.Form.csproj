@@ -118,6 +118,10 @@
       <Project>{6ab67fe7-cd4f-402a-922e-d3f6ddde1b77}</Project>
       <Name>jarwin.ObjectFactory</Name>
     </ProjectReference>
+    <ProjectReference Include="..\jarwin.State\jarwin.State.csproj">
+      <Project>{e37bc69b-fce2-488c-80ab-2065576b5a1a}</Project>
+      <Name>jarwin.State</Name>
+    </ProjectReference>
     <ProjectReference Include="..\jarwin.Utility\jarwin.Utility.csproj">
       <Project>{74ca8ccf-42a1-48e8-ac31-d68f58995848}</Project>
       <Name>jarwin.Utility</Name>
