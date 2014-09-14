@@ -43,6 +43,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StateNormal.cs" />
     <Compile Include="StateRefreshRequired.cs" />
+    <Compile Include="StateFailedSyncing.cs" />
     <Compile Include="StateSyncing.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -275,7 +275,7 @@ namespace jarwin.Form
                 }
                 else
                 {
-                    currentState = new StateNormal();
+                    currentState = new StateFailedSyncing();
                     this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
                     this.updateThread.Start();
                 }
