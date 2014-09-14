@@ -33,6 +33,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.ObjectFactory", "jar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.UnitTests", "jarwin.UnitTests\jarwin.UnitTests.csproj", "{FF86019E-5246-43B6-A968-4B27B056245A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.State", "jarwin.State\jarwin.State.csproj", "{E37BC69B-FCE2-488C-80AB-2065576B5A1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{FF86019E-5246-43B6-A968-4B27B056245A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FF86019E-5246-43B6-A968-4B27B056245A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FF86019E-5246-43B6-A968-4B27B056245A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E37BC69B-FCE2-488C-80AB-2065576B5A1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E37BC69B-FCE2-488C-80AB-2065576B5A1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E37BC69B-FCE2-488C-80AB-2065576B5A1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E37BC69B-FCE2-488C-80AB-2065576B5A1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
