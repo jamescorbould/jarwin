@@ -11,6 +11,7 @@ namespace jarwin.State
         public StateSyncing()
         {
             description = "Syncing...";
+            isRefreshRequired = false;
         }
     }
 }

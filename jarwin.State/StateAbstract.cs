@@ -9,5 +9,6 @@ namespace jarwin.State
     public abstract class StateAbstract
     {
         public string description { get; set; }
+        public bool isRefreshRequired { get; set; }
     }
 }

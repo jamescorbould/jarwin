@@ -11,6 +11,7 @@ namespace jarwin.State
         public StateRefreshRequired()
         {
             description = "Refresh required...";
+            isRefreshRequired = true;
         }
     }
 }

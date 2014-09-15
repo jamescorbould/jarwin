@@ -306,5 +306,17 @@ namespace jarwin.Form
         {
 
         }
+
+        private void feedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (currentState.isRefreshRequired)
+            {
+                refreshAllToolStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                refreshAllToolStripMenuItem.Enabled = false;
+            }
+        }
     }
 }

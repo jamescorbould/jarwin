@@ -11,6 +11,7 @@ namespace jarwin.State
         public StateFailedSyncing()
         {
             description = "Failed to sync...";
+            isRefreshRequired = false;
         }
     }
 }

@@ -11,6 +11,7 @@ namespace jarwin.State
         public StateNormal()
         {
             description = String.Empty;
+            isRefreshRequired = false;
         }
     }
 }
