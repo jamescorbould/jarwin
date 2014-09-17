@@ -222,6 +222,7 @@ namespace jarwin.Form
             // "Sync all" button pressed.  Update Feed and associated FeedItems.
 
             int failedSyncCount = 0;
+            int feedsCount = 0;
             Utility.Utility utility = new Utility.Utility();
             JarwinDataContext dataContextLocal = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
 
@@ -235,6 +236,8 @@ namespace jarwin.Form
                 where feed.status.ToUpper() == "ACTIVE"
                 && feed.lastDownloadDateTime.AddHours((double)feed.updateFrequency) <= DateTime.Now
                 select feed;
+
+            feedsCount = feeds.Count();
 
             Task[] tasks = new Task[feeds.Count()];
             int index = -1;
@@ -267,7 +270,14 @@ namespace jarwin.Form
 
             await Task.WhenAll(tasks).ContinueWith( (t) =>
             {
-                if (feeds.Count() > 0 && (failedSyncCount < feeds.Count()))
+                if (feedsCount == 0)
+                {
+                    // Nothing marked for update.
+                    currentState = new StateNormal();
+                    this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
+                    this.updateThread.Start();
+                }
+                else if (failedSyncCount < feedsCount)
                 {
                     currentState = new StateRefreshRequired();
                     this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));

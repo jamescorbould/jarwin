@@ -8,6 +8,7 @@ using System.Xml;
 using System.Net;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using jarwin.Utility;
+using System.IO;
 
 namespace jarwin.ObjectFactory
 {
@@ -302,6 +303,7 @@ namespace jarwin.ObjectFactory
 
             Boolean result = new Boolean();
             result = true;
+            var buffer = new byte[1024];
 
             if (logWriter.IsLoggingEnabled())
             {
@@ -327,12 +329,18 @@ namespace jarwin.ObjectFactory
 
                     if (await Task.WhenAny(task, Task.Delay(10000)) == task)
                     {
-                        if (task.Result.Length > 0)
+                        int len = await task.Result.ReadAsync(buffer, 0, buffer.Length);
+
+                        if (len > 0)
                         {
                             if (logWriter.IsLoggingEnabled())
                             {
                                 logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Yes online.  feedID = {0}", feedID));
                             }
+                        }
+                        else
+                        {
+                            throw new Exception("No data returned.");
                         }
                     }
                     else
