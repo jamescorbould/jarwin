@@ -165,6 +165,7 @@
             this.refreshAllToolStripMenuItem.ShowShortcutKeys = false;
             this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.refreshAllToolStripMenuItem.Text = "&Refresh All";
+            this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 

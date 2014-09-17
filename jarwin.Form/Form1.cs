@@ -328,5 +328,13 @@ namespace jarwin.Form
                 refreshAllToolStripMenuItem.Enabled = false;
             }
         }
+
+        private void refreshAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            // Refresh all button selected.
+            refreshTreeView();
+            clearDataGridView();
+            clearBrowserView();
+        }
     }
 }

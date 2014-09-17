@@ -303,7 +303,7 @@ namespace jarwin.ObjectFactory
 
             Boolean result = new Boolean();
             result = true;
-            var buffer = new byte[1024];
+            var buffer = new byte[1];
 
             if (logWriter.IsLoggingEnabled())
             {
@@ -363,6 +363,7 @@ namespace jarwin.ObjectFactory
 
             // We are online so we can sync.
             // Copy existing Feed and FeedItems to a history table first.
+            // TODO: make this an atomic transaction.
 
             if (logWriter.IsLoggingEnabled())
             {
