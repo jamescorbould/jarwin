@@ -335,6 +335,8 @@ namespace jarwin.Form
             refreshTreeView();
             clearDataGridView();
             clearBrowserView();
+
+            currentState = new StateNormal();
         }
     }
 }
