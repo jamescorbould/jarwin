@@ -191,27 +191,47 @@ namespace jarwin.Form
         {
             // Delete feed selected from tree view context menu.
 
-            int feedID = (int)currentNode.Tag;
+            int feedID = 0;
+            bool rootNode = false;
 
-            DialogResult result = MessageBox.Show("Are you sure you want delete this feed?", "jarwin", MessageBoxButtons.OKCancel);
-
-            if (result == DialogResult.OK)
+            try
             {
-                Rss rss = new Rss();
-                
-                try
+                feedID = (int)currentNode.Tag;
+            }
+            catch (NullReferenceException ex) // Root node doesn't have an identifier - "My Feeds".
+            {
+                MessageBox.Show("Sorry, cannot delete this feed.", "jarwin");
+
+                if (logWriter.IsLoggingEnabled())
                 {
-                    rss.Delete(feedID, dataContext);
-                    refreshTreeView();
-                    clearDataGridView();
+                    logWriter.Write(String.Format("ERROR :: Cannot delete Feed - it's the root node.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
                 }
-                catch (Exception ex)
+
+                rootNode = true;
+            }
+
+            if (!rootNode)
+            {
+                DialogResult result = MessageBox.Show("Are you sure you want delete this feed?", "jarwin", MessageBoxButtons.OKCancel);
+
+                if (result == DialogResult.OK)
                 {
-                    MessageBox.Show("Sorry, failed to delete the feed.", "jarwin");
-                    
-                    if (logWriter.IsLoggingEnabled())
+                    Rss rss = new Rss();
+
+                    try
                     {
-                        logWriter.Write(String.Format("ERROR :: Failed to delete feed.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                        rss.Delete(feedID, dataContext);
+                        refreshTreeView();
+                        clearDataGridView();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show("Sorry, failed to delete the feed.", "jarwin");
+
+                        if (logWriter.IsLoggingEnabled())
+                        {
+                            logWriter.Write(String.Format("ERROR :: Failed to delete feed.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                        }
                     }
                 }
             }
@@ -337,6 +357,8 @@ namespace jarwin.Form
             clearBrowserView();
 
             currentState = new StateNormal();
+            this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
+            this.updateThread.Start();
         }
     }
 }

@@ -293,6 +293,8 @@ namespace jarwin.ObjectFactory
                     logWriter.Write(String.Format("ERROR :: Failed to from table Feed.  Source = Rss.Delete.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
                 }
 
+                // TODO: check if Feed has been deleted - if not, then need to insert FeedItems back.
+
                 throw;
             }
         }
@@ -321,7 +323,7 @@ namespace jarwin.ObjectFactory
                         logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Starting call to web client to see if online.  feedID = {0}", feedID));
                     }
 
-                    // The default connection limit is 2 - increase this to 100.
+                    // The default connection limit is 2 - increase this to 100, since this code will be executed multithreaded.
                     System.Net.ServicePointManager.DefaultConnectionLimit = 100;
 
                     webClient.BaseAddress = "http://localhost";
@@ -522,6 +524,8 @@ namespace jarwin.ObjectFactory
                 {
                     logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
                 }
+
+                // TODO: compensate by inserting feedItems back from feedItemHistory table.
                 result = false;
                 throw;
             }
