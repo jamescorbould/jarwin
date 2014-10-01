@@ -14,12 +14,6 @@ namespace jarwin
         public AboutBox()
         {
             InitializeComponent();
-            this.Text = String.Format("About {0}", AssemblyTitle);
-            this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
-            this.labelGibHubURL.Text = AssemblyCopyright;
-            this.labelCompanyName.Text = AssemblyCompany;
-            this.textBoxCopyright.Text = AssemblyDescription;
         }
 
         #region Assembly Attribute Accessors
