@@ -293,7 +293,7 @@ namespace jarwin.Form
                 if (feedsCount == 0)
                 {
                     // Nothing marked for update.
-                    currentState = new StateNormal();
+                    currentState = new StateNothingToSync();
                     this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
                     this.updateThread.Start();
                 }
@@ -311,6 +311,14 @@ namespace jarwin.Form
                 }
             }
             );
+
+            if (feedsCount == 0)
+            {
+                // Nothing marked for update.
+                currentState = new StateNothingToSync();
+                this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
+                this.updateThread.Start();
+            }
         }
 
         private void threadProcSafe()

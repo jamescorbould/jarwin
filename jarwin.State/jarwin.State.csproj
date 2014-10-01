@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="StateAbstract.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StateNothingToSync.cs" />
     <Compile Include="StateNormal.cs" />
     <Compile Include="StateRefreshRequired.cs" />
     <Compile Include="StateFailedSyncing.cs" />

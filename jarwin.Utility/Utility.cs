@@ -49,6 +49,8 @@ namespace jarwin.Utility
             config.AddLogSource("jarwin", SourceLevels.All, true)
                 .AddTraceListener(flatFileTraceListener);
 
+            config.IsLoggingEnabled = Convert.ToBoolean(ConfigurationManager.AppSettings["loggingEnabled"]);
+
             return config;
         }
     }
