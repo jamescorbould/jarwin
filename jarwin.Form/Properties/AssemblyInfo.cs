@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("jarwin.Form")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("jarwin")]
+[assembly: AssemblyDescription("Just Another Reader for Windows Forms Class")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("jarwin.Form")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCompany("Ultrasoft")]
+[assembly: AssemblyProduct("jarwin")]
+[assembly: AssemblyCopyright("Copyright © 2014 James Corbould Under MIT Licence Terms")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

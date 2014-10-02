@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("jarwin.Utility")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Just Another Reader for Windows Utility Class")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Ultrasoft")]
 [assembly: AssemblyProduct("jarwin.Utility")]
-[assembly: AssemblyCopyright("Copyright ©  2014")]
+[assembly: AssemblyCopyright("Copyright © 2014 James Corbould Under MIT Licence Terms")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("jarwin.DAL")]
-[assembly: AssemblyDescription("Just Another Reader")]
+[assembly: AssemblyDescription("Just Another Reader for Windows Data Access Layer Class")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("UltraSoft")]
+[assembly: AssemblyCompany("Ultrasoft")]
 [assembly: AssemblyProduct("jarwin.DAL")]
-[assembly: AssemblyCopyright("Copyright © Under MIT Licence Terms")]
+[assembly: AssemblyCopyright("Copyright © 2014 James Corbould Under MIT Licence Terms")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
