@@ -223,6 +223,7 @@ namespace jarwin.Form
                         rss.Delete(feedID, dataContext);
                         refreshTreeView();
                         clearDataGridView();
+                        clearBrowserView();
                     }
                     catch (Exception ex)
                     {
