@@ -1,7 +1,7 @@
 USE [jarwin]
 GO
 
-/****** Object:  Table [dbo].[feed_item_history]    Script Date: 29/07/2014 7:26:29 a.m. ******/
+/****** Object:  Table [dbo].[feed_item_history]    Script Date: 3/10/2014 7:45:14 a.m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -19,11 +19,12 @@ CREATE TABLE [dbo].[feed_item_history](
 	[description] [nvarchar](max) NULL,
 	[content] [nvarchar](max) NULL,
 	[last_download_datetime] [datetime] NOT NULL,
+	[archived_datetime] [datetime] NOT NULL,
  CONSTRAINT [PK_feed_item_history] PRIMARY KEY CLUSTERED 
 (
 	[feed_id] ASC,
 	[feed_item_id] ASC,
-	[last_download_datetime] ASC
+	[archived_datetime] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 

@@ -1,13 +1,13 @@
 USE [master]
 GO
 
-/****** Object:  Database [jarwin]    Script Date: 29/07/2014 7:24:57 a.m. ******/
+/****** Object:  Database [jarwin]    Script Date: 3/10/2014 7:43:44 a.m. ******/
 CREATE DATABASE [jarwin]
  CONTAINMENT = NONE
  ON  PRIMARY 
-( NAME = N'jarwin', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\jarwin.mdf' , SIZE = 5120KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+( NAME = N'jarwin', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\jarwin.mdf' , SIZE = 22528KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
  LOG ON 
-( NAME = N'jarwin_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\jarwin_log.ldf' , SIZE = 1280KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+( NAME = N'jarwin_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL12.SQLEXPRESS\MSSQL\DATA\jarwin_log.ldf' , SIZE = 2048KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
 GO
 
 ALTER DATABASE [jarwin] SET COMPATIBILITY_LEVEL = 120
