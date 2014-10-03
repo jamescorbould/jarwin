@@ -8,10 +8,10 @@ namespace jarwin.State
 {
     public class StateNormal : StateAbstract
     {
-        public StateNormal()
+        public StateNormal(bool isRefreshRequiredIn)
         {
             description = String.Empty;
-            isRefreshRequired = false;
+            isRefreshRequired = isRefreshRequiredIn;
         }
     }
 }

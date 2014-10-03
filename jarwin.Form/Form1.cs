@@ -43,7 +43,7 @@ namespace jarwin.Form
             loggingConfiguration = Utility.Utility.BuildProgrammaticConfig();
             logWriter = new LogWriter(loggingConfiguration);
             this.toolStripStatusLabel2.Text = String.Empty;
-            currentState = new StateNormal();
+            currentState = new StateNormal(false);
         }
 
         private void jarwin_Load(object sender, EventArgs e)
@@ -253,7 +253,7 @@ namespace jarwin.Form
             JarwinDataContext dataContextLocal = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
 
             // Set status to "syncing".
-            currentState = new StateSyncing();
+            currentState = new StateSyncing(currentState.isRefreshRequired);
             this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
             this.updateThread.Start();
 
@@ -299,7 +299,7 @@ namespace jarwin.Form
                 if (feedsCount == 0)
                 {
                     // Nothing marked for update.
-                    currentState = new StateNothingToSync();
+                    currentState = new StateNothingToSync(currentState.isRefreshRequired);
                     this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
                     this.updateThread.Start();
                 }
@@ -311,7 +311,7 @@ namespace jarwin.Form
                 }
                 else
                 {
-                    currentState = new StateFailedSyncing();
+                    currentState = new StateFailedSyncing(currentState.isRefreshRequired);
                     this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
                     this.updateThread.Start();
                 }
@@ -321,7 +321,7 @@ namespace jarwin.Form
             if (feedsCount == 0)
             {
                 // Nothing marked for update.
-                currentState = new StateNothingToSync();
+                currentState = new StateNothingToSync(currentState.isRefreshRequired);
                 this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
                 this.updateThread.Start();
             }
@@ -370,7 +370,7 @@ namespace jarwin.Form
             clearDataGridView();
             clearBrowserView();
 
-            currentState = new StateNormal();
+            currentState = new StateNormal(currentState.isRefreshRequired);
             this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
             this.updateThread.Start();
         }
