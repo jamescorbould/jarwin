@@ -104,39 +104,51 @@ namespace jarwin.Form
 
                 Utility.Utility utility = new Utility.Utility();
 
-                using (JarwinDataContext cxt = new JarwinDataContext(utility.GetAppSetting("connectionString2")))
+                try
                 {
-                    var feedItems =
-                        from feedItem in cxt.FeedItem
-                        where feedItem.feedID == (int)e.Node.Tag
-                        select feedItem;
-
-                    int index = 0;
-
-                    try
+                    using (JarwinDataContext cxt = new JarwinDataContext(utility.GetAppSetting("connectionString2")))
                     {
-                        if (feedItems.Count() > 0)
+                        var feedItems =
+                            from feedItem in cxt.FeedItem
+                            where feedItem.feedID == (int)e.Node.Tag
+                            select feedItem;
+
+                        int index = 0;
+
+                        try
                         {
-                            foreach (var item in feedItems)
+                            if (feedItems.Count() > 0)
                             {
-                                dataGridView1.Rows.Add();
-                                dataGridView1.Rows[index].Cells[0].Value = item.publishedDateTime;
-                                dataGridView1.Rows[index].Cells[1].Value = item.title;
+                                foreach (var item in feedItems)
+                                {
+                                    dataGridView1.Rows.Add();
+                                    dataGridView1.Rows[index].Cells[0].Value = item.publishedDateTime;
+                                    dataGridView1.Rows[index].Cells[1].Value = item.title;
 
-                                dataGridView1.Rows[index].Tag = item;
+                                    dataGridView1.Rows[index].Tag = item;
 
-                                ++index;
+                                    ++index;
+                                }
                             }
                         }
-                    }
-                    catch (NullReferenceException)
-                    { }
+                        catch (NullReferenceException)
+                        { }
 
-                    if (dataGridView1.Rows.Count > 0)
+                        if (dataGridView1.Rows.Count > 0)
+                        {
+                            // Set the WebBrowser view to contain the first feed entry.
+                            FeedItem item = (FeedItem)dataGridView1.Rows[0].Tag;
+                            webBrowser.DocumentText = String.IsNullOrEmpty(item.content) ? item.description : item.content;
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Sorry, can't display feed items at this time.", "jarwin");
+
+                    if (logWriter.IsLoggingEnabled())
                     {
-                        // Set the WebBrowser view to contain the first blog entry.
-                        FeedItem item = (FeedItem)dataGridView1.Rows[0].Tag;
-                        webBrowser.DocumentText = String.IsNullOrEmpty(item.content) ? item.description : item.content;
+                        logWriter.Write(String.Format("ERROR :: Failed to display feed items.  Exception type = {0}.  Exception msg = {1}.", ex.GetType(), ex.Message));
                     }
                 }
             }
