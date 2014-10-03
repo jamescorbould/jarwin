@@ -370,7 +370,7 @@ namespace jarwin.Form
             clearDataGridView();
             clearBrowserView();
 
-            currentState = new StateNormal(currentState.isRefreshRequired);
+            currentState = new StateNormal(false);
             this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
             this.updateThread.Start();
         }
