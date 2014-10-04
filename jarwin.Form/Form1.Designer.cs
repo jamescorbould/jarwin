@@ -131,14 +131,12 @@
             // 
             this.feedToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addToolStripMenuItem,
-            this.syncToolStripMenuItem,
-            this.refreshAllToolStripMenuItem});
+            this.syncToolStripMenuItem});
             this.feedToolStripMenuItem.Name = "feedToolStripMenuItem";
             this.feedToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.E)));
             this.feedToolStripMenuItem.ShowShortcutKeys = false;
             this.feedToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.feedToolStripMenuItem.Text = "F&eed";
-            this.feedToolStripMenuItem.Click += new System.EventHandler(this.feedToolStripMenuItem_Click);
             // 
             // addToolStripMenuItem
             // 
@@ -157,15 +155,6 @@
             this.syncToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.syncToolStripMenuItem.Text = "&Sync All";
             this.syncToolStripMenuItem.Click += new System.EventHandler(this.syncToolStripMenuItem_Click);
-            // 
-            // refreshAllToolStripMenuItem
-            // 
-            this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
-            this.refreshAllToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.R)));
-            this.refreshAllToolStripMenuItem.ShowShortcutKeys = false;
-            this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.refreshAllToolStripMenuItem.Text = "&Refresh All";
-            this.refreshAllToolStripMenuItem.Click += new System.EventHandler(this.refreshAllToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 

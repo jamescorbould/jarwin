@@ -10,7 +10,7 @@ namespace jarwin.State
     {
         public StateNothingToSync(bool isRefreshRequiredIn)
         {
-            description = "Nothing to sync...";
+            description = "Nothing to sync, all up to date...";
             isRefreshRequired = isRefreshRequiredIn;
         }
     }

@@ -10,7 +10,7 @@ namespace jarwin.State
     {
         public StateRefreshRequired()
         {
-            description = "Refresh required...";
+            description = "Sync completed, new content downloaded...";
             isRefreshRequired = true;
         }
     }

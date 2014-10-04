@@ -362,29 +362,5 @@ namespace jarwin.Form
         {
 
         }
-
-        private void feedToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if (currentState.isRefreshRequired)
-            {
-                refreshAllToolStripMenuItem.Enabled = true;
-            }
-            else
-            {
-                refreshAllToolStripMenuItem.Enabled = false;
-            }
-        }
-
-        private void refreshAllToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            // Refresh all button selected.
-            refreshTreeView();
-            clearDataGridView();
-            clearBrowserView();
-
-            currentState = new StateNormal(false);
-            this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
-            this.updateThread.Start();
-        }
     }
 }
