@@ -15,16 +15,9 @@ namespace jarwin
 {
     public partial class AddFeedDialog : System.Windows.Forms.Form
     {
-        public JarwinDataContext dataContext
-        {
-            get;
-            private set;
-        }
-
-        public AddFeedDialog(JarwinDataContext dataContextMain)
+        public AddFeedDialog()
         {
             InitializeComponent();
-            dataContext = dataContextMain;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -57,38 +50,42 @@ namespace jarwin
         {
             // Using the Rss feed xml, create an Rss object.
             Rss rss = new Rss(inputUri);
-            dataContext.Feed.InsertOnSubmit(rss.feed);
 
-            try
+            using (jarwinEntities context = new jarwinEntities())
             {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(String.Format("Error processing feed.\n\nError message as follows: {0}", ex.Message), "jarwin - Error Processing Feed");
-                throw;
-            }
+                context.feeds.Add(rss.feed);
 
-            int feedID = rss.feed.feedID; // Value provided by SQL Server identity column.
-            int feedItemID = 0;
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format("Error processing feed.\n\nError message as follows: {0}", ex.Message), "jarwin - Error Processing Feed");
+                    throw;
+                }
 
-            foreach (var feedItem in rss.feedItems)
-            {
-                feedItem.feedID = feedID;
-                feedItem.feedItemID = feedItemID;
-                dataContext.FeedItem.InsertOnSubmit(feedItem);
+                int feedID = (int)rss.feed.feed_id; // Value provided by identity column.
+                int feedItemID = 0;
 
-                feedItemID += 1;
-            }
+                foreach (var feedItem in rss.feedItems)
+                {
+                    feedItem.feed_id = feedID;
+                    feedItem.feed_item_id = feedItemID;
+                    context.feed_item.Add(feedItem);
 
-            try
-            {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(String.Format("Error process feed.\n\nError message as follows: {0}", ex.Message), "jarwin - Error Processing Feed Items");
-                throw;
+                    feedItemID += 1;
+                }
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(String.Format("Error process feed.\n\nError message as follows: {0}", ex.Message), "jarwin - Error Processing Feed Items");
+                    throw;
+                }
             }
         }
     }

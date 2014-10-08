@@ -9,26 +9,27 @@ using System.Net;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using jarwin.Utility;
 using System.IO;
+using System.Data.Entity.Core;
 
 namespace jarwin.ObjectFactory
 {
     public class Rss
     {
-        public Feed feed { get; set; }
-        public List<FeedItem> feedItems { get; set; }
+        public feed feed { get; set; }
+        public List<feed_item> feedItems { get; set; }
         public LoggingConfiguration loggingConfiguration { get; set; }
         public LogWriter logWriter { get; set; }
 
         public Rss()
         {
-            feed = new Feed();
-            feedItems = new List<FeedItem>();
+            feed = new feed();
+            feedItems = new List<feed_item>();
 
             loggingConfiguration = Utility.Utility.BuildProgrammaticConfig();
             logWriter = new LogWriter(loggingConfiguration);
         }
 
-        public Rss(Feed feedIn, List<FeedItem> feedItemsIn)
+        public Rss(feed feedIn, List<feed_item> feedItemsIn)
         {
             feed = feedIn;
             feedItems = feedItemsIn;
@@ -48,13 +49,13 @@ namespace jarwin.ObjectFactory
         public void CreateTypes(string inputUri)
         {
             feed = Factory.CreateFeed();
-            feedItems = new List<FeedItem>();
+            feedItems = new List<feed_item>();
             string currentObjType = String.Empty;
-            FeedItem feedItem = null;
+            feed_item feedItem = null;
 
             if (inputUri.Contains("http://") || inputUri.Contains("https://"))
             {
-                feed.feedURI = inputUri;
+                feed.feed_uri = inputUri;
             }
 
             using (XmlReader reader = XmlReader.Create(inputUri))
@@ -93,11 +94,11 @@ namespace jarwin.ObjectFactory
                             case "link":
                                 if (currentObjType == "FEED")
                                 {
-                                    feed.siteURI = reader.ReadElementContentAsString();
+                                    feed.site_uri = reader.ReadElementContentAsString();
                                 }
                                 else if (currentObjType == "FEEDITEM")
                                 {
-                                    feedItem.itemURI = reader.ReadElementContentAsString();
+                                    feedItem.item_uri = reader.ReadElementContentAsString();
                                 }
                                 else
                                 {
@@ -120,7 +121,7 @@ namespace jarwin.ObjectFactory
 
                                     if (linkType == "application/rss+xml")
                                     {
-                                        feed.feedURI = reader.GetAttribute("href");
+                                        feed.feed_uri = reader.GetAttribute("href");
                                     }
                                 }
                                 else
@@ -144,7 +145,7 @@ namespace jarwin.ObjectFactory
 
                                     if (linkType == "application/rss+xml")
                                     {
-                                        feed.feedURI = reader.GetAttribute("href");
+                                        feed.feed_uri = reader.GetAttribute("href");
                                     }
                                 }
                                 else
@@ -170,7 +171,7 @@ namespace jarwin.ObjectFactory
                                 if (currentObjType == "FEED")
                                 {
                                     string pubDate = reader.ReadElementContentAsString();
-                                    feed.lastBuildDateTime = DateTime.Parse(pubDate);
+                                    feed.last_build_datetime = DateTime.Parse(pubDate);
                                 }
                                 else
                                 {
@@ -190,7 +191,7 @@ namespace jarwin.ObjectFactory
                             case "sy:updateperiod":
                                 if (currentObjType == "FEED")
                                 {
-                                    feed.updatePeriod = reader.ReadElementContentAsString();
+                                    feed.update_period = reader.ReadElementContentAsString();
                                 }
                                 else
                                 {
@@ -200,7 +201,7 @@ namespace jarwin.ObjectFactory
                             case "sy:updatefrequency":
                                 if (currentObjType == "FEED")
                                 {
-                                    feed.updateFrequency = reader.ReadElementContentAsInt();
+                                    feed.update_frequency = reader.ReadElementContentAsInt();
                                 }
                                 else
                                 {
@@ -221,7 +222,7 @@ namespace jarwin.ObjectFactory
                                 if (currentObjType == "FEEDITEM")
                                 {
                                     string pubDate = reader.ReadElementContentAsString();
-                                    feedItem.publishedDateTime = DateTime.Parse(pubDate);
+                                    feedItem.published_datetime = DateTime.Parse(pubDate);
                                 }
                                 else
                                 {
@@ -247,59 +248,66 @@ namespace jarwin.ObjectFactory
             }
         }
         
-        public void Delete(int feedID, JarwinDataContext dataContext)
+        public void Delete(int feedID)
         {
             // Destroy thyself :-(
 
-            var deleteFeedItems =
-                from feedItem in dataContext.FeedItem
-                where feedItem.feedID == feedID
-                select feedItem;
+            using (jarwinEntities context = new jarwinEntities())
+            {
+                // Delete feed items associated with this feed:
 
-            foreach (var feedItem in deleteFeedItems)
-            {
-                dataContext.FeedItem.DeleteOnSubmit(feedItem);
-            }
+                var deleteFeedItems =
+                    from feedItem in context.feed_item
+                    where feedItem.feed_id == feedID
+                    select feedItem;
 
-            try
-            {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                if (logWriter.IsLoggingEnabled())
+                foreach (var feedItem in deleteFeedItems)
                 {
-                    logWriter.Write(String.Format("ERROR :: Failed to from table FeedItem.  Source = Rss.Delete.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                    context.feed_item.Remove(feedItem);
                 }
 
-                throw;
-            }
-
-            var deleteFeed =
-                from feed in dataContext.Feed
-                where feed.feedID == feedID
-                select feed;
-
-            dataContext.Feed.DeleteOnSubmit(deleteFeed.First<Feed>());
-
-            try
-            {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                if (logWriter.IsLoggingEnabled())
+                try
                 {
-                    logWriter.Write(String.Format("ERROR :: Failed to from table Feed.  Source = Rss.Delete.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("ERROR :: Failed to from table FeedItem.  Source = Rss.Delete.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                    }
+
+                    throw;
                 }
 
-                // TODO: check if Feed has been deleted - if not, then need to insert FeedItems back.
+                // Delete feed:
 
-                throw;
+                var deleteFeed =
+                    from feed in context.feeds
+                    where feed.feed_id == feedID
+                    select feed;
+
+                context.feeds.Remove(deleteFeed.First<feed>());
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("ERROR :: Failed to from table Feed.  Source = Rss.Delete.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                    }
+
+                    // TODO: check if Feed has been deleted - if not, then need to insert FeedItems back.
+
+                    throw;
+                }
             }
         }
 
-        public async Task<bool> Update(int feedID, JarwinDataContext dataContext)
+        public async Task<bool> Update(int feedID)
         {
             // Try and download latest rss feed and process it.
 
@@ -372,162 +380,165 @@ namespace jarwin.ObjectFactory
                 logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedItemHistory.  feedID = {0}", feedID));
             }
 
-            var deleteFeedItems =
-                from feedItem in dataContext.FeedItem
-                where feedItem.feedID == feedID
-                select feedItem;
+            using (jarwinEntities context = new jarwinEntities())
+            {
+                var deleteFeedItems =
+                    from feedItem in context.feed_item
+                    where feedItem.feed_id == feedID
+                    select feedItem;
 
-            foreach (var feedItem in deleteFeedItems)
-            {
-                dataContext.FeedItemHistory.InsertOnSubmit(Factory.CreateFeedItemHistoryFromFeedItem(feedItem));
-            }
-
-            try
-            {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                if (logWriter.IsLoggingEnabled())
+                foreach (var feedItem in deleteFeedItems)
                 {
-                    logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into FeedItemHistory.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                    context.feed_item_history.Add(Factory.CreateFeedItemHistoryFromFeedItem(feedItem));
                 }
 
-                result = false;
-                throw;
-            }
-
-            if (logWriter.IsLoggingEnabled())
-            {
-                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Delete from FeedItem.  feedID = {0}", feedID));
-            }
-
-            foreach (var feedItem in deleteFeedItems)
-            {
-                dataContext.FeedItem.DeleteOnSubmit(feedItem);
-            }
-
-            try
-            {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                if (logWriter.IsLoggingEnabled())
+                try
                 {
-                    logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to delete from FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into FeedItemHistory.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+                    }
+
+                    result = false;
+                    throw;
                 }
 
-                result = false;
-                throw;
-            }
+                if (logWriter.IsLoggingEnabled())
+                {
+                    logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Delete from FeedItem.  feedID = {0}", feedID));
+                }
 
-            if (logWriter.IsLoggingEnabled())
-            {
-                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedHistory.  feedID = {0}", feedID));
-            }
+                foreach (var feedItem in deleteFeedItems)
+                {
+                    context.feed_item.Remove(feedItem);
+                }
 
-            var updateFeed =
-                from feed in dataContext.Feed
-                where feed.feedID == feedID
-                select feed;
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to delete from FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    }
 
-            dataContext.FeedHistory.InsertOnSubmit(Factory.CreateFeedHistoryFromFeed(updateFeed.First<Feed>()));
+                    result = false;
+                    throw;
+                }
 
-            try
-            {
                 if (logWriter.IsLoggingEnabled())
                 {
                     logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedHistory.  feedID = {0}", feedID));
                 }
 
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                if (logWriter.IsLoggingEnabled())
+                var updateFeed =
+                    from feed in context.feeds
+                    where feed.feed_id == feedID
+                    select feed;
+
+                context.feed_history.Add(Factory.CreateFeedHistoryFromFeed(updateFeed.First<feed>()));
+
+                try
                 {
-                    logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into from FeedHistory.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedHistory.  feedID = {0}", feedID));
+                    }
+
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into from FeedHistory.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    }
+
+                    result = false;
+                    throw;
                 }
 
-                result = false;
-                throw;
-            }
+                // Feed and FeedItem now backed up in history tables.
+                // Update Feed and insert latest FeedItem records.
 
-            // Feed and FeedItem now backed up in history tables.
-            // Update Feed and insert latest FeedItem records.
-
-            // Create local Feed and FeedItem types using the provided URL to the Rss feed.
-            if (logWriter.IsLoggingEnabled())
-            {
-                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Call CreateTypes to hydrate local types.  feedID = {0}", feedID));
-            }
-
-            CreateTypes(updateFeed.First<Feed>().feedURI);
-
-            // Update Feed.
-            if (logWriter.IsLoggingEnabled())
-            {
-                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Update Feed.  feedID = {0}", feedID));
-            }
-
-            // Update Feed in the local data context with the new locally downloaded Feed details.
-            updateFeed.First<Feed>().description = this.feed.description;
-            updateFeed.First<Feed>().language = this.feed.language;
-            updateFeed.First<Feed>().lastBuildDateTime = this.feed.lastBuildDateTime;
-            updateFeed.First<Feed>().lastDownloadDateTime = DateTime.Now;
-            updateFeed.First<Feed>().title = this.feed.title;
-            updateFeed.First<Feed>().type = this.feed.type;
-            updateFeed.First<Feed>().updateFrequency = this.feed.updateFrequency;
-            updateFeed.First<Feed>().updatePeriod = this.feed.updatePeriod;
-
-            try
-            {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
+                // Create local Feed and FeedItem types using the provided URL to the Rss feed.
                 if (logWriter.IsLoggingEnabled())
                 {
-                    logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to update Feed.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Call CreateTypes to hydrate local types.  feedID = {0}", feedID));
                 }
 
-                result = false;
-                throw;
-            }
+                CreateTypes(updateFeed.First<feed>().feed_uri);
 
-            // Insert new FeedItem(s).
-
-            if (logWriter.IsLoggingEnabled())
-            {
-                logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedItem.  feedID = {0}", feedID));
-            }
-
-            int feedItemID = 0;
-
-            foreach (var feedItem in feedItems)
-            {
-                feedItem.feedID = feedID;
-                feedItem.feedItemID = feedItemID;
-                dataContext.FeedItem.InsertOnSubmit(feedItem);
-
-                feedItemID += 1;
-            }
-
-            try
-            {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
+                // Update Feed.
                 if (logWriter.IsLoggingEnabled())
                 {
-                    logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Update Feed.  feedID = {0}", feedID));
                 }
 
-                // TODO: compensate by inserting feedItems back from feedItemHistory table.
-                result = false;
-                throw;
+                // Update Feed in the local data context with the new locally downloaded Feed details.
+                updateFeed.First<feed>().description = this.feed.description;
+                updateFeed.First<feed>().language = this.feed.language;
+                updateFeed.First<feed>().last_build_datetime = this.feed.last_build_datetime;
+                updateFeed.First<feed>().last_download_datetime = DateTime.Now;
+                updateFeed.First<feed>().title = this.feed.title;
+                updateFeed.First<feed>().type = this.feed.type;
+                updateFeed.First<feed>().update_frequency = this.feed.update_frequency;
+                updateFeed.First<feed>().update_period = this.feed.update_period;
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to update Feed.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    }
+
+                    result = false;
+                    throw;
+                }
+
+                // Insert new FeedItem(s).
+
+                if (logWriter.IsLoggingEnabled())
+                {
+                    logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedItem.  feedID = {0}", feedID));
+                }
+
+                int feedItemID = 0;
+
+                foreach (var feedItem in feedItems)
+                {
+                    feedItem.feed_id = feedID;
+                    feedItem.feed_item_id = feedItemID;
+                    context.feed_item.Add(feedItem);
+
+                    feedItemID += 1;
+                }
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    if (logWriter.IsLoggingEnabled())
+                    {
+                        logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into FeedItem.  Exception msg = {0}.  feedID = {1}", ex.Message, feedID));
+                    }
+
+                    // TODO: compensate by inserting feedItems back from feedItemHistory table.
+                    result = false;
+                    throw;
+                }
             }
 
             // TODO: need to make this atomic and rollback on failures i.e. cleanup database.

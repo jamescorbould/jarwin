@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5c38f0d45fb744b1b03d5e164e7afa43" Name="Diagram1" ZoomLevel="99">
+        <EntityTypeShape EntityType="jarwinModel.feed" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="jarwinModel.feed_history" Width="1.5" PointX="5.75" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="jarwinModel.feed_item" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="jarwinModel.feed_item_history" Width="1.5" PointX="7.875" PointY="1" IsExpanded="true" />
+        <AssociationConnector Association="jarwinModel.FK_feed_item_0_0" ManuallyRouted="false" />
+        <AssociationConnector Association="jarwinModel.feed_historyfeed_item_history" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -12,11 +12,11 @@ namespace jarwin.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class feed
+    public partial class feed_history
     {
-        public feed()
+        public feed_history()
         {
-            this.feed_item = new HashSet<feed_item>();
+            this.feed_item_history = new HashSet<feed_item_history>();
         }
     
         public long feed_id { get; set; }
@@ -31,7 +31,8 @@ namespace jarwin.DAL
         public string status { get; set; }
         public string type { get; set; }
         public string update_period { get; set; }
+        public System.DateTime archived_datetime { get; set; }
     
-        public virtual ICollection<feed_item> feed_item { get; set; }
+        public virtual ICollection<feed_item_history> feed_item_history { get; set; }
     }
 }

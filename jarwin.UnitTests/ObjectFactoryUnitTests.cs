@@ -34,7 +34,7 @@ namespace jarwin.UnitTests
             Rss rss = new Rss(inputUri);
 
             Assert.IsTrue(rss != null);
-            Assert.IsTrue(rss.feed.feedURI == null);  // Not provided in the file, hence cannot be assigned.
+            Assert.IsTrue(rss.feed.feed_uri == null);  // Not provided in the file, hence cannot be assigned.
         }
 
         [TestMethod]
@@ -44,7 +44,7 @@ namespace jarwin.UnitTests
             Rss rss = new Rss(inputUri);
 
             Assert.IsTrue(rss != null);
-            Assert.IsTrue(rss.feed.feedURI == null);  // Not provided in the file, hence cannot be assigned.
+            Assert.IsTrue(rss.feed.feed_uri == null);  // Not provided in the file, hence cannot be assigned.
         }
 
         [TestMethod]
@@ -57,103 +57,105 @@ namespace jarwin.UnitTests
 
             Assert.IsTrue(rss != null);
 
-            Utility.Utility utility = new Utility.Utility();
-            JarwinDataContext dataContext = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
-
-            dataContext.Feed.InsertOnSubmit(rss.feed);
-
-            try
+            using (jarwinEntities context = new jarwinEntities())
             {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail("Error - failed to insert Feed record: " + ex.Message);
-            }
 
-            int feedID = rss.feed.feedID; // Value provided by SQL Server identity column.
-            int feedItemID = 0;
+                context.feeds.Add(rss.feed);
 
-            foreach (var feedItem in rss.feedItems)
-            {
-                feedItem.feedID = feedID;
-                feedItem.feedItemID = feedItemID;
-                dataContext.FeedItem.InsertOnSubmit(feedItem);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Assert.Fail("Error - failed to insert Feed record: " + ex.Message);
+                }
 
-                feedItemID += 1;
-            }
+                int feedID = (int)rss.feed.feed_id; // Value provided by SQL Server identity column.
+                int feedItemID = 0;
 
-            try
-            {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail("Error - failed to insert FeedItem record: " + ex.Message);
-            }
+                foreach (var feedItem in rss.feedItems)
+                {
+                    feedItem.feed_id = feedID;
+                    feedItem.feed_item_id = feedItemID;
+                    context.feed_item.Add(feedItem);
 
-            try
-            {
-                rss.Delete(rss.feed.feedID, dataContext);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail("Error - failed to delete Feed or FeedItem record: " + ex.Message);
+                    feedItemID += 1;
+                }
+
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Assert.Fail("Error - failed to insert FeedItem record: " + ex.Message);
+                }
+
+                try
+                {
+                    rss.Delete((int)rss.feed.feed_id);
+                }
+                catch (Exception ex)
+                {
+                    Assert.Fail("Error - failed to delete Feed or FeedItem record: " + ex.Message);
+                }
             }
         }
 
         [TestMethod]
-        public void CreateAndUpdateRssFromUriFileSystem()
+        public async void CreateAndUpdateRssFromUriFileSystem()
         {
-            // Create and the update.
+            // Create and then update.
 
             string inputUri = @"..\..\..\SolutionArtefacts\jc_blog_rss.xml";
             Rss rss = new Rss(inputUri);
 
             Assert.IsTrue(rss != null);
 
-            Utility.Utility utility = new Utility.Utility();
-            JarwinDataContext dataContext = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
-
-            dataContext.Feed.InsertOnSubmit(rss.feed);
-
-            try
+            using (jarwinEntities context = new jarwinEntities())
             {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail("Error - failed to insert Feed record: " + ex.Message);
-            }
+                context.feeds.Add(rss.feed);
 
-            int feedID = rss.feed.feedID; // Value provided by SQL Server identity column.
-            int feedItemID = 0;
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Assert.Fail("Error - failed to insert Feed record: " + ex.Message);
+                }
 
-            foreach (var feedItem in rss.feedItems)
-            {
-                feedItem.feedID = feedID;
-                feedItem.feedItemID = feedItemID;
-                dataContext.FeedItem.InsertOnSubmit(feedItem);
+                int feedID = (int)rss.feed.feed_id; // Value provided by identity column.
+                int feedItemID = 0;
 
-                feedItemID += 1;
-            }
+                foreach (var feedItem in rss.feedItems)
+                {
+                    feedItem.feed_id = feedID;
+                    feedItem.feed_item_id = feedItemID;
+                    context.feed_item.Add(feedItem);
 
-            try
-            {
-                dataContext.SubmitChanges();
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail("Error - failed to insert FeedItem record: " + ex.Message);
-            }
+                    feedItemID += 1;
+                }
 
-            try
-            {
-                rss.Update(rss.feed.feedID, dataContext);
-            }
-            catch (Exception ex)
-            {
-                Assert.Fail("Error - failed to update Feed or FeedItem record: " + ex.Message);
+                try
+                {
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    Assert.Fail("Error - failed to insert FeedItem record: " + ex.Message);
+                }
+
+                //try
+                //{
+                //    bool success = await rss.Update((int)rss.feed.feed_id);
+                //    Assert.IsTrue(success);
+                //}
+                //catch (Exception ex)
+                //{
+                //    Assert.Fail("Error - failed to update Feed or FeedItem record: " + ex.Message);
+                //}
             }
         }
     }

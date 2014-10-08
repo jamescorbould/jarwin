@@ -14,12 +14,13 @@ using jarwin.ObjectFactory;
 using jarwin.State;
 using Microsoft.Practices.EnterpriseLibrary.Logging;
 using System.Threading;
+using System.Data.Linq;
+using System.Data.SQLite;
 
 namespace jarwin.Form
 {
-    public partial class jarwin : System.Windows.Forms.Form, IDisposable
+    public partial class jarwin : System.Windows.Forms.Form
     {
-        public JarwinDataContext dataContext { get; private set; }
         public LoggingConfiguration loggingConfiguration { get; set; }
         public LogWriter logWriter { get; set; }
         private TreeNode currentNode { get; set; }
@@ -27,19 +28,10 @@ namespace jarwin.Form
         private delegate void SetTextCallback(string text);
         private Thread updateThread = null;
 
-        private void Dispose()
-        {
-            if (dataContext != null)
-            {
-                dataContext.Dispose();
-            }
-        }
-
         public jarwin()
         {
             InitializeComponent();
             Utility.Utility utility = new Utility.Utility();
-            dataContext = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
             loggingConfiguration = Utility.Utility.BuildProgrammaticConfig();
             logWriter = new LogWriter(loggingConfiguration);
             this.toolStripStatusLabel2.Text = String.Empty;
@@ -56,17 +48,20 @@ namespace jarwin.Form
         {
             List<TreeNode> nodes = new List<TreeNode>();
 
-            var feedData =
-                from feed in dataContext.Feed
-                where feed.status.ToUpper() != "INACTIVE"
-                select feed;
-
-            foreach (var feed in feedData)
+            using (jarwinEntities dataContext = new jarwinEntities())
             {
-                TreeNode node = new TreeNode(feed.title);
-                node.Tag = feed.feedID;
-                node.ToolTipText = feed.description;
-                nodes.Add(node);
+                var feedData =
+                    from feed in dataContext.feeds
+                    where feed.status.ToUpper() != "INACTIVE"
+                    select feed;
+
+                foreach (var feed in feedData)
+                {
+                    TreeNode node = new TreeNode(feed.title);
+                    node.Tag = feed.feed_id;
+                    node.ToolTipText = feed.description;
+                    nodes.Add(node);
+                }
             }
 
             TreeNode treeNode = new TreeNode("My Feeds", nodes.ToArray<TreeNode>());
@@ -106,11 +101,11 @@ namespace jarwin.Form
 
                 try
                 {
-                    using (JarwinDataContext cxt = new JarwinDataContext(utility.GetAppSetting("connectionString2")))
+                    using (jarwinEntities dataContext = new jarwinEntities())
                     {
                         var feedItems =
-                            from feedItem in cxt.FeedItem
-                            where feedItem.feedID == (int)e.Node.Tag
+                            from feedItem in dataContext.feed_item
+                            where feedItem.feed_id == (int)e.Node.Tag
                             select feedItem;
 
                         int index = 0;
@@ -122,7 +117,7 @@ namespace jarwin.Form
                                 foreach (var item in feedItems)
                                 {
                                     dataGridView1.Rows.Add();
-                                    dataGridView1.Rows[index].Cells[0].Value = item.publishedDateTime;
+                                    dataGridView1.Rows[index].Cells[0].Value = item.published_datetime;
                                     dataGridView1.Rows[index].Cells[1].Value = item.title;
 
                                     dataGridView1.Rows[index].Tag = item;
@@ -137,7 +132,7 @@ namespace jarwin.Form
                         if (dataGridView1.Rows.Count > 0)
                         {
                             // Set the WebBrowser view to contain the first feed entry.
-                            FeedItem item = (FeedItem)dataGridView1.Rows[0].Tag;
+                            feed_item item = (feed_item)dataGridView1.Rows[0].Tag;
                             webBrowser.DocumentText = String.IsNullOrEmpty(item.content) ? item.description : item.content;
                         }
                     }
@@ -162,7 +157,7 @@ namespace jarwin.Form
         {
             // When the user clicks on a feed in the data grid,
             // populate the browser view with details of the feed.
-            FeedItem item = (FeedItem)dataGridView1.Rows[e.RowIndex].Tag;
+            feed_item item = (feed_item)dataGridView1.Rows[e.RowIndex].Tag;
             webBrowser.DocumentText = String.IsNullOrEmpty(item.content) ? item.description : item.content;
         }
 
@@ -175,7 +170,7 @@ namespace jarwin.Form
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Feed -> Add.
-            AddFeedDialog addFeedDialog = new AddFeedDialog(dataContext);
+            AddFeedDialog addFeedDialog = new AddFeedDialog();
             addFeedDialog.Show();
             addFeedDialog.FormClosing += new FormClosingEventHandler(refreshTreeView);
         }
@@ -237,7 +232,7 @@ namespace jarwin.Form
 
                     try
                     {
-                        rss.Delete(feedID, dataContext);
+                        rss.Delete(feedID);
                         refreshTreeView();
                         clearDataGridView();
                         clearBrowserView();
@@ -261,53 +256,75 @@ namespace jarwin.Form
 
             int failedSyncCount = 0;
             int feedsCount = 0;
-            Utility.Utility utility = new Utility.Utility();
-            JarwinDataContext dataContextLocal = new JarwinDataContext(utility.GetAppSetting("connectionString2"));
 
             // Set status to "syncing".
             currentState = new StateSyncing(currentState.isRefreshRequired);
             this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
             this.updateThread.Start();
 
-            var feeds =
-                from feed in dataContextLocal.Feed
-                where feed.status.ToUpper() == "ACTIVE"
-                && feed.lastDownloadDateTime.AddHours((double)feed.updateFrequency) <= DateTime.Now
-                select feed;
-
-            feedsCount = feeds.Count();
-
-            Task[] tasks = new Task[feeds.Count()];
-            int index = -1;
-
-            foreach (var feed in feeds)
+            using (jarwinEntities dataContext = new jarwinEntities())
             {
-                // Run each update on a separate thread, to keep the UI responsive.
-                // And to run multiple updates on different threads to increase performance.
+                var feeds =
+                    from feed in dataContext.feeds
+                    where feed.status.ToUpper() == "ACTIVE"
+                    && feed.last_download_datetime.AddHours((double)feed.update_frequency) <= DateTime.Now
+                    select feed;
 
-                tasks[++index] = Task.Run(async () =>
+                feedsCount = feeds.Count();
+
+                Task[] tasks = new Task[feeds.Count()];
+                int index = -1;
+
+                foreach (var feed in feeds)
                 {
-                    try
-                    {
-                        Rss rss = new Rss();
-                        await rss.Update(feed.feedID, new JarwinDataContext(utility.GetAppSetting("connectionString2")));
-                    }
-                    catch (Exception ex)
-                    {
-                        // Update state of this feed to "FAILED_SYNCING"??
+                    // Run each update on a separate thread, to keep the UI responsive.
+                    // And to run multiple updates on different threads to increase performance.
 
-                        ++failedSyncCount;
-
-                        if (logWriter.IsLoggingEnabled())
+                    tasks[++index] = Task.Run(async () =>
+                    {
+                        try
                         {
-                            logWriter.Write(String.Format("ERROR :: Failed to update feed.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feed.feedID));
+                            Rss rss = new Rss();
+                            await rss.Update((int)feed.feed_id);
                         }
-                    }
-                });
-            }
+                        catch (Exception ex)
+                        {
+                            // Update state of this feed to "FAILED_SYNCING"??
 
-            await Task.WhenAll(tasks).ContinueWith( (t) =>
-            {
+                            ++failedSyncCount;
+
+                            if (logWriter.IsLoggingEnabled())
+                            {
+                                logWriter.Write(String.Format("ERROR :: Failed to update feed.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feed.feed_id));
+                            }
+                        }
+                    });
+                }
+
+                await Task.WhenAll(tasks).ContinueWith((t) =>
+                {
+                    if (feedsCount == 0)
+                    {
+                        // Nothing marked for update.
+                        currentState = new StateNothingToSync(currentState.isRefreshRequired);
+                        this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
+                        this.updateThread.Start();
+                    }
+                    else if (failedSyncCount < feedsCount)
+                    {
+                        currentState = new StateRefreshRequired();
+                        this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
+                        this.updateThread.Start();
+                    }
+                    else
+                    {
+                        currentState = new StateFailedSyncing(currentState.isRefreshRequired);
+                        this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
+                        this.updateThread.Start();
+                    }
+                }
+                );
+
                 if (feedsCount == 0)
                 {
                     // Nothing marked for update.
@@ -315,27 +332,6 @@ namespace jarwin.Form
                     this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
                     this.updateThread.Start();
                 }
-                else if (failedSyncCount < feedsCount)
-                {
-                    currentState = new StateRefreshRequired();
-                    this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
-                    this.updateThread.Start();
-                }
-                else
-                {
-                    currentState = new StateFailedSyncing(currentState.isRefreshRequired);
-                    this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
-                    this.updateThread.Start();
-                }
-            }
-            );
-
-            if (feedsCount == 0)
-            {
-                // Nothing marked for update.
-                currentState = new StateNothingToSync(currentState.isRefreshRequired);
-                this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
-                this.updateThread.Start();
             }
         }
 

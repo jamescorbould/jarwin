@@ -9,65 +9,64 @@ namespace jarwin.ObjectFactory
 {
     public class Factory
     {
-        public static Feed CreateFeed()
+        public static feed CreateFeed()
         {
-            Feed feed = new Feed();
+            feed feed = new feed();
 
-            feed.lastDownloadDateTime = DateTime.Now;
-            feed.lastBuildDateTime = DateTime.Now;
-            feed.updatePeriod = "hourly";
-            feed.updateFrequency = 1;
+            feed.last_download_datetime = DateTime.Now;
+            feed.last_build_datetime = DateTime.Now;
+            feed.update_period = "hourly";
+            feed.update_frequency = 1;
             feed.status = "active";
 
             return feed;
         }
 
-        public static FeedItem CreateFeedItem()
+        public static feed_item CreateFeedItem()
         {
-            FeedItem feedItem = new FeedItem();
+            feed_item feedItem = new feed_item();
 
-            feedItem.lastDownloadDateTime = DateTime.Now;
+            feedItem.last_download_datetime = DateTime.Now;
 
             return feedItem;
         }
 
-        public static FeedHistory CreateFeedHistoryFromFeed(Feed feed)
+        public static feed_history CreateFeedHistoryFromFeed(feed feed)
         {
-            FeedHistory feedHistory = new FeedHistory();
+            feed_history feedHistory = new feed_history();
 
             feedHistory.description = feed.description;
-            feedHistory.feedID = feed.feedID;
-            feedHistory.folderID = feed.folderID;
+            feedHistory.feed_id = feed.feed_id;
             feedHistory.language = feed.language;
-            feedHistory.lastBuildDateTime = feed.lastBuildDateTime;
-            feedHistory.lastDownloadDateTime = feed.lastDownloadDateTime;
-            feedHistory.siteURI = feed.siteURI;
+            feedHistory.last_build_datetime = feed.last_build_datetime;
+            feedHistory.last_download_datetime = feed.last_download_datetime;
+            feedHistory.site_uri = feed.site_uri;
             feedHistory.status = feed.status;
             feedHistory.title = feed.title;
             feedHistory.type = feed.type;
-            feedHistory.updateFrequency = feed.updateFrequency;
-            feedHistory.updatePeriod = feed.updatePeriod;
-            feedHistory.feedURI = feed.feedURI;
-            feedHistory.archivedDateTime = DateTime.Now;
+            feedHistory.update_frequency = feed.update_frequency;
+            feedHistory.update_period = feed.update_period;
+            feedHistory.feed_uri = feed.feed_uri;
+            feedHistory.archived_datetime = DateTime.Now;
 
             return feedHistory;
         }
 
-        public static FeedItemHistory CreateFeedItemHistoryFromFeedItem(FeedItem feedItem)
+        public static feed_item_history CreateFeedItemHistoryFromFeedItem(feed_item feedItem)
         {
-            FeedItemHistory feedItemHistory = new FeedItemHistory();
+            feed_item_history feedItemHistory = new feed_item_history();
 
             feedItemHistory.comments = feedItem.comments;
             feedItemHistory.content = feedItem.content;
             feedItemHistory.creator = feedItem.creator;
             feedItemHistory.description = feedItem.description;
-            feedItemHistory.feedID = feedItem.feedID;
-            feedItemHistory.feedItemID = feedItem.feedItemID;
-            feedItemHistory.itemURI = feedItem.itemURI;
-            feedItemHistory.lastDownloadDateTime = feedItem.lastDownloadDateTime;
-            feedItemHistory.publishedDateTime = feedItem.publishedDateTime;
+            feedItemHistory.feed_id = feedItem.feed_id;
+            feedItemHistory.feed_item_id = feedItem.feed_item_id;
+            feedItemHistory.item_uri = feedItem.item_uri;
+            feedItemHistory.last_download_datetime = feedItem.last_download_datetime;
+            feedItemHistory.published_datetime = feedItem.published_datetime;
             feedItemHistory.title = feedItem.title;
-            feedItemHistory.archivedDateTime = DateTime.Now;
+            feedItemHistory.archived_datetime = DateTime.Now;
 
             return feedItemHistory;
         }

@@ -1,0 +1,324 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="jarwinModel.Store" Provider="System.Data.SQLite.EF6" ProviderManifestToken="ISO8601" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="feed">
+          <Key>
+            <PropertyRef Name="feed_id" />
+          </Key>
+          <Property Name="feed_id" Type="integer" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="feed_uri" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="last_build_datetime" Type="datetime" Nullable="false" />
+          <Property Name="last_download_datetime" Type="datetime" Nullable="false" />
+          <Property Name="language" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="update_frequency" Type="integer" />
+          <Property Name="site_uri" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="16" />
+          <Property Name="type" Type="varchar" MaxLength="16" />
+          <Property Name="update_period" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="feed_history">
+          <Key>
+            <PropertyRef Name="feed_id" />
+            <PropertyRef Name="archived_datetime" />
+          </Key>
+          <Property Name="feed_id" Type="integer" Nullable="false" />
+          <Property Name="feed_uri" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="last_build_datetime" Type="datetime" Nullable="false" />
+          <Property Name="last_download_datetime" Type="datetime" Nullable="false" />
+          <Property Name="language" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="update_frequency" Type="integer" />
+          <Property Name="site_uri" Type="varchar" MaxLength="512" Nullable="false" />
+          <Property Name="status" Type="varchar" MaxLength="16" />
+          <Property Name="type" Type="varchar" MaxLength="16" />
+          <Property Name="update_period" Type="varchar" MaxLength="10" />
+          <Property Name="archived_datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="feed_item">
+          <Key>
+            <PropertyRef Name="feed_id" />
+            <PropertyRef Name="feed_item_id" />
+          </Key>
+          <Property Name="feed_id" Type="integer" Nullable="false" />
+          <Property Name="feed_item_id" Type="integer" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="512" />
+          <Property Name="item_uri" Type="varchar" MaxLength="512" />
+          <Property Name="comments" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="published_datetime" Type="datetime" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="128" />
+          <Property Name="description" Type="varchar" MaxLength="2147483647" />
+          <Property Name="content" Type="varchar" MaxLength="2147483647" />
+          <Property Name="last_download_datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="feed_item_history">
+          <Key>
+            <PropertyRef Name="feed_id" />
+            <PropertyRef Name="feed_item_id" />
+            <PropertyRef Name="archived_datetime" />
+          </Key>
+          <Property Name="feed_id" Type="integer" Nullable="false" />
+          <Property Name="feed_item_id" Type="integer" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="512" />
+          <Property Name="item_uri" Type="varchar" MaxLength="512" />
+          <Property Name="comments" Type="varchar" MaxLength="1024" Nullable="false" />
+          <Property Name="published_datetime" Type="datetime" Nullable="false" />
+          <Property Name="creator" Type="varchar" MaxLength="128" />
+          <Property Name="description" Type="varchar" MaxLength="2147483647" />
+          <Property Name="content" Type="varchar" MaxLength="2147483647" />
+          <Property Name="last_download_datetime" Type="datetime" Nullable="false" />
+          <Property Name="archived_datetime" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_feed_item_0_0">
+          <End Role="feed" Type="Self.feed" Multiplicity="1" />
+          <End Role="feed_item" Type="Self.feed_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="feed">
+              <PropertyRef Name="feed_id" />
+            </Principal>
+            <Dependent Role="feed_item">
+              <PropertyRef Name="feed_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_feed_item_history_0_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_feed_item_history_0_0" />-->
+        <EntityContainer Name="jarwinModelStoreContainer">
+          <EntitySet Name="feed" EntityType="Self.feed" store:Type="Tables" />
+          <EntitySet Name="feed_history" EntityType="Self.feed_history" store:Type="Tables" />
+          <EntitySet Name="feed_item" EntityType="Self.feed_item" store:Type="Tables" />
+          <EntitySet Name="feed_item_history" EntityType="Self.feed_item_history" store:Type="Tables" />
+          <AssociationSet Name="FK_feed_item_0_0" Association="Self.FK_feed_item_0_0">
+            <End Role="feed" EntitySet="feed" />
+            <End Role="feed_item" EntitySet="feed_item" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="jarwinModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="feed">
+          <Key>
+            <PropertyRef Name="feed_id" />
+          </Key>
+          <Property Name="feed_id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="feed_uri" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_build_datetime" Type="DateTime" Nullable="false" />
+          <Property Name="last_download_datetime" Type="DateTime" Nullable="false" />
+          <Property Name="language" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="update_frequency" Type="Int64" />
+          <Property Name="site_uri" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="update_period" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="feed_item" Relationship="Self.FK_feed_item_0_0" FromRole="feed" ToRole="feed_item" />
+        </EntityType>
+        <EntityType Name="feed_history">
+          <Key>
+            <PropertyRef Name="feed_id" />
+            <PropertyRef Name="archived_datetime" />
+          </Key>
+          <Property Name="feed_id" Type="Int64" Nullable="false" />
+          <Property Name="feed_uri" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="description" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="last_build_datetime" Type="DateTime" Nullable="false" />
+          <Property Name="last_download_datetime" Type="DateTime" Nullable="false" />
+          <Property Name="language" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="update_frequency" Type="Int64" />
+          <Property Name="site_uri" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="status" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="update_period" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="archived_datetime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="feed_item_history" Relationship="jarwinModel.feed_historyfeed_item_history" FromRole="feed_history" ToRole="feed_item_history" />
+        </EntityType>
+        <EntityType Name="feed_item">
+          <Key>
+            <PropertyRef Name="feed_id" />
+            <PropertyRef Name="feed_item_id" />
+          </Key>
+          <Property Name="feed_id" Type="Int64" Nullable="false" />
+          <Property Name="feed_item_id" Type="Int64" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="item_uri" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="published_datetime" Type="DateTime" Nullable="false" />
+          <Property Name="creator" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="last_download_datetime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="feed" Relationship="Self.FK_feed_item_0_0" FromRole="feed_item" ToRole="feed" />
+          <Property Name="feed_history_feed_id" Type="Int64" Nullable="false" />
+          <Property Name="feed_history_archived_datetime" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="feed_item_history">
+          <Key>
+            <PropertyRef Name="feed_id" />
+            <PropertyRef Name="feed_item_id" />
+            <PropertyRef Name="archived_datetime" />
+          </Key>
+          <Property Name="feed_id" Type="Int64" Nullable="false" />
+          <Property Name="feed_item_id" Type="Int64" Nullable="false" />
+          <Property Name="title" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="item_uri" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="comments" Type="String" MaxLength="1024" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="published_datetime" Type="DateTime" Nullable="false" />
+          <Property Name="creator" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="content" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
+          <Property Name="last_download_datetime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="feed_history" Relationship="jarwinModel.feed_historyfeed_item_history" FromRole="feed_item_history" ToRole="feed_history" />
+          <Property Name="feed_history_feed_id" Type="Int64" Nullable="false" />
+          <Property Name="feed_history_archived_datetime" Type="DateTime" Nullable="false" />
+          <Property Name="archived_datetime" Type="DateTime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_feed_item_0_0">
+          <End Role="feed" Type="Self.feed" Multiplicity="1" />
+          <End Role="feed_item" Type="Self.feed_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="feed">
+              <PropertyRef Name="feed_id" />
+            </Principal>
+            <Dependent Role="feed_item">
+              <PropertyRef Name="feed_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="jarwinEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="feeds" EntityType="Self.feed" />
+          <EntitySet Name="feed_history" EntityType="Self.feed_history" />
+          <EntitySet Name="feed_item" EntityType="Self.feed_item" />
+          <EntitySet Name="feed_item_history" EntityType="Self.feed_item_history" />
+          <AssociationSet Name="FK_feed_item_0_0" Association="Self.FK_feed_item_0_0">
+            <End Role="feed" EntitySet="feeds" />
+            <End Role="feed_item" EntitySet="feed_item" />
+          </AssociationSet>
+          <AssociationSet Name="feed_historyfeed_item_history" Association="jarwinModel.feed_historyfeed_item_history">
+            <End Role="feed_history" EntitySet="feed_history" />
+            <End Role="feed_item_history" EntitySet="feed_item_history" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="feed_historyfeed_item_history">
+          <End Type="jarwinModel.feed_history" Role="feed_history" Multiplicity="1" />
+          <End Type="jarwinModel.feed_item_history" Role="feed_item_history" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="feed_history">
+              <PropertyRef Name="feed_id" />
+              <PropertyRef Name="archived_datetime" />
+            </Principal>
+            <Dependent Role="feed_item_history">
+              <PropertyRef Name="feed_history_feed_id" />
+              <PropertyRef Name="feed_history_archived_datetime" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="jarwinModelStoreContainer" CdmEntityContainer="jarwinEntities">
+          <EntitySetMapping Name="feeds">
+            <EntityTypeMapping TypeName="jarwinModel.feed">
+              <MappingFragment StoreEntitySet="feed">
+                <ScalarProperty Name="feed_id" ColumnName="feed_id" />
+                <ScalarProperty Name="feed_uri" ColumnName="feed_uri" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="last_build_datetime" ColumnName="last_build_datetime" />
+                <ScalarProperty Name="last_download_datetime" ColumnName="last_download_datetime" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="update_frequency" ColumnName="update_frequency" />
+                <ScalarProperty Name="site_uri" ColumnName="site_uri" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="update_period" ColumnName="update_period" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feed_history">
+            <EntityTypeMapping TypeName="jarwinModel.feed_history">
+              <MappingFragment StoreEntitySet="feed_history">
+                <ScalarProperty Name="feed_id" ColumnName="feed_id" />
+                <ScalarProperty Name="feed_uri" ColumnName="feed_uri" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="last_build_datetime" ColumnName="last_build_datetime" />
+                <ScalarProperty Name="last_download_datetime" ColumnName="last_download_datetime" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="update_frequency" ColumnName="update_frequency" />
+                <ScalarProperty Name="site_uri" ColumnName="site_uri" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="update_period" ColumnName="update_period" />
+                <ScalarProperty Name="archived_datetime" ColumnName="archived_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feed_item">
+            <EntityTypeMapping TypeName="jarwinModel.feed_item">
+              <MappingFragment StoreEntitySet="feed_item">
+                <ScalarProperty Name="feed_id" ColumnName="feed_id" />
+                <ScalarProperty Name="feed_item_id" ColumnName="feed_item_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="item_uri" ColumnName="item_uri" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="published_datetime" ColumnName="published_datetime" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="last_download_datetime" ColumnName="last_download_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feed_item_history">
+            <EntityTypeMapping TypeName="jarwinModel.feed_item_history">
+              <MappingFragment StoreEntitySet="feed_item_history">
+                <ScalarProperty Name="archived_datetime" ColumnName="archived_datetime" />
+                <ScalarProperty Name="feed_id" ColumnName="feed_id" />
+                <ScalarProperty Name="feed_item_id" ColumnName="feed_item_id" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="item_uri" ColumnName="item_uri" />
+                <ScalarProperty Name="comments" ColumnName="comments" />
+                <ScalarProperty Name="published_datetime" ColumnName="published_datetime" />
+                <ScalarProperty Name="creator" ColumnName="creator" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="content" ColumnName="content" />
+                <ScalarProperty Name="last_download_datetime" ColumnName="last_download_datetime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
