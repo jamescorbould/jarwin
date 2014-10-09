@@ -105,7 +105,7 @@ namespace jarwin.Form
                     {
                         var feedItems =
                             from feedItem in dataContext.feed_item
-                            where feedItem.feed_id == (int)e.Node.Tag
+                            where feedItem.feed_id == (long)e.Node.Tag
                             select feedItem;
 
                         int index = 0;
@@ -203,12 +203,12 @@ namespace jarwin.Form
         {
             // Delete feed selected from tree view context menu.
 
-            int feedID = 0;
+            long feedID = 0;
             bool rootNode = false;
 
             try
             {
-                feedID = (int)currentNode.Tag;
+                feedID = (long)currentNode.Tag;
             }
             catch (NullReferenceException ex) // Root node doesn't have an identifier - "My Feeds".
             {

@@ -16,7 +16,7 @@
           <Property Name="last_build_datetime" Type="datetime" Nullable="false" />
           <Property Name="last_download_datetime" Type="datetime" Nullable="false" />
           <Property Name="language" Type="varchar" MaxLength="8" Nullable="false" />
-          <Property Name="update_frequency" Type="integer" />
+          <Property Name="update_frequency" Type="integer" Nullable="false" />
           <Property Name="site_uri" Type="varchar" MaxLength="512" Nullable="false" />
           <Property Name="status" Type="varchar" MaxLength="16" />
           <Property Name="type" Type="varchar" MaxLength="16" />
@@ -134,7 +134,7 @@ warning 6035: The relationship 'FK_feed_item_history_1_0' has columns that are n
           <Property Name="last_build_datetime" Type="DateTime" Nullable="false" />
           <Property Name="last_download_datetime" Type="DateTime" Nullable="false" />
           <Property Name="language" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="update_frequency" Type="Int64" />
+          <Property Name="update_frequency" Type="Int32" Nullable="false" />
           <Property Name="site_uri" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
@@ -153,7 +153,7 @@ warning 6035: The relationship 'FK_feed_item_history_1_0' has columns that are n
           <Property Name="last_build_datetime" Type="DateTime" Nullable="false" />
           <Property Name="last_download_datetime" Type="DateTime" Nullable="false" />
           <Property Name="language" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="update_frequency" Type="Int64" />
+          <Property Name="update_frequency" Type="Int32" />
           <Property Name="site_uri" Type="String" MaxLength="512" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="status" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="type" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />

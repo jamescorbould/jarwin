@@ -26,7 +26,7 @@ namespace jarwin.DAL
         public System.DateTime last_build_datetime { get; set; }
         public System.DateTime last_download_datetime { get; set; }
         public string language { get; set; }
-        public Nullable<long> update_frequency { get; set; }
+        public int update_frequency { get; set; }
         public string site_uri { get; set; }
         public string status { get; set; }
         public string type { get; set; }

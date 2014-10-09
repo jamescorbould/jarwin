@@ -248,7 +248,7 @@ namespace jarwin.ObjectFactory
             }
         }
         
-        public void Delete(int feedID)
+        public void Delete(long feedID)
         {
             // Destroy thyself :-(
 
