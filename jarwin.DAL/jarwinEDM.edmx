@@ -87,15 +87,34 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_feed_item_1_0">
+          <End Role="feed" Type="Self.feed" Multiplicity="1" />
+          <End Role="feed_item" Type="Self.feed_item" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="feed">
+              <PropertyRef Name="feed_id" />
+            </Principal>
+            <Dependent Role="feed_item">
+              <PropertyRef Name="feed_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <!--Errors Found During Generation:
 warning 6035: The relationship 'FK_feed_item_history_0_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
         <Association Name="FK_feed_item_history_0_0" />-->
+        <!--Errors Found During Generation:
+warning 6035: The relationship 'FK_feed_item_history_1_0' has columns that are not part of the key of the table on the primary side of the relationship. The relationship was excluded.
+        <Association Name="FK_feed_item_history_1_0" />-->
         <EntityContainer Name="jarwinModelStoreContainer">
           <EntitySet Name="feed" EntityType="Self.feed" store:Type="Tables" />
           <EntitySet Name="feed_history" EntityType="Self.feed_history" store:Type="Tables" />
           <EntitySet Name="feed_item" EntityType="Self.feed_item" store:Type="Tables" />
           <EntitySet Name="feed_item_history" EntityType="Self.feed_item_history" store:Type="Tables" />
           <AssociationSet Name="FK_feed_item_0_0" Association="Self.FK_feed_item_0_0">
+            <End Role="feed" EntitySet="feed" />
+            <End Role="feed_item" EntitySet="feed_item" />
+          </AssociationSet>
+          <AssociationSet Name="FK_feed_item_1_0" Association="Self.FK_feed_item_1_0">
             <End Role="feed" EntitySet="feed" />
             <End Role="feed_item" EntitySet="feed_item" />
           </AssociationSet>
@@ -140,7 +159,7 @@ warning 6035: The relationship 'FK_feed_item_history_0_0' has columns that are n
           <Property Name="type" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <Property Name="update_period" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="archived_datetime" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="feed_item_history" Relationship="jarwinModel.feed_historyfeed_item_history" FromRole="feed_history" ToRole="feed_item_history" />
+          <NavigationProperty Name="feed_item_history" Relationship="jarwinModel.feed_item_historyfeed_history" FromRole="feed_history" ToRole="feed_item_history" />
         </EntityType>
         <EntityType Name="feed_item">
           <Key>
@@ -158,8 +177,6 @@ warning 6035: The relationship 'FK_feed_item_history_0_0' has columns that are n
           <Property Name="content" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
           <Property Name="last_download_datetime" Type="DateTime" Nullable="false" />
           <NavigationProperty Name="feed" Relationship="Self.FK_feed_item_0_0" FromRole="feed_item" ToRole="feed" />
-          <Property Name="feed_history_feed_id" Type="Int64" Nullable="false" />
-          <Property Name="feed_history_archived_datetime" Type="DateTime" Nullable="false" />
         </EntityType>
         <EntityType Name="feed_item_history">
           <Key>
@@ -177,10 +194,8 @@ warning 6035: The relationship 'FK_feed_item_history_0_0' has columns that are n
           <Property Name="description" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
           <Property Name="content" Type="String" MaxLength="2147483647" FixedLength="false" Unicode="false" />
           <Property Name="last_download_datetime" Type="DateTime" Nullable="false" />
-          <NavigationProperty Name="feed_history" Relationship="jarwinModel.feed_historyfeed_item_history" FromRole="feed_item_history" ToRole="feed_history" />
-          <Property Name="feed_history_feed_id" Type="Int64" Nullable="false" />
-          <Property Name="feed_history_archived_datetime" Type="DateTime" Nullable="false" />
           <Property Name="archived_datetime" Type="DateTime" Nullable="false" />
+          <NavigationProperty Name="feed_history" Relationship="jarwinModel.feed_item_historyfeed_history" FromRole="feed_item_history" ToRole="feed_history" />
         </EntityType>
         <Association Name="FK_feed_item_0_0">
           <End Role="feed" Type="Self.feed" Multiplicity="1" />
@@ -203,22 +218,22 @@ warning 6035: The relationship 'FK_feed_item_history_0_0' has columns that are n
             <End Role="feed" EntitySet="feeds" />
             <End Role="feed_item" EntitySet="feed_item" />
           </AssociationSet>
-          <AssociationSet Name="feed_historyfeed_item_history" Association="jarwinModel.feed_historyfeed_item_history">
-            <End Role="feed_history" EntitySet="feed_history" />
+          <AssociationSet Name="feed_item_historyfeed_history" Association="jarwinModel.feed_item_historyfeed_history">
             <End Role="feed_item_history" EntitySet="feed_item_history" />
+            <End Role="feed_history" EntitySet="feed_history" />
           </AssociationSet>
         </EntityContainer>
-        <Association Name="feed_historyfeed_item_history">
-          <End Type="jarwinModel.feed_history" Role="feed_history" Multiplicity="1" />
+        <Association Name="feed_item_historyfeed_history">
           <End Type="jarwinModel.feed_item_history" Role="feed_item_history" Multiplicity="*" />
+          <End Type="jarwinModel.feed_history" Role="feed_history" Multiplicity="1" />
           <ReferentialConstraint>
             <Principal Role="feed_history">
               <PropertyRef Name="feed_id" />
               <PropertyRef Name="archived_datetime" />
             </Principal>
             <Dependent Role="feed_item_history">
-              <PropertyRef Name="feed_history_feed_id" />
-              <PropertyRef Name="feed_history_archived_datetime" />
+              <PropertyRef Name="feed_id" />
+              <PropertyRef Name="archived_datetime" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
