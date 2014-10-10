@@ -16,6 +16,7 @@ using Microsoft.Practices.EnterpriseLibrary.Logging;
 using System.Threading;
 using System.Data.Linq;
 using System.Data.SQLite;
+using System.Data.Entity.Core.Objects;
 
 namespace jarwin.Form
 {
@@ -157,8 +158,16 @@ namespace jarwin.Form
         {
             // When the user clicks on a feed in the data grid,
             // populate the browser view with details of the feed.
-            feed_item item = (feed_item)dataGridView1.Rows[e.RowIndex].Tag;
-            webBrowser.DocumentText = String.IsNullOrEmpty(item.content) ? item.description : item.content;
+
+            try
+            {
+                feed_item item = (feed_item)dataGridView1.Rows[e.RowIndex].Tag;
+                webBrowser.DocumentText = String.IsNullOrEmpty(item.content) ? item.description : item.content;
+            }
+            catch (System.ArgumentOutOfRangeException)
+            {
+                // Do nothing - user didn't click on a feed, but somewhere else in the gridview.
+            }
         }
 
         private void fileToolStripMenuItem_Click(object sender, EventArgs e)
@@ -264,11 +273,15 @@ namespace jarwin.Form
 
             using (jarwinEntities dataContext = new jarwinEntities())
             {
+                var feedsAll =
+                    from f in dataContext.feeds
+                    where f.status.ToUpper() == "ACTIVE"
+                    select f;
+
+                // Do in memory filter using collection.
                 var feeds =
-                    from feed in dataContext.feeds
-                    where feed.status.ToUpper() == "ACTIVE"
-                    && feed.last_download_datetime.AddHours((double)feed.update_frequency) <= DateTime.Now
-                    select feed;
+                    from f in feedsAll.ToList().Where(p => p.last_download_datetime.AddHours((double)p.update_frequency) <= DateTime.Now)
+                    select f;
 
                 feedsCount = feeds.Count();
 
