@@ -371,5 +371,29 @@ namespace jarwin.Form
         {
 
         }
+
+        private void feedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            int feedCount = 0;
+
+            using (jarwinEntities dataContext = new jarwinEntities())
+            {
+                var feedsAll =
+                    from f in dataContext.feeds
+                    where f.status.ToUpper() == "ACTIVE"
+                    select f;
+
+                feedCount = feedsAll.Count();
+            }
+
+            if (feedCount <= 0)
+            {
+                syncToolStripMenuItem.Enabled = false;
+            }
+            else
+            {
+                syncToolStripMenuItem.Enabled = true;
+            }
+        }
     }
 }

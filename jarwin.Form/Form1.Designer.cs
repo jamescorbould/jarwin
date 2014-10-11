@@ -38,9 +38,9 @@
             this.feedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.syncToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.refreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.refreshAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeView1 = new System.Windows.Forms.TreeView();
             this.TreePanel = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -137,6 +137,7 @@
             this.feedToolStripMenuItem.ShowShortcutKeys = false;
             this.feedToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
             this.feedToolStripMenuItem.Text = "F&eed";
+            this.feedToolStripMenuItem.Click += new System.EventHandler(this.feedToolStripMenuItem_Click);
             // 
             // addToolStripMenuItem
             // 
@@ -175,6 +176,11 @@
             this.aToolStripMenuItem.Size = new System.Drawing.Size(100, 22);
             this.aToolStripMenuItem.Text = "A&bout";
             this.aToolStripMenuItem.Click += new System.EventHandler(this.aToolStripMenuItem_Click);
+            // 
+            // refreshAllToolStripMenuItem
+            // 
+            this.refreshAllToolStripMenuItem.Name = "refreshAllToolStripMenuItem";
+            this.refreshAllToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
             // 
             // treeView1
             // 
