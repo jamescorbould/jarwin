@@ -8,6 +8,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionArtefacts", "SolutionArtefacts", "{0C1F17EE-92F1-44DF-8A17-72D96E77DC27}"
 	ProjectSection(SolutionItems) = preProject
 		SolutionArtefacts\abraham_blog_rss.xml = SolutionArtefacts\abraham_blog_rss.xml
+		SolutionArtefacts\jarwin.sqlite = SolutionArtefacts\jarwin.sqlite
 		SolutionArtefacts\jc_blog_rss.xml = SolutionArtefacts\jc_blog_rss.xml
 		README.txt = README.txt
 		SolutionArtefacts\stephenson_blog_rss.xml = SolutionArtefacts\stephenson_blog_rss.xml
