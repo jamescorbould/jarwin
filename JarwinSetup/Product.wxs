@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="jarwin - 'Just Another Reader (for) Windows'" Language="1033" Version="1.0.0.0" Manufacturer="James Corbould" UpgradeCode="44d28c2c-ed19-4553-bc7e-1ea6067d7ca7">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+    
+    <!--<Feature Id="ProductFeature" Title="jarwin - 'Just Another Reader (for) Windows'" Level="1">-->
+      <!--<ComponentGroupRef Id="*" />-->
+    <!--</Feature>-->
+  </Product>
+
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFilesFolder">
+        <Directory Id="INSTALLFOLDER" Name="jarwin" />
+      </Directory>
+    </Directory>
+  </Fragment>
+
+  <Fragment>
+    <DirectoryRef Id="TARGETDIR">
+      <Directory Id="dir99DE416F55C8960850D5A4FCA3758AD4" Name="Release">
+        <Component Id="cmp31D42C2E1A5EDC43E636E55965B214F1" Guid="1EFA1667-1035-416E-B702-66FD7BB5178B">
+          <File Id="fil7B63C95914554B8A7DD186F1C8254D6E" KeyPath="yes" Source="SourceDir\EntityFramework.dll" />
+        </Component>
+        <Component Id="cmpF90CDBFB81800BC121015C0148F72B4E" Guid="7453BE45-D81C-4DAA-BA53-27E0371B01C5">
+          <File Id="filA3273BF84133042089A1D9285CEBBA60" KeyPath="yes" Source="SourceDir\EntityFramework.SqlServer.dll" />
+        </Component>
+        <Component Id="cmpFF22D924955AA4F80DE6AB6C1D7CD4DB" Guid="523DEC4C-B2F4-4A7C-9AC8-150AC8E51332">
+          <File Id="filB722F5B4DC46C231C30AABC43EB74ED3" KeyPath="yes" Source="SourceDir\EntityFramework.SqlServer.xml" />
+        </Component>
+        <Component Id="cmp128A81BA9EF890F93C91470FF9E140EC" Guid="DE66170B-F63D-467D-9DB2-42F3DA9CB3C6">
+          <File Id="fil05A7DC915949FB310BE48EF2E3CD0B99" KeyPath="yes" Source="SourceDir\EntityFramework.xml" />
+        </Component>
+        <Component Id="cmp34596CBF39C5FAD9A5A0EEB5F77ACEA6" Guid="F60E2BE1-F506-490B-8566-9B2C49A0DBC8">
+          <File Id="fil6FEBC26174D8E445ECF3120BF510C3A9" KeyPath="yes" Source="SourceDir\jarwin.DAL.dll" />
+        </Component>
+        <Component Id="cmp913F2CDA3B107A76820413DF2F35F5D6" Guid="C67EDAFA-4543-43A8-816A-420058E627DE">
+          <File Id="fil2BEAD99FE31E979B289C502BFFC2812C" KeyPath="yes" Source="SourceDir\jarwin.DAL.pdb" />
+        </Component>
+        <Component Id="cmpCC13F15F951986112C41EF0B077D25F2" Guid="891D61B8-69BC-4C40-83F6-F210408E7B7A">
+          <File Id="fil9FFAD3928BF7C096BAFFE7C2C734CE15" KeyPath="yes" Source="SourceDir\jarwin.exe" />
+        </Component>
+        <Component Id="cmpF25FD3EBE095087408FD49D744E4E3BB" Guid="4FBEFDE5-470F-4995-8CCA-1AD271BA21A4">
+          <File Id="fil61E6C277B583EC538D3D0FFDAA2D1A7E" KeyPath="yes" Source="SourceDir\jarwin.exe.config" />
+        </Component>
+        <Component Id="cmp3154D618EE2D3E1A6A312685D6F97FC0" Guid="3C90AD4F-39E4-4582-BD73-1C936146196E">
+          <File Id="fil9CB1934DCF9D5CF843F806F5CF9AD7CA" KeyPath="yes" Source="SourceDir\jarwin.ObjectFactory.dll" />
+        </Component>
+        <Component Id="cmp1D6E2748CBE37C8501722D38B741E1D8" Guid="CB63074C-9180-428D-B476-093FC260BECB">
+          <File Id="filA28A51C23A43F3B8A8CEFEC2BF4DAE7F" KeyPath="yes" Source="SourceDir\jarwin.ObjectFactory.pdb" />
+        </Component>
+        <Component Id="cmp56860EAF2B48F4E38881BD4E30EF275B" Guid="3798C0D1-FE6D-46CE-B4E6-EF3E1CE52B87">
+          <File Id="fil60213DAFA8C4534E6B5D09AB6C5760D7" KeyPath="yes" Source="SourceDir\jarwin.pdb" />
+        </Component>
+        <Component Id="cmp34EE4A0C58C06750E46DCC06392A1BE3" Guid="C99C4234-BDB0-4593-A1E4-8D884CC3809A">
+          <File Id="filEC625F8B231FAA6A5537D9FD5EDE6BBA" KeyPath="yes" Source="SourceDir\jarwin.State.dll" />
+        </Component>
+        <Component Id="cmp8B9FE25ED2113A03C374B44EAE78EBF1" Guid="231E14B9-8A4C-4FDC-A712-E4E3437DD080">
+          <File Id="filA565672B368D7A211340BC7D7361B970" KeyPath="yes" Source="SourceDir\jarwin.State.pdb" />
+        </Component>
+        <Component Id="cmp4F2E59DFAC4F728C25E92CE1466E3FD2" Guid="27448371-C166-4608-B1D5-0F55DF4423D5">
+          <File Id="fil91230C4E2D67221BFD3E8FD133D5F723" KeyPath="yes" Source="SourceDir\jarwin.Utility.dll" />
+        </Component>
+        <Component Id="cmp2A782C0B7FB437B2C34016C1FE1D32E7" Guid="53259166-C770-4B59-A951-21F1A3837118">
+          <File Id="fil8B4ABD57FBFB82FD651DC4973010FF87" KeyPath="yes" Source="SourceDir\jarwin.Utility.pdb" />
+        </Component>
+        <Component Id="cmp1DFBAB12A5C2FD5EF0C147DD5D4BDB5A" Guid="04F019A5-7BBF-442B-A27D-CE6E0A94360F">
+          <File Id="fil16E9D97DAD5B08BA44EAFFB38B1FD1EB" KeyPath="yes" Source="SourceDir\jarwin.vshost.exe" />
+        </Component>
+        <Component Id="cmp1D5D80570A052B63AEDCCEB1FB35D646" Guid="FB52290D-4DBD-43B5-BE6B-5509E88209A4">
+          <File Id="filA6C2B67F9E3BD41F72234A500E18C73A" KeyPath="yes" Source="SourceDir\jarwin.vshost.exe.config" />
+        </Component>
+        <Component Id="cmpF23BC30A16EA77F0A73F4147C4008605" Guid="D12B0D9D-9CBF-48E3-BAA2-FF71AC538EDA">
+          <File Id="filCAC863D598925B4AC3C812FB325E0795" KeyPath="yes" Source="SourceDir\jarwin.vshost.exe.manifest" />
+        </Component>
+        <Component Id="cmpC2B4CEEA9C8BEB22F43459C605B0B348" Guid="833DC56A-7E0D-4240-8599-77417DB9C154">
+          <File Id="fil93FD7DAA41113FA7A88694538293B70A" KeyPath="yes" Source="SourceDir\Microsoft.Practices.EnterpriseLibrary.Common.dll" />
+        </Component>
+        <Component Id="cmp7058A8139551EB957DD8A501E9E3E4B0" Guid="3ADF8D9C-0A28-482B-B0BA-78F20B558CCA">
+          <File Id="fil98BD8BA11EF12890F5DE2C74CD3AFAC4" KeyPath="yes" Source="SourceDir\Microsoft.Practices.EnterpriseLibrary.Common.xml" />
+        </Component>
+        <Component Id="cmpF930DB2E2A54A47A28E9A26E9F525EC1" Guid="0CE13BC6-085A-4D1F-B611-EC9ADEFFBF2B">
+          <File Id="fil2774A00C33BE2B8CFF216BDC62C590C0" KeyPath="yes" Source="SourceDir\Microsoft.Practices.EnterpriseLibrary.Data.dll" />
+        </Component>
+        <Component Id="cmpAE2C7335D0FA7CEDE551997DD3998903" Guid="B28372EC-14FD-449E-8535-E71DBEF07863">
+          <File Id="filBE3D8E350151788C0E3141AE3D27CCB2" KeyPath="yes" Source="SourceDir\Microsoft.Practices.EnterpriseLibrary.Data.xml" />
+        </Component>
+        <Component Id="cmpE0591C9953A0409069DEB5E586DEA1AA" Guid="9D680601-C4A1-429C-B896-D9668021B272">
+          <File Id="fil12E4655AD82DF8C396D747C1EF8C6AC3" KeyPath="yes" Source="SourceDir\Microsoft.Practices.EnterpriseLibrary.Logging.Database.dll" />
+        </Component>
+        <Component Id="cmp4D6D912A5A22F9E4143CB45C5A6E7805" Guid="893250E4-C16A-4E05-AF36-E2D7B76589DF">
+          <File Id="fil5AD1B75881D4C5F8A8F48F3E0D9A41DD" KeyPath="yes" Source="SourceDir\Microsoft.Practices.EnterpriseLibrary.Logging.Database.xml" />
+        </Component>
+        <Component Id="cmp0D27D59BB6A7045AD0854A8D8EC3E99B" Guid="FF451E92-EB22-4528-A929-7B228901D16E">
+          <File Id="fil2D11EDAC1D950D265F7EDC269BBE089C" KeyPath="yes" Source="SourceDir\Microsoft.Practices.EnterpriseLibrary.Logging.dll" />
+        </Component>
+        <Component Id="cmp73178C05068031ED288C0763EB0F0004" Guid="65D4989A-5FEF-4C4F-886C-7F70924844C5">
+          <File Id="filBC43AC4EC85AA868ECE7E1BD1DA225C5" KeyPath="yes" Source="SourceDir\Microsoft.Practices.EnterpriseLibrary.Logging.xml" />
+        </Component>
+        <Component Id="cmp1F628E6E1F2340F1B045287895BA90F8" Guid="54784E53-41D2-435B-BEEB-81CD69222CFD">
+          <File Id="fil94F47DD4629D87B8878BF727BE5F7853" KeyPath="yes" Source="SourceDir\Newtonsoft.Json.dll" />
+        </Component>
+        <Component Id="cmpF596BC2326C84A5DA5B3212447915123" Guid="E9D550CE-3540-4256-BFDA-1F8B5A0554FE">
+          <File Id="fil42E7AF0B45C31B6F68242CEB510C1F87" KeyPath="yes" Source="SourceDir\System.Data.SQLite.dll" />
+        </Component>
+        <Component Id="cmpFF0D3B0936A8A867EB22504248EE8194" Guid="E1173424-CDDB-43FB-97FB-9F6E5C637062">
+          <File Id="fil920D33AA36FF2A91F870909BC3BF852F" KeyPath="yes" Source="SourceDir\System.Data.SQLite.EF6.dll" />
+        </Component>
+        <Component Id="cmpC197D9F530E8B225E96FF7E37E3495F2" Guid="996303F8-F769-41A5-8F3D-D5D387305A0D">
+          <File Id="filCF85FC1058DBFCBDDD2DDEFF3E690B9C" KeyPath="yes" Source="SourceDir\System.Data.SQLite.Linq.dll" />
+        </Component>
+        <Component Id="cmpA28B6C0EF8CCDE63DA58163CBFEF6957" Guid="CFBF3EAD-1BA9-42B2-8969-4463AF86301D">
+          <File Id="filA14068B214E8B2DDF44D752CBF4CE5BC" KeyPath="yes" Source="SourceDir\System.Data.SQLite.xml" />
+        </Component>
+        <Directory Id="dir843B0678CEE59BC33958A655CF0C5B86" Name="x64">
+          <Component Id="cmp4B3F496E9E3A96144D39C102E68AE899" Guid="8C4C86CA-CCE4-40E6-8E15-92FBAE77B44A">
+            <File Id="fil10D8D260A8CFB20ED06D81C234A3F99A" KeyPath="yes" Source="SourceDir\x64\SQLite.Interop.dll" />
+          </Component>
+        </Directory>
+        <Directory Id="dir01022674355CDD522677CB91955906D4" Name="x86">
+          <Component Id="cmp38169A110338882C258BAE1337BCF0E9" Guid="7A44B0FE-D781-4242-BF22-0F240137DCF0">
+            <File Id="filE1152E324651D2B897D278D354530BAE" KeyPath="yes" Source="SourceDir\x86\SQLite.Interop.dll" />
+          </Component>
+        </Directory>
+      </Directory>
+    </DirectoryRef>
+  </Fragment>
+  <Fragment>
+    <ComponentGroup Id="MyComponentGroup">
+      <ComponentRef Id="cmp31D42C2E1A5EDC43E636E55965B214F1" />
+      <ComponentRef Id="cmpF90CDBFB81800BC121015C0148F72B4E" />
+      <ComponentRef Id="cmpFF22D924955AA4F80DE6AB6C1D7CD4DB" />
+      <ComponentRef Id="cmp128A81BA9EF890F93C91470FF9E140EC" />
+      <ComponentRef Id="cmp34596CBF39C5FAD9A5A0EEB5F77ACEA6" />
+      <ComponentRef Id="cmp913F2CDA3B107A76820413DF2F35F5D6" />
+      <ComponentRef Id="cmpCC13F15F951986112C41EF0B077D25F2" />
+      <ComponentRef Id="cmpF25FD3EBE095087408FD49D744E4E3BB" />
+      <ComponentRef Id="cmp3154D618EE2D3E1A6A312685D6F97FC0" />
+      <ComponentRef Id="cmp1D6E2748CBE37C8501722D38B741E1D8" />
+      <ComponentRef Id="cmp56860EAF2B48F4E38881BD4E30EF275B" />
+      <ComponentRef Id="cmp34EE4A0C58C06750E46DCC06392A1BE3" />
+      <ComponentRef Id="cmp8B9FE25ED2113A03C374B44EAE78EBF1" />
+      <ComponentRef Id="cmp4F2E59DFAC4F728C25E92CE1466E3FD2" />
+      <ComponentRef Id="cmp2A782C0B7FB437B2C34016C1FE1D32E7" />
+      <ComponentRef Id="cmp1DFBAB12A5C2FD5EF0C147DD5D4BDB5A" />
+      <ComponentRef Id="cmp1D5D80570A052B63AEDCCEB1FB35D646" />
+      <ComponentRef Id="cmpF23BC30A16EA77F0A73F4147C4008605" />
+      <ComponentRef Id="cmpC2B4CEEA9C8BEB22F43459C605B0B348" />
+      <ComponentRef Id="cmp7058A8139551EB957DD8A501E9E3E4B0" />
+      <ComponentRef Id="cmpF930DB2E2A54A47A28E9A26E9F525EC1" />
+      <ComponentRef Id="cmpAE2C7335D0FA7CEDE551997DD3998903" />
+      <ComponentRef Id="cmpE0591C9953A0409069DEB5E586DEA1AA" />
+      <ComponentRef Id="cmp4D6D912A5A22F9E4143CB45C5A6E7805" />
+      <ComponentRef Id="cmp0D27D59BB6A7045AD0854A8D8EC3E99B" />
+      <ComponentRef Id="cmp73178C05068031ED288C0763EB0F0004" />
+      <ComponentRef Id="cmp1F628E6E1F2340F1B045287895BA90F8" />
+      <ComponentRef Id="cmpF596BC2326C84A5DA5B3212447915123" />
+      <ComponentRef Id="cmpFF0D3B0936A8A867EB22504248EE8194" />
+      <ComponentRef Id="cmpC197D9F530E8B225E96FF7E37E3495F2" />
+      <ComponentRef Id="cmpA28B6C0EF8CCDE63DA58163CBFEF6957" />
+      <ComponentRef Id="cmp4B3F496E9E3A96144D39C102E68AE899" />
+      <ComponentRef Id="cmp38169A110338882C258BAE1337BCF0E9" />
+    </ComponentGroup>
+  </Fragment>
+
+</Wix>
