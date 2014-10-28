@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+    <Fragment>
+        <DirectoryRef Id="jarwin.Form.Binaries">
+            <Component Id="cmp90AFA783DBCF9D5BC9456C05B2CA6A27" Guid="*">
+                <File Id="filCA342F3F68884CD1FA1864F4258E3882" Source="$(var.jarwin.Form.TargetDir)\jarwin.exe" />
+            </Component>
+            <Component Id="cmp673F64AB72F22A618DEDBE788A9FCAA9" Guid="*">
+                <File Id="fil747D1FEC9F25F9A3747BFD3D3B258419" Source="$(var.jarwin.Form.TargetDir)\jarwin.exe.config" />
+            </Component>
+        </DirectoryRef>
+    </Fragment>
+    <Fragment>
+        <ComponentGroup Id="jarwin.Form.Binaries">
+            <ComponentRef Id="cmp90AFA783DBCF9D5BC9456C05B2CA6A27" />
+            <ComponentRef Id="cmp673F64AB72F22A618DEDBE788A9FCAA9" />
+        </ComponentGroup>
+    </Fragment>
+</Wix>
