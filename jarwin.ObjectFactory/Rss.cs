@@ -401,6 +401,11 @@ namespace jarwin.ObjectFactory
                     if (logWriter.IsLoggingEnabled())
                     {
                         logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into FeedItemHistory.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.GetType(), ex.Message, feedID));
+
+                        if (ex.InnerException != null)
+                        {
+                            logWriter.Write(String.Format("ERROR :: Source = Rss.Update.  Failed to insert into FeedItemHistory.  Inner exception details.  Exception type = {0}.  Exception msg = {1}.  feedID = {2}", ex.InnerException.GetType(), ex.InnerException.Message, feedID));
+                        }
                     }
 
                     result = false;
