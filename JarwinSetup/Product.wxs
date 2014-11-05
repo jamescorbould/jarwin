@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
   <Product Id="*" Name="jarwin - 'Just Another Reader (for) Windows' 1.0.0" Language="1033" Version="1.0.0.0" Manufacturer="James Corbould" UpgradeCode="44d28c2c-ed19-4553-bc7e-1ea6067d7ca7">
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
     <Media Id="1" Cabinet="jarwin.cab" EmbedCab="yes" />
@@ -11,7 +11,7 @@
     <!-- Define the directory structure -->
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFilesFolder">
-        <Directory Id="APPLICATIONROOTDIRECTORY" Name="jarwin"/>
+        <Directory Id="APPLICATIONROOTDIRECTORY" Name="jarwin" />
       </Directory>
       <!-- Define shortcut directory structure -->
       <Directory Id="DesktopFolder" Name="Desktop">
@@ -137,6 +137,11 @@
           <File Id="filE1152E324651D2B897D278D354530BAE" KeyPath="yes" Source="..\jarwin.Form\bin\Release\x86\SQLite.Interop.dll" />
         </Component>
       </Directory>
+      <Component Id="INSTALLFOLDER_Permission" Guid="4D06B683-496D-45A1-9298-A67615A50C6F">
+        <CreateFolder>
+          <util:PermissionEx User="Users" GenericAll="yes"/>
+        </CreateFolder>
+      </Component>
     </DirectoryRef>
 
     <!-- Tell WiX to install the files -->
@@ -175,7 +180,8 @@
       <ComponentRef Id="cmp4B3F496E9E3A96144D39C102E68AE899" />
       <ComponentRef Id="cmp38169A110338882C258BAE1337BCF0E9" />
       <ComponentRef Id="jarwin.sqlite" />
-      <ComponentRef Id="ApplicationShortcutDesktop"/>
+      <ComponentRef Id="ApplicationShortcutDesktop" />
+      <ComponentRef Id="INSTALLFOLDER_Permission" />
     </Feature>
 
   </Product>
