@@ -26,5 +26,6 @@ namespace jarwin.DAL
         public System.DateTime last_download_datetime { get; set; }
     
         public virtual feed feed { get; set; }
+        public virtual feed feed1 { get; set; }
     }
 }

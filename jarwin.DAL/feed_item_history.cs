@@ -25,7 +25,5 @@ namespace jarwin.DAL
         public string content { get; set; }
         public System.DateTime last_download_datetime { get; set; }
         public System.DateTime archived_datetime { get; set; }
-    
-        public virtual feed_history feed_history { get; set; }
     }
 }

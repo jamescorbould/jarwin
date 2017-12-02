@@ -14,9 +14,11 @@ namespace jarwin.DAL
     
     public partial class feed
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public feed()
         {
             this.feed_item = new HashSet<feed_item>();
+            this.feed_item1 = new HashSet<feed_item>();
         }
     
         public long feed_id { get; set; }
@@ -26,12 +28,15 @@ namespace jarwin.DAL
         public System.DateTime last_build_datetime { get; set; }
         public System.DateTime last_download_datetime { get; set; }
         public string language { get; set; }
-        public int update_frequency { get; set; }
+        public long update_frequency { get; set; }
         public string site_uri { get; set; }
         public string status { get; set; }
         public string type { get; set; }
         public string update_period { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<feed_item> feed_item { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<feed_item> feed_item1 { get; set; }
     }
 }

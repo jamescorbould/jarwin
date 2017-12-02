@@ -57,7 +57,7 @@ namespace jarwin.UnitTests
 
             Assert.IsTrue(rss != null);
 
-            using (jarwinEntities context = new jarwinEntities())
+            using (mainEntities context = new mainEntities())
             {
 
                 context.feeds.Add(rss.feed);
@@ -113,7 +113,7 @@ namespace jarwin.UnitTests
 
             Assert.IsTrue(rss != null);
 
-            using (jarwinEntities context = new jarwinEntities())
+            using (mainEntities context = new mainEntities())
             {
                 context.feeds.Add(rss.feed);
 

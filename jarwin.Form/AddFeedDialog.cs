@@ -51,7 +51,7 @@ namespace jarwin
             // Using the Rss feed xml, create an Rss object.
             Rss rss = new Rss(inputUri);
 
-            using (jarwinEntities context = new jarwinEntities())
+            using (mainEntities context = new mainEntities())
             {
                 context.feeds.Add(rss.feed);
 

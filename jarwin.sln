@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2006
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.Form", "jarwin.Form\jarwin.Form.csproj", "{6DF4CE2E-1880-479F-9108-E9918D7B174B}"
 EndProject
@@ -37,6 +37,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "jarwin.State", "jarwin.State\jarwin.State.csproj", "{E37BC69B-FCE2-488C-80AB-2065576B5A1A}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "JarwinSetup", "JarwinSetup\JarwinSetup.wixproj", "{EAC542AA-F78E-4CDD-91AF-1A820BABA4BB}"
+EndProject
+Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "JarwinSetupVS2017", "JarwinSetupVS2017\JarwinSetupVS2017.wixproj", "{1BB1460A-A1F1-4338-B968-F131979032DC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -118,11 +120,22 @@ Global
 		{EAC542AA-F78E-4CDD-91AF-1A820BABA4BB}.Release|Mixed Platforms.Build.0 = Release|x86
 		{EAC542AA-F78E-4CDD-91AF-1A820BABA4BB}.Release|x86.ActiveCfg = Release|x86
 		{EAC542AA-F78E-4CDD-91AF-1A820BABA4BB}.Release|x86.Build.0 = Release|x86
+		{1BB1460A-A1F1-4338-B968-F131979032DC}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{1BB1460A-A1F1-4338-B968-F131979032DC}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{1BB1460A-A1F1-4338-B968-F131979032DC}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{1BB1460A-A1F1-4338-B968-F131979032DC}.Debug|x86.ActiveCfg = Debug|x86
+		{1BB1460A-A1F1-4338-B968-F131979032DC}.Debug|x86.Build.0 = Debug|x86
+		{1BB1460A-A1F1-4338-B968-F131979032DC}.Release|Any CPU.ActiveCfg = Release|x86
+		{1BB1460A-A1F1-4338-B968-F131979032DC}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{1BB1460A-A1F1-4338-B968-F131979032DC}.Release|Mixed Platforms.Build.0 = Release|x86
+		{1BB1460A-A1F1-4338-B968-F131979032DC}.Release|x86.ActiveCfg = Release|x86
+		{1BB1460A-A1F1-4338-B968-F131979032DC}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		EnterpriseLibraryConfigurationToolBinariesPathV6 = packages\EnterpriseLibrary.Common.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Data.6.0.1304.0\lib\NET45;packages\EnterpriseLibrary.Logging.Database.6.0.1304.0\lib\NET45
+		SolutionGuid = {3B9679FA-3A90-4416-A590-43A8B03B7E64}
 	EndGlobalSection
 EndGlobal

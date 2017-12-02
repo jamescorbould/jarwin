@@ -49,7 +49,7 @@ namespace jarwin.Form
         {
             List<TreeNode> nodes = new List<TreeNode>();
 
-            using (jarwinEntities dataContext = new jarwinEntities())
+            using (mainEntities dataContext = new mainEntities())
             {
                 var feedData =
                     from feed in dataContext.feeds
@@ -102,7 +102,7 @@ namespace jarwin.Form
 
                 try
                 {
-                    using (jarwinEntities dataContext = new jarwinEntities())
+                    using (mainEntities dataContext = new mainEntities())
                     {
                         var feedItems =
                             from feedItem in dataContext.feed_item
@@ -271,7 +271,7 @@ namespace jarwin.Form
             this.updateThread = new Thread(new ThreadStart(this.threadProcSafe));
             this.updateThread.Start();
 
-            using (jarwinEntities dataContext = new jarwinEntities())
+            using (mainEntities dataContext = new mainEntities())
             {
                 var feedsAll =
                     from f in dataContext.feeds
@@ -376,7 +376,7 @@ namespace jarwin.Form
         {
             int feedCount = 0;
 
-            using (jarwinEntities dataContext = new jarwinEntities())
+            using (mainEntities dataContext = new mainEntities())
             {
                 var feedsAll =
                     from f in dataContext.feeds

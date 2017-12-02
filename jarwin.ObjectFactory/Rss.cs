@@ -252,7 +252,7 @@ namespace jarwin.ObjectFactory
         {
             // Destroy thyself :-(
 
-            using (jarwinEntities context = new jarwinEntities())
+            using (mainEntities context = new mainEntities())
             {
                 // Delete feed items associated with this feed:
 
@@ -380,7 +380,7 @@ namespace jarwin.ObjectFactory
                 logWriter.Write(String.Format("INFO :: Source = Rss.Update.  Insert into FeedItemHistory.  feedID = {0}", feedID));
             }
 
-            using (jarwinEntities context = new jarwinEntities())
+            using (mainEntities context = new mainEntities())
             {
                 var deleteFeedItems =
                     from feedItem in context.feed_item

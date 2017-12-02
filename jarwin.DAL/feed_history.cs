@@ -14,11 +14,6 @@ namespace jarwin.DAL
     
     public partial class feed_history
     {
-        public feed_history()
-        {
-            this.feed_item_history = new HashSet<feed_item_history>();
-        }
-    
         public long feed_id { get; set; }
         public string feed_uri { get; set; }
         public string title { get; set; }
@@ -26,13 +21,11 @@ namespace jarwin.DAL
         public System.DateTime last_build_datetime { get; set; }
         public System.DateTime last_download_datetime { get; set; }
         public string language { get; set; }
-        public Nullable<int> update_frequency { get; set; }
+        public Nullable<long> update_frequency { get; set; }
         public string site_uri { get; set; }
         public string status { get; set; }
         public string type { get; set; }
         public string update_period { get; set; }
         public System.DateTime archived_datetime { get; set; }
-    
-        public virtual ICollection<feed_item_history> feed_item_history { get; set; }
     }
 }
